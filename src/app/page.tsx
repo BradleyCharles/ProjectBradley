@@ -17,7 +17,9 @@ export default function Home() {
         <p className={styles.kicker}>Projects</p>
         <h1 className={styles.title}>Explore the Worlds I Build</h1>
         <p className={styles.subtitle}>
-          Choose a category to dive into the work — software, security, strategy, or art.
+          Choose a category to dive into my work — I have a growing interest in
+          software development, cybersecurity, project management, artificial
+          intelligence, and art.
         </p>
       </section>
 
