@@ -34,7 +34,7 @@ export default function Home() {
           </a>
         </h3>
         <image
-          src="/belindas-closet.png"
+          src="/public/images/belindas-closet.png"
           alt="Belinda's Closet"
           width={600}
           height={400}
