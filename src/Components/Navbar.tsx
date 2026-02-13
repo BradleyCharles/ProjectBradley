@@ -5,6 +5,14 @@ import Link from "next/link";
 import "../styles/navbar.css"; // Import your custom CSS file
 
 const Navbar: React.FC = () => {
+  const navLinks = [
+    { label: "Software Development", href: "/projects#software" },
+    { label: "Cybersecurity", href: "/projects#cybersecurity" },
+    { label: "Project Management", href: "/projects#project-management" },
+    { label: "Art", href: "/projects#art" },
+    { label: "Contact", href: "/contact" },
+  ];
+
   const titles = [
     "Software Engineer",
     "Web Application Developer",
@@ -49,10 +57,9 @@ const Navbar: React.FC = () => {
 
   const shuffledTitles = useMemo(
     () => [...titles].sort(() => Math.random() - 0.5),
-    []
+    [],
   );
 
-  const [projectsOpen, setProjectsOpen] = useState(false);
   const [titleIndex, setTitleIndex] = useState(0);
 
   useEffect(() => {
@@ -61,9 +68,6 @@ const Navbar: React.FC = () => {
     }, 2500);
     return () => clearInterval(id);
   }, [shuffledTitles.length]);
-
-  const toggleProjects = () => setProjectsOpen((prev) => !prev);
-  const closeProjects = () => setProjectsOpen(false);
 
   return (
     <nav>
@@ -75,55 +79,11 @@ const Navbar: React.FC = () => {
           </div>
         </div>
         <ul className="navbar-links">
-          <li className="dropdown">
-            <button
-              type="button"
-              className="dropdown-trigger"
-              onClick={toggleProjects}
-              aria-expanded={projectsOpen}
-              aria-controls="projects-menu"
-            >
-              Projects
-              <span
-                className={`chevron ${projectsOpen ? "open" : ""}`}
-                aria-hidden="true"
-              >
-                ▾
-              </span>
-            </button>
-            <ul
-              id="projects-menu"
-              className={`dropdown-menu ${projectsOpen ? "open" : ""}`}
-              role="menu"
-            >
-              <li role="menuitem">
-                <Link href="/projects#software" onClick={closeProjects}>
-                  Software Development
-                </Link>
-              </li>
-              <li role="menuitem">
-                <Link href="/projects#cybersecurity" onClick={closeProjects}>
-                  Cybersecurity
-                </Link>
-              </li>
-              <li role="menuitem">
-                <Link
-                  href="/projects#project-management"
-                  onClick={closeProjects}
-                >
-                  Project management
-                </Link>
-              </li>
-              <li role="menuitem">
-                <Link href="/projects#art" onClick={closeProjects}>
-                  Art
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <Link href={link.href}>{link.label}</Link>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

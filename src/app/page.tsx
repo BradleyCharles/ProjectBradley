@@ -1,36 +1,47 @@
 "use client";
 
-import Link from "next/link";
 import styles from "./page.module.css";
-
-const categories = [
-  { label: "Software Development", href: "/projects#software" },
-  { label: "Cybersecurity", href: "/projects#cybersecurity" },
-  { label: "Project Management", href: "/projects#project-management" },
-  { label: "Art", href: "/projects#art" },
-];
 
 export default function Home() {
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
-        <p className={styles.kicker}>Projects</p>
         <h1 className={styles.title}>Explore the Worlds I Build</h1>
         <p className={styles.subtitle}>
-          Choose a category to dive into my work — I have a growing interest in
-          software development, cybersecurity, project management, artificial
-          intelligence, and art.
+          Use the navigation bar to jump into my work—software development,
+          cybersecurity, project management, art—or reach out via the contact
+          link.
         </p>
-      </section>
+        {/* Contact me */}
+        <h2>Contact Me</h2>
+        <p>
+          <a href="mailto:bradgcharles@gmail.com">bradgcharles@gmail.com</a>
+        </p>
+        <p>
+          <a href="https://github.com/bradgcharles">github.com/bradgcharles</a>
+        </p>
+        <p>
+          <a href="https://www.linkedin.com/in/bradgcharles/">
+            linkedin.com/in/bradgcharles
+          </a>
+        </p>
 
-      <section className={styles.bubbleSection} aria-label="Project categories">
-        <div className={styles.bubbleGrid}>
-          {categories.map((cat) => (
-            <Link key={cat.label} href={cat.href} className={styles.bubbleCard}>
-              <span className={styles.bubbleText}>{cat.label}</span>
-            </Link>
-          ))}
-        </div>
+        {/* Software Development */}
+        <p>Belinda's Closet</p>
+        <h3>
+          <a href="https://northseattle.edu/aco/belindas-closet">
+            Belinda’s Closet
+          </a>
+        </h3>
+        <image
+          src="/belindas-closet.png"
+          alt="Belinda's Closet"
+          width={600}
+          height={400}
+        />
+        {/* Cybersecurity */}
+        {/* Project Management */}
+        {/* Art */}
       </section>
     </main>
   );

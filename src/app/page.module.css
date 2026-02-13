@@ -88,21 +88,19 @@
 }
 
 .bubbleText {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  color: #0b0b15;
-  padding: 6px 12px;
-  border-radius: 16px;
-  background: linear-gradient(145deg, #ffffff, #dfe6ff);
-  box-shadow:
-    0 12px 24px rgba(14, 11, 35, 0.35),
-    inset 0 2px 6px rgba(255, 255, 255, 0.9);
-  text-shadow:
-    0 2px 0 #d0d9ff,
-    0 0 12px rgba(255, 255, 255, 0.55);
+    position: relative;
+    z-index: 1;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: #f8fbff;
+    padding: 6px 12px;
+    border-radius: 16px;
+    background: transparent;
+    box-shadow: none;
+    text-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.45),
+      0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 @media (max-width: 720px) {
