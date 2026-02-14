@@ -1,115 +1,257 @@
 .page {
   display: flex;
   flex-direction: column;
-  gap: 48px;
-  padding: 120px 24px 96px;
+  gap: 72px;
+  padding: 132px 24px 108px;
   max-width: 1200px;
   margin: 0 auto;
   color: #f8f7ff;
 }
 
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  scroll-margin-top: 120px;
+}
+
 .hero {
-  display: grid;
-  gap: 12px;
+  gap: 28px;
   text-align: center;
+  align-items: center;
 }
 
 .kicker {
   letter-spacing: 0.28em;
+  width: 750px;
+
   text-transform: uppercase;
   font-size: 0.85rem;
   color: #a5b4fc;
 }
 
 .title {
-  font-size: clamp(2.5rem, 4vw, 3.4rem);
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   text-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
 .subtitle {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   color: #dbeafe;
+  line-height: 1.7;
+}
+
+.heroCTA {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primaryCTA,
+.secondaryCTA {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 200ms ease,
+    background-color 160ms ease;
+}
+
+.primaryCTA {
+  background: linear-gradient(135deg, #6d28d9, #22d3ee);
+  color: #f8f7ff;
+  box-shadow: 0 12px 30px rgba(34, 211, 238, 0.28);
+}
+
+.secondaryCTA {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7ff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.primaryCTA:hover,
+.secondaryCTA:hover,
+.primaryCTA:focus-visible,
+.secondaryCTA:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
+.sectionHeader {
+  display: grid;
+  gap: 10px;
+}
+
+.sectionHeader h2 {
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  margin: 0;
+}
+
+.sectionLead {
+  color: #c9d6ff;
+  max-width: 760px;
+  line-height: 1.65;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  position: relative;
+  border-radius: 18px;
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.cardBody {
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.cardTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cardTitle a:hover,
+.cardTitle a:focus-visible {
+  text-decoration: underline;
+}
+
+.cardMeta {
+  color: #a5b4fc;
+  font-size: 0.95rem;
+  margin: 2px 0 6px;
+}
+
+.cardText {
+  color: #dfe7ff;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cardBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(109, 40, 217, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e5deff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-weight: 700;
+  color: #c4d4ff;
+  text-decoration: none;
+  padding: 6px 0;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.cardLink:hover,
+.cardLink:focus-visible {
+  color: #ffffff;
+  transform: translateY(-1px);
+  text-decoration: underline;
+}
+
+.cardLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cardImage {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.contact {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 211, 238, 0.1),
+    rgba(109, 40, 217, 0.12)
+  );
+  border-radius: 20px;
+  padding: 26px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.4);
+}
+
+.contactPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.contactLine {
+  margin: 0;
   line-height: 1.6;
 }
 
-.bubbleSection {
-  display: flex;
-  justify-content: center;
-}
-
-.bubbleGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
-  width: 100%;
-}
-
-.bubbleCard {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 28px 18px;
-  border-radius: 22px;
-  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
-  text-decoration: none;
-  overflow: hidden;
-  isolation: isolate;
-  transition: transform 180ms ease, box-shadow 220ms ease, border-color 180ms ease;
-}
-
-.bubbleCard::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(168, 85, 247, 0.16));
-  filter: blur(10px);
-  opacity: 0;
-  transition: opacity 200ms ease;
-  z-index: 0;
-}
-
-.bubbleCard:hover,
-.bubbleCard:focus-visible {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4);
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-.bubbleCard:hover::before,
-.bubbleCard:focus-visible::before {
-  opacity: 1;
-}
-
-.bubbleText {
-    position: relative;
-    z-index: 1;
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 900;
-    letter-spacing: 0.06em;
-    color: #f8fbff;
-    padding: 6px 12px;
-    border-radius: 16px;
-    background: transparent;
-    box-shadow: none;
-    text-shadow:
-      0 2px 12px rgba(0, 0, 0, 0.45),
-      0 0 10px rgba(255, 255, 255, 0.4);
+.contact a {
+  color: #e0e7ff;
 }
 
 @media (max-width: 720px) {
   .page {
-    padding: 96px 18px 72px;
-    gap: 36px;
+    padding: 104px 18px 84px;
+    gap: 54px;
   }
 
-  .bubbleCard {
-    padding: 24px 14px;
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    text-align: left;
+    align-items: flex-start;
   }
 }

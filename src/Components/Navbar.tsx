@@ -6,11 +6,8 @@ import "../styles/navbar.css"; // Import your custom CSS file
 
 const Navbar: React.FC = () => {
   const navLinks = [
-    { label: "Software Development", href: "/projects#software" },
-    { label: "Cybersecurity", href: "/projects#cybersecurity" },
-    { label: "Project Management", href: "/projects#project-management" },
-    { label: "Art", href: "/projects#art" },
-    { label: "Contact", href: "/contact" },
+    { label: "Projects", href: "#projects" },
+    { label: "Contact", href: "#contact" },
   ];
 
   const titles = [
@@ -70,7 +67,7 @@ const Navbar: React.FC = () => {
   }, [shuffledTitles.length]);
 
   return (
-    <nav>
+    <nav className="navbar" aria-label="Primary">
       <div className="navbar-container">
         <div className="navbar-brand">
           <div className="navbar-logo">Bradley Charles</div>

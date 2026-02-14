@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Malworld",
+  title: "Bradley Charles",
   description: "Created by Bradley Charles",
 };
 

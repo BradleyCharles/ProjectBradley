@@ -1,7 +1,10 @@
 /* styles/navbar.css */
-nav {
+.navbar {
   position: sticky;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 50;
   padding: 1rem;
   background: transparent;
@@ -27,6 +30,9 @@ nav {
   );
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  transition:
+    padding 220ms ease,
+    border-radius 220ms ease;
 }
 
 .navbar-container::before {
@@ -100,6 +106,7 @@ nav {
 .navbar-links {
   display: none;
   gap: 1.25rem;
+  align-items: center;
 }
 
 .dropdown {
@@ -220,6 +227,32 @@ nav {
   display: none;
 }
 
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #22d3ee, #6d28d9);
+  color: #f8f7ff;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+  z-index: 45;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.45);
+}
+
 @media (min-width: 768px) {
   .navbar-links {
     display: flex;
@@ -238,10 +271,33 @@ nav {
   .navbar-links {
     display: none;
   }
+
+  .back-to-top {
+    right: 12px;
+    bottom: 12px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .navbar-links a {
     transition: none;
   }
+
+  .floating-nav-link,
+  .back-to-top {
+    transition: none;
+  }
+}
+
+/* Compact state on scroll */
+.navbar-container,
+.navbar-brand,
+.navbar-links,
+.navbar-links a {
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    max-width 220ms ease,
+    padding 220ms ease,
+    margin 220ms ease;
 }
