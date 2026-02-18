@@ -77,16 +77,10 @@ export default function Home() {
   return (
     <main className={styles.page}>
       <section className={`${styles.section} ${styles.hero}`} id="top">
-        <p className={styles.kicker}>Bradley Charles</p>
-        {/*  <h1 className={styles.title}>
-          Building helpful systems, tools, and stories
-        </h1> */}
         <p className={styles.subtitle}>
           I’m a software engineer, cybersecurity analyst, project manager, and
           artist who loves building things and helping people. I have experience
           across the stack and a passion for learning new skills and domains.
-          I’m currently focused on projects that blend software, security,
-          operations, and art to create engaging and effective experiences.
         </p>
       </section>
 

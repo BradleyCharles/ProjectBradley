@@ -38,7 +38,8 @@
 }
 
 .subtitle {
-  max-width: 760px;
+  font-size: clamp(1.6rem, 4vw, 1.6rem);
+  max-width: 850px;
   margin: 0 auto;
   color: #dbeafe;
   line-height: 1.7;
@@ -61,9 +62,7 @@
   border-radius: 12px;
   font-weight: 700;
   text-decoration: none;
-  transition:
-    transform 160ms ease,
-    box-shadow 200ms ease,
+  transition: transform 160ms ease, box-shadow 200ms ease,
     background-color 160ms ease;
 }
 
@@ -180,9 +179,7 @@
   color: #c4d4ff;
   text-decoration: none;
   padding: 6px 0;
-  transition:
-    color 160ms ease,
-    transform 160ms ease;
+  transition: color 160ms ease, transform 160ms ease;
 }
 
 .cardLink:hover,
