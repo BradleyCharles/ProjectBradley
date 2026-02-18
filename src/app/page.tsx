@@ -4,72 +4,88 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
 
-const opportunityProjects = [
+type Project = {
+  id: string;
+  name: string;
+  summary: string;
+  impact: string[];
+  roles: string[];
+  stack: string[];
+  href?: string;
+  repo?: string;
+  image?: string;
+};
+
+const projects: Project[] = [
   {
-    title: "Software Development",
+    id: "projects",
+    name: "Opportunity Center Chatbot",
+    summary:
+      "Designed and shipped a multilingual support chatbot prototype for North Seattle College's Opportunity Center with a team of four.",
+    impact: [
+      "Built a Next.js frontend and Python API integration path for rapid iteration.",
+      "Focused on accessibility and multilingual workflows for real campus users.",
+      "Coordinated delivery milestones, demos, and technical documentation.",
+    ],
+    roles: ["Software Engineering", "AI Integration", "Project Leadership"],
+    stack: ["Next.js", "Python", "Ollama", "Prompt Engineering"],
+    repo: "https://github.com/SeattleColleges/belindas-closet-nextjs",
+    image: "/belindas-closet.png",
+  },
+  {
+    id: "security-access",
+    name: "Security Access Control",
+    summary:
+      "Created a campus security access portal that turns policy requirements into a practical checklist for students and faculty.",
+    impact: [
+      "Translated policy language into clear implementation guidance.",
+      "Defined authentication and account-access guardrails.",
+      "Centralized best practices to reduce onboarding and support friction.",
+    ],
+    roles: ["Cybersecurity", "Policy Translation", "Documentation"],
+    stack: ["Security Controls", "Identity Access", "Knowledge Base"],
+  },
+  {
+    id: "pegasus",
+    name: "Pegasus: Artist Content and Music Catalog",
+    summary:
+      "Partnered with a cross-functional team to prototype a content and rights catalog platform for artists and creative teams.",
+    impact: [
+      "Mapped user journeys from release planning to catalog management.",
+      "Produced wireframes and flow documentation aligned to client scope.",
+      "Balanced usability goals with content governance requirements.",
+    ],
+    roles: ["Product Design", "Client Collaboration", "UX Documentation"],
+    stack: ["UI/UX", "Wireframing", "Content Modeling"],
+  },
+  {
+    id: "belindas-closet",
+    name: "Belinda's Closet",
+    summary:
+      "Built a donation and inventory portal for students and staff while owning development, security oversight, and project coordination.",
+    impact: [
+      "Implemented inventory visibility flows for non-technical users.",
+      "Set up security-minded practices for a student-facing platform.",
+      "Maintained project direction across engineering and stakeholder input.",
+    ],
+    roles: ["Full-Stack Development", "Cybersecurity", "Project Management"],
+    stack: ["React", "Next.js", "MongoDB"],
     href: "https://northseattle.edu/aco/belindas-closet",
     repo: "https://github.com/SeattleColleges/belindas-closet-nextjs",
-    blurb:
-      "Developed a Next.js application with React frontend and FastAPI backend to prototype a multilingual chatbot for the Opportunity Center.",
     image: "/belindas-closet.png",
-    meta: "Node.js · React · AI · Cross-Platform · Cloud Integration",
   },
   {
-    title: "Artificial Intelligence",
-    href: "https://northseattle.edu/aco/belindas-closet",
-    repo: "https://github.com/SeattleColleges/belindas-closet-nextjs",
-    blurb:
-      "Implemented TinyLlama, a lightweight transformer optimized for edge deployment, keeping latency low while preserving response quality for campus users.",
-    image: "/belindas-closet.png",
-    meta: "AI · Model Optimization · Edge Deployment",
-  },
-  {
-    title: "Project Management",
-    href: "https://northseattle.edu/aco/belindas-closet",
-    repo: "https://github.com/SeattleColleges/belindas-closet-nextjs",
-    blurb:
-      "Led a team of four to deliver the chatbot prototype, coordinating timelines, user testing, and accessibility requirements across stakeholders.",
-    image: "/belindas-closet.png",
-    meta: "Agile Delivery · Accessibility · Team Leadership",
-  },
-];
-
-const securityAccessProjects = [
-  {
-    title: "Security Access Control",
-    blurb:
-      "Built a student and faculty security access portal outlining policy requirements, authentication standards, and best-practice checklists for campus systems.",
-    meta: "Cybersecurity · AI · Documentation",
-  },
-];
-
-const pegasusProjects = [
-  {
-    title: "Pegasus: Artist Content & Music Catalog",
-    blurb:
-      "Partnered with a four-person team to design and prototype a catalog platform that lets artists manage content, rights, and releases according to client specifications.",
-    meta: "UI/UX Design · Wireframing · Documentation",
-  },
-];
-
-const belindasClosetProjects = [
-  {
-    title: "Belinda's Closet",
-    href: "https://northseattle.edu/aco/belindas-closet",
-    repo: "https://github.com/SeattleColleges/belindas-closet-nextjs",
-    blurb:
-      "Student and staff portal to view inventory and track clothing donations; served as software developer, cybersecurity administrator, and project manager.",
-    image: "/belindas-closet.png",
-    meta: "React · Next.js · MongoDB",
-  },
-];
-
-const nscEventsProjects = [
-  {
-    title: "NSC Events",
-    blurb:
-      "Campus events platform for North Seattle College to create and track student and faculty events; led development, security, and project delivery.",
-    meta: "React · Next.js · MongoDB",
+    id: "nsc-events",
+    name: "NSC Events",
+    summary:
+      "Developed an events platform for North Seattle College to help teams create, publish, and track faculty and student events.",
+    impact: [
+      "Simplified event publishing and tracking workflows.",
+      "Combined delivery planning with day-to-day implementation.",
+      "Integrated a security-first mindset into platform decisions.",
+    ],
+    roles: ["Application Development", "Security Oversight", "Delivery Lead"],
+    stack: ["React", "Next.js", "MongoDB"],
   },
 ];
 
@@ -78,228 +94,92 @@ export default function Home() {
     <main className={styles.page}>
       <section className={`${styles.section} ${styles.hero}`} id="top">
         <p className={styles.subtitle}>
-          I’m a software engineer, cybersecurity analyst, project manager, and
-          artist who loves building things and helping people. I have experience
-          across the stack and a passion for learning new skills and domains.
+          I am a software engineer, cybersecurity analyst, project manager, and
+          artist focused on building practical systems for real people. I value
+          clear outcomes, strong collaboration, and continuous learning.
         </p>
       </section>
 
-      <section className={styles.section} id="projects">
+      <section className={`${styles.section} ${styles.projectsShowcase}`}>
         <div className={styles.sectionHeader}>
-          <p className={styles.kicker}>Projects</p>
-          <h2>Opportunity Center Chatbot</h2>
+          <p className={styles.kicker}>Project Portfolio</p>
+          <h2>Case Studies Built for Real Users</h2>
           <p className={styles.sectionLead}>
-            Working with a small team of 4 we built a prototype chatbot for the
-            Opportunity Center, located on the North Seattle Campus. It provides
-            integrated educational, vocational, employment and supportive
-            services through a partnership of multiple community-based agencies
-            and community colleges. The chatbot helps users find relevant
-            resources based on their needs and location with a focus on
-            multilingual support and accessibility.
+            Each project below highlights the problem space, my role, and the
+            measurable execution choices I made to deliver value.
           </p>
         </div>
-        <div className={styles.cardGrid}>
-          {opportunityProjects.map((project) => (
-            <article key={project.title} className={styles.card}>
-              <div className={styles.cardBody}>
-                <div>
-                  <h3 className={styles.cardTitle}>
-                    {project.href ? (
-                      <Link
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {project.title}
-                      </Link>
-                    ) : (
-                      project.title
-                    )}
-                  </h3>
-                  <p className={styles.cardMeta}>{project.meta}</p>
-                  <p className={styles.cardText}>{project.blurb}</p>
-                  <div className={styles.cardLinks}>
-                    {project.href && (
-                      <Link
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.cardLink}
-                      >
-                        Visit project →
-                      </Link>
-                    )}
-                    {project.repo && (
-                      <Link
-                        href={project.repo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.cardLink}
-                      >
-                        View repo ↗
-                      </Link>
-                    )}
-                  </div>
-                </div>
-                {project.image && (
-                  <div className={styles.cardImage}>
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} preview`}
-                      width={560}
-                      height={320}
-                      className={styles.image}
-                      priority
-                    />
-                  </div>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
 
-      <section className={styles.section} id="security-access">
-        <div className={styles.sectionHeader}>
-          <p className={styles.kicker}>Projects</p>
-          <h2>Security Access Control</h2>
-          <p className={styles.sectionLead}>
-            A campus security access page for students and faculty that
-            consolidates policy requirements, authentication guidelines, and
-            security best practices into a single, easy-to-follow checklist.
-          </p>
-        </div>
-        <div className={styles.cardGrid}>
-          {securityAccessProjects.map((project) => (
-            <article key={project.title} className={styles.card}>
-              <div className={styles.cardBody}>
-                <div>
-                  <h3 className={styles.cardTitle}>{project.title}</h3>
-                  <p className={styles.cardMeta}>{project.meta}</p>
-                  <p className={styles.cardText}>{project.blurb}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+        <div className={styles.projectList}>
+          {projects.map((project, index) => (
+            <article
+              key={project.id}
+              id={project.id}
+              className={styles.projectPanel}
+            >
+              <div className={styles.projectContent}>
+                <p className={styles.projectNumber}>
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className={styles.projectName}>{project.name}</h3>
+                <p className={styles.projectSummary}>{project.summary}</p>
 
-      <section className={styles.section} id="pegasus">
-        <div className={styles.sectionHeader}>
-          <p className={styles.kicker}>Projects</p>
-          <h2>Pegasus: Artist Content &amp; Music Catalog</h2>
-          <p className={styles.sectionLead}>
-            Partnered with a small team to prototype a platform where artists
-            manage content, releases, and rights, aligning UI flows to client
-            specifications.
-          </p>
-        </div>
-        <div className={styles.cardGrid}>
-          {pegasusProjects.map((project) => (
-            <article key={project.title} className={styles.card}>
-              <div className={styles.cardBody}>
-                <div>
-                  <h3 className={styles.cardTitle}>{project.title}</h3>
-                  <p className={styles.cardMeta}>{project.meta}</p>
-                  <p className={styles.cardText}>{project.blurb}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+                <ul className={styles.impactList}>
+                  {project.impact.map((item) => (
+                    <li key={item} className={styles.impactItem}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
 
-      <section className={styles.section} id="belindas-closet">
-        <div className={styles.sectionHeader}>
-          <p className={styles.kicker}>Projects</p>
-          <h2>Belinda&apos;s Closet</h2>
-          <p className={styles.sectionLead}>
-            A student and staff-facing site to view inventory and track clothing
-            donations. Roles included software development, cybersecurity
-            administration, and project management.
-          </p>
-        </div>
-        <div className={styles.cardGrid}>
-          {belindasClosetProjects.map((project) => (
-            <article key={project.title} className={styles.card}>
-              <div className={styles.cardBody}>
-                <div>
-                  <h3 className={styles.cardTitle}>
-                    {project.href ? (
-                      <Link
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {project.title}
-                      </Link>
-                    ) : (
-                      project.title
-                    )}
-                  </h3>
-                  <p className={styles.cardMeta}>{project.meta}</p>
-                  <p className={styles.cardText}>{project.blurb}</p>
-                  <div className={styles.cardLinks}>
-                    {project.href && (
-                      <Link
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.cardLink}
-                      >
-                        Visit project →
-                      </Link>
-                    )}
-                    {project.repo && (
-                      <Link
-                        href={project.repo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.cardLink}
-                      >
-                        View repo ↗
-                      </Link>
-                    )}
-                  </div>
+                <div className={styles.pillRow}>
+                  {project.roles.map((role) => (
+                    <span key={role} className={styles.pill}>
+                      {role}
+                    </span>
+                  ))}
                 </div>
-                {project.image && (
-                  <div className={styles.cardImage}>
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} preview`}
-                      width={560}
-                      height={320}
-                      className={styles.image}
-                      priority
-                    />
-                  </div>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
 
-      <section className={styles.section} id="nsc-events">
-        <div className={styles.sectionHeader}>
-          <p className={styles.kicker}>Projects</p>
-          <h2>NSC Events</h2>
-          <p className={styles.sectionLead}>
-            Event management site for North Seattle College to create, publish,
-            and track student and faculty events; combined development, security
-            oversight, and project leadership.
-          </p>
-        </div>
-        <div className={styles.cardGrid}>
-          {nscEventsProjects.map((project) => (
-            <article key={project.title} className={styles.card}>
-              <div className={styles.cardBody}>
-                <div>
-                  <h3 className={styles.cardTitle}>{project.title}</h3>
-                  <p className={styles.cardMeta}>{project.meta}</p>
-                  <p className={styles.cardText}>{project.blurb}</p>
+                <p className={styles.stackLine}>
+                  <span>Stack:</span> {project.stack.join(" / ")}
+                </p>
+
+                <div className={styles.cardLinks}>
+                  {project.href && (
+                    <Link
+                      href={project.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.cardLink}
+                    >
+                      Visit project
+                    </Link>
+                  )}
+                  {project.repo && (
+                    <Link
+                      href={project.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.cardLink}
+                    >
+                      View repo
+                    </Link>
+                  )}
                 </div>
               </div>
+
+              {project.image && (
+                <div className={styles.projectImage}>
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} preview`}
+                    width={560}
+                    height={320}
+                    className={styles.image}
+                    priority={index === 0}
+                  />
+                </div>
+              )}
             </article>
           ))}
         </div>
@@ -308,10 +188,10 @@ export default function Home() {
       <section className={`${styles.section} ${styles.contact}`} id="contact">
         <div className={styles.sectionHeader}>
           <p className={styles.kicker}>Contact</p>
-          <h2>Let’s build something together</h2>
+          <h2>Let&apos;s Build Something Together</h2>
           <p className={styles.sectionLead}>
-            Please reach out to me via email if you are interested in working
-            with me.
+            Please reach out via email if you are interested in working with
+            me.
           </p>
         </div>
         <div className={styles.contactPanel}>
