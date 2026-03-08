@@ -1,6 +1,8 @@
 "use client";
 
 import { Playfair_Display } from "next/font/google";
+import RoleTicker from "./RoleTicker";
+import { artistTitles } from "@/data/titles";
 import styles from "./ArtistPage.module.css";
 
 const playfair = Playfair_Display({
@@ -60,7 +62,7 @@ export default function ArtistPage() {
       <section className={styles.hero}>
         <p className={styles.heroKicker}>Portfolio of Making</p>
         <h1 className={styles.heroName}>Bradley Charles</h1>
-        <p className={styles.heroTagline}>Maker. Sculptor. Storyteller.</p>
+        <RoleTicker titles={artistTitles} className={styles.heroTagline} />
         <div className={styles.heroRule} />
         <p className={styles.heroStatement}>
           I create with my hands and with my imagination — shaping clay, casting

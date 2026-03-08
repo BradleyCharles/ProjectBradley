@@ -2,12 +2,6 @@
 
 .artistPage {
   min-height: 100vh;
-  color: #f0e4d0;
-  background:
-    radial-gradient(ellipse 55% 35% at 20% 10%, rgba(120, 55, 18, 0.38), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 80% 90%, rgba(70, 35, 100, 0.32), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(10, 5, 2, 0.6), transparent 80%),
-    #0e0905;
 }
 
 /* ── Hero ──────────────────────────────────────────────── */
@@ -27,11 +21,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 80% 60% at 50% 50%,
-    rgba(150, 80, 25, 0.14),
-    transparent 70%
-  );
+
   pointer-events: none;
 }
 
@@ -52,9 +42,7 @@
   margin: 0;
   line-height: 1.05;
   color: #f8f0e3;
-  text-shadow:
-    0 0 80px rgba(201, 146, 74, 0.35),
-    0 4px 24px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 80px rgba(201, 146, 74, 0.35), 0 4px 24px rgba(0, 0, 0, 0.7);
   letter-spacing: -0.02em;
 }
 
@@ -237,7 +225,12 @@
 .statementRule {
   width: 120px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 146, 74, 0.4) 50%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 146, 74, 0.4) 50%,
+    transparent
+  );
 }
 
 .quote {
@@ -295,19 +288,18 @@
   margin-top: 8px;
 }
 
-.contactLinks p { margin: 0; }
+.contactLinks p {
+  margin: 0;
+}
 
 .contactLinks a {
   color: #c9924a;
-  text-decoration: underline;
-  text-decoration-color: rgba(201, 146, 74, 0.4);
-  text-underline-offset: 3px;
-  transition: color 160ms ease, text-decoration-color 160ms ease;
+  text-decoration: none;
+  transition: color 160ms ease;
 }
 
 .contactLinks a:hover {
   color: #e8b870;
-  text-decoration-color: rgba(232, 184, 112, 0.6);
 }
 
 /* ── Responsive ────────────────────────────────────────── */

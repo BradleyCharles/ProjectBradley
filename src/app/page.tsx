@@ -6,7 +6,9 @@ import { useState } from "react";
 import Lightbox from "./Lightbox";
 import TiltImage from "./TiltImage";
 import ArtistPage from "./ArtistPage";
+import RoleTicker from "./RoleTicker";
 import { useMode } from "@/context/ModeContext";
+import { devTitles } from "@/data/titles";
 import styles from "./page.module.css";
 
 type Project = {
@@ -121,7 +123,11 @@ export default function Home() {
     ) : (
     <main className={styles.page}>
       <section className={`${styles.section} ${styles.hero}`} id="top">
-        <p className={styles.subtitle}>
+        <p className={styles.heroKicker}>Full-Stack Portfolio</p>
+        <h1 className={styles.heroName}>Bradley Charles</h1>
+        <RoleTicker titles={devTitles} className={styles.heroTagline} />
+        <div className={styles.heroRule} />
+        <p className={styles.heroStatement}>
           I am a software engineer, cybersecurity analyst, project manager, and
           artist focused on building practical systems for real people. I value
           clear outcomes, strong collaboration, and continuous learning.
@@ -282,9 +288,6 @@ export default function Home() {
               </a>
             </p>
           </div>
-          <Link href="#top" className={styles.secondaryCTA}>
-            Back to top
-          </Link>
         </div>
       </section>
     </main>
