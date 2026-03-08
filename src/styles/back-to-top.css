@@ -31,6 +31,10 @@
   }
 }
 
+body.artist-mode .back-to-top {
+  background: linear-gradient(135deg, #c9924a, #7a4a1e);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .back-to-top {
     transition: none;

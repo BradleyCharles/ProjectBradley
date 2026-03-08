@@ -37,6 +37,10 @@ body::before {
   z-index: -1;
 }
 
+body.artist-mode::before {
+  background: url("/mwbg_red.png") top left / cover no-repeat;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
