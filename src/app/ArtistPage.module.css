@@ -1,0 +1,354 @@
+/* ── Base ──────────────────────────────────────────────── */
+
+.artistPage {
+  min-height: 100vh;
+  color: #f0e4d0;
+  background:
+    radial-gradient(ellipse 55% 35% at 20% 10%, rgba(120, 55, 18, 0.38), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 80% 90%, rgba(70, 35, 100, 0.32), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(10, 5, 2, 0.6), transparent 80%),
+    #0e0905;
+}
+
+/* ── Hero ──────────────────────────────────────────────── */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 72vh;
+  padding: 60px 32px 40px;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(150, 80, 25, 0.14),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.heroKicker {
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: rgba(201, 146, 74, 0.65);
+  margin: 0 0 20px;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-weight: 500;
+}
+
+.heroName {
+  font-size: clamp(3.2rem, 8vw, 6rem);
+  font-weight: 700;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.05;
+  color: #f8f0e3;
+  text-shadow:
+    0 0 80px rgba(201, 146, 74, 0.35),
+    0 4px 24px rgba(0, 0, 0, 0.7);
+  letter-spacing: -0.02em;
+}
+
+.heroTagline {
+  font-size: clamp(1rem, 2.4vw, 1.45rem);
+  font-style: italic;
+  font-weight: 400;
+  color: #c9924a;
+  margin: 10px 0 0;
+  letter-spacing: 0.06em;
+}
+
+.heroRule {
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9924a 50%, transparent);
+  margin: 28px auto;
+}
+
+.heroStatement {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-style: normal;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-weight: 400;
+  max-width: 580px;
+  color: rgba(240, 220, 195, 0.68);
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ── Disciplines ───────────────────────────────────────── */
+
+.disciplines {
+  padding: 40px 32px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  box-sizing: border-box;
+}
+
+.disciplinesHeader {
+  display: grid;
+  gap: 8px;
+}
+
+.kicker {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: rgba(201, 146, 74, 0.65);
+  margin: 0;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-weight: 500;
+}
+
+.disciplinesTitle {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-style: italic;
+  font-weight: 700;
+  color: #f0e4d0;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.disciplineGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 18px;
+}
+
+.disciplineCard {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 146, 74, 0.12);
+  background: rgba(18, 10, 4, 0.55);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 260ms ease, box-shadow 260ms ease;
+}
+
+.disciplineCard:hover {
+  border-color: rgba(201, 146, 74, 0.28);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* Grid placement */
+.ceramics {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.jewelry {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.printing {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.worldbuilding {
+  grid-column: 1 / 3;
+  grid-row: 3;
+  flex-direction: row;
+}
+
+.disciplineImage {
+  flex-shrink: 0;
+  min-height: 180px;
+}
+
+.ceramics .disciplineImage {
+  min-height: 260px;
+}
+
+.worldbuilding .disciplineImage {
+  min-height: 160px;
+  width: 38%;
+  max-width: 380px;
+}
+
+.disciplineBody {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.disciplineName {
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-style: italic;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.disciplineDesc {
+  color: rgba(240, 218, 190, 0.65);
+  line-height: 1.68;
+  font-size: 0.9rem;
+  font-family: var(--font-geist-sans), sans-serif;
+  margin: 0;
+  flex: 1;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.tag {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+/* ── Statement ─────────────────────────────────────────── */
+
+.statement {
+  padding: 60px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.statementRule {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 146, 74, 0.4) 50%, transparent);
+}
+
+.quote {
+  font-size: clamp(1.2rem, 2.8vw, 1.85rem);
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(240, 218, 190, 0.78);
+  max-width: 760px;
+  margin: 0;
+  line-height: 1.72;
+  quotes: none;
+}
+
+/* ── Contact ───────────────────────────────────────────── */
+
+.contact {
+  padding: 0 32px 80px;
+}
+
+.contactInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(201, 146, 74, 0.16);
+  background: rgba(25, 14, 5, 0.6);
+  display: grid;
+  gap: 14px;
+}
+
+.contactTitle {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-style: italic;
+  font-weight: 700;
+  color: #f0e4d0;
+  margin: 0;
+}
+
+.contactLead {
+  color: rgba(240, 218, 190, 0.6);
+  max-width: 540px;
+  line-height: 1.72;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.contactLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: rgba(240, 218, 190, 0.75);
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+.contactLinks p { margin: 0; }
+
+.contactLinks a {
+  color: #c9924a;
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 146, 74, 0.4);
+  text-underline-offset: 3px;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.contactLinks a:hover {
+  color: #e8b870;
+  text-decoration-color: rgba(232, 184, 112, 0.6);
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .disciplineGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: unset;
+  }
+
+  .ceramics,
+  .jewelry,
+  .printing,
+  .worldbuilding {
+    grid-column: auto;
+    grid-row: auto;
+    flex-direction: column;
+  }
+
+  .worldbuilding .disciplineImage {
+    width: 100%;
+    max-width: 100%;
+    min-height: 180px;
+  }
+
+  .ceramics .disciplineImage {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .disciplines {
+    padding: 24px 18px 60px;
+  }
+
+  .hero {
+    padding: 48px 18px 32px;
+    min-height: 60vh;
+  }
+
+  .contactInner {
+    padding: 32px 22px;
+  }
+}

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useState } from "react";
 import Lightbox from "./Lightbox";
 import TiltImage from "./TiltImage";
+import ArtistPage from "./ArtistPage";
+import { useMode } from "@/context/ModeContext";
 import styles from "./page.module.css";
 
 type Project = {
@@ -104,6 +106,7 @@ function getProjectImages(project: Project): string[] {
 }
 
 export default function Home() {
+  const { mode } = useMode();
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
 
   const openLightbox = (project: Project, index: number) => {
@@ -112,6 +115,10 @@ export default function Home() {
 
   return (
     <>
+    <div key={mode} className={styles.modeContent}>
+    {mode === "artist" ? (
+      <ArtistPage />
+    ) : (
     <main className={styles.page}>
       <section className={`${styles.section} ${styles.hero}`} id="top">
         <p className={styles.subtitle}>
@@ -281,6 +288,8 @@ export default function Home() {
         </div>
       </section>
     </main>
+    )}
+    </div>
 
       {lightbox && (
         <Lightbox
