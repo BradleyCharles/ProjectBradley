@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 72px;
-  padding: 132px 24px 108px;
+  padding: 0 24px 108px;
   max-width: 1200px;
   margin: 0 auto;
   color: #f8f7ff;
@@ -17,8 +17,12 @@
 
 .hero {
   align-items: center;
+  justify-content: center;
   text-align: center;
+  min-height: 52vh;
+  padding: 0 24px;
 }
+
 
 .subtitle {
   font-size: clamp(1.2rem, 2.8vw, 1.55rem);
@@ -193,6 +197,29 @@
   text-decoration: underline;
 }
 
+.imageButton {
+  all: unset;
+  display: block;
+  cursor: zoom-in;
+  border-radius: 16px;
+}
+
+.imageButton:focus-visible .projectImage {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+.imageButton:hover .image {
+  filter: brightness(1.08);
+}
+
+.projectImages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: stretch;
+}
+
 .projectImage {
   position: relative;
   border-radius: 16px;
@@ -272,7 +299,7 @@
 
 @media (max-width: 720px) {
   .page {
-    padding: 104px 18px 84px;
+    padding: 0 18px 84px;
     gap: 54px;
   }
 

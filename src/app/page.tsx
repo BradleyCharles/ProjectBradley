@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import Lightbox from "./Lightbox";
+import TiltImage from "./TiltImage";
 import styles from "./page.module.css";
 
 type Project = {
@@ -14,6 +17,8 @@ type Project = {
   href?: string;
   repo?: string;
   image?: string;
+  image1?: string;
+  image2?: string;
 };
 
 const projects: Project[] = [
@@ -30,7 +35,8 @@ const projects: Project[] = [
     roles: ["Software Engineering", "AI Integration", "Project Leadership"],
     stack: ["Next.js", "Python", "Ollama", "Prompt Engineering"],
     repo: "https://github.com/SeattleColleges/belindas-closet-nextjs",
-    image: "/belindas-closet.png",
+    image1: "/occb1.png",
+    image2: "/occb2.png",
   },
   {
     id: "security-access",
@@ -89,8 +95,23 @@ const projects: Project[] = [
   },
 ];
 
+type LightboxState = { images: string[]; index: number; projectName: string };
+
+function getProjectImages(project: Project): string[] {
+  if (project.image1 && project.image2) return [project.image1, project.image2];
+  if (project.image) return [project.image];
+  return [];
+}
+
 export default function Home() {
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null);
+
+  const openLightbox = (project: Project, index: number) => {
+    setLightbox({ images: getProjectImages(project), index, projectName: project.name });
+  };
+
   return (
+    <>
     <main className={styles.page}>
       <section className={`${styles.section} ${styles.hero}`} id="top">
         <p className={styles.subtitle}>
@@ -168,18 +189,52 @@ export default function Home() {
                 </div>
               </div>
 
-              {project.image && (
-                <div className={styles.projectImage}>
-                  <Image
-                    src={project.image}
-                    alt={`${project.name} preview`}
-                    width={560}
-                    height={320}
-                    className={styles.image}
-                    priority={index === 0}
-                  />
+              {(project.image1 && project.image2) ? (
+                <div className={styles.projectImages}>
+                  <TiltImage>
+                    <button className={styles.imageButton} onClick={() => openLightbox(project, 0)} aria-label={`${project.name} preview 1 — click to enlarge`}>
+                      <div className={styles.projectImage}>
+                        <Image
+                          src={project.image1}
+                          alt={`${project.name} preview 1`}
+                          width={560}
+                          height={320}
+                          className={styles.image}
+                          priority={index === 0}
+                        />
+                      </div>
+                    </button>
+                  </TiltImage>
+                  <TiltImage>
+                    <button className={styles.imageButton} onClick={() => openLightbox(project, 1)} aria-label={`${project.name} preview 2 — click to enlarge`}>
+                      <div className={styles.projectImage}>
+                        <Image
+                          src={project.image2}
+                          alt={`${project.name} preview 2`}
+                          width={560}
+                          height={320}
+                          className={styles.image}
+                        />
+                      </div>
+                    </button>
+                  </TiltImage>
                 </div>
-              )}
+              ) : project.image ? (
+                <TiltImage>
+                  <button className={styles.imageButton} onClick={() => openLightbox(project, 0)} aria-label={`${project.name} preview — click to enlarge`}>
+                    <div className={styles.projectImage}>
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} preview`}
+                        width={560}
+                        height={320}
+                        className={styles.image}
+                        priority={index === 0}
+                      />
+                    </div>
+                  </button>
+                </TiltImage>
+              ) : null}
             </article>
           ))}
         </div>
@@ -190,8 +245,7 @@ export default function Home() {
           <p className={styles.kicker}>Contact</p>
           <h2>Let&apos;s Build Something Together</h2>
           <p className={styles.sectionLead}>
-            Please reach out via email if you are interested in working with
-            me.
+            Please reach out via email if you are interested in working with me.
           </p>
         </div>
         <div className={styles.contactPanel}>
@@ -227,5 +281,16 @@ export default function Home() {
         </div>
       </section>
     </main>
+
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          index={lightbox.index}
+          projectName={lightbox.projectName}
+          onClose={() => setLightbox(null)}
+          onNavigate={(i) => setLightbox((prev) => prev ? { ...prev, index: i } : null)}
+        />
+      )}
+    </>
   );
 }
