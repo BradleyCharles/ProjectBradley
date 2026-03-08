@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 
 type Props = {
   titles: string[];
@@ -8,8 +8,12 @@ type Props = {
 };
 
 export default function RoleTicker({ titles, className }: Props) {
-  const shuffled = useMemo(() => [...titles].sort(() => Math.random() - 0.5), []);
+  const [shuffled, setShuffled] = useState(titles);
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setShuffled([...titles].sort(() => Math.random() - 0.5));
+  }, []);
 
   useEffect(() => {
     const id = setInterval(() => {

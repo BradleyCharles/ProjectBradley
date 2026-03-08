@@ -21,10 +21,20 @@ html {
 
 body {
   color: var(--foreground);
-  background: #0b0b15 url("/mwbg.png") top left / cover no-repeat;
+  background: #0b0b15;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20px;
+  background: url("/mwbg3.png") top left / cover no-repeat;
+  filter: blur(6px);
+  opacity: 0.75;
+  z-index: -1;
 }
 
 * {
