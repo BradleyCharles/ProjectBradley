@@ -54,10 +54,13 @@ const projects: Project[] = [
     ],
     roles: ["Cybersecurity", "Policy Translation", "Documentation"],
     stack: ["Security Controls", "Identity Access", "Knowledge Base"],
+    href: "https://salty-witness-2f5.notion.site/Security-Access-17ed514f21a080529df2d2631f99b096",
+    image1: "/s1.png",
+    image2: "/s2.png",
   },
   {
     id: "pegasus",
-    name: "Pegasus: Artist Content and Music Catalog",
+    name: "Pegasus Media Group: Artist Content and Music Catalog",
     summary:
       "Partnered with a cross-functional team to prototype a content and rights catalog platform for artists and creative teams.",
     impact: [
@@ -67,6 +70,9 @@ const projects: Project[] = [
     ],
     roles: ["Product Design", "Client Collaboration", "UX Documentation"],
     stack: ["UI/UX", "Wireframing", "Content Modeling"],
+    href: "https://www.figma.com/files/team/1496314481480006498/project/371907678?fuid=1366183561238531162",
+    image1: "/p1.png",
+    image2: "/p2.png",
   },
   {
     id: "belindas-closet",
@@ -80,9 +86,9 @@ const projects: Project[] = [
     ],
     roles: ["Full-Stack Development", "Cybersecurity", "Project Management"],
     stack: ["React", "Next.js", "MongoDB"],
-    href: "https://northseattle.edu/aco/belindas-closet",
     repo: "https://github.com/SeattleColleges/belindas-closet-nextjs",
-    image: "/belindas-closet.png",
+    image1: "/bc1.png",
+    image2: "/bc2.png",
   },
   {
     id: "nsc-events",
@@ -112,187 +118,207 @@ export default function Home() {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
 
   const openLightbox = (project: Project, index: number) => {
-    setLightbox({ images: getProjectImages(project), index, projectName: project.name });
+    setLightbox({
+      images: getProjectImages(project),
+      index,
+      projectName: project.name,
+    });
   };
 
   return (
     <>
-    <div key={mode} className={styles.modeContent}>
-    {mode === "artist" ? (
-      <ArtistPage />
-    ) : (
-    <main className={styles.page}>
-      <section className={`${styles.section} ${styles.hero}`} id="top">
-        <p className={styles.heroKicker}>Full-Stack Portfolio</p>
-        <h1 className={styles.heroName}>Bradley Charles</h1>
-        <RoleTicker titles={devTitles} className={styles.heroTagline} />
-        <div className={styles.heroRule} />
-        <p className={styles.heroStatement}>
-          I am a software engineer, cybersecurity analyst, project manager, and
-          artist focused on building practical systems for real people. I value
-          clear outcomes, strong collaboration, and continuous learning.
-        </p>
-      </section>
+      <div key={mode} className={styles.modeContent}>
+        {mode === "artist" ? (
+          <ArtistPage />
+        ) : (
+          <main className={styles.page}>
+            <section className={`${styles.section} ${styles.hero}`} id="top">
+              <p className={styles.heroKicker}>Full-Stack Portfolio</p>
+              <h1 className={styles.heroName}>Bradley Charles</h1>
+              <RoleTicker titles={devTitles} className={styles.heroTagline} />
+              <div className={styles.heroRule} />
+              <p className={styles.heroStatement}>
+                I am a software engineer, cybersecurity analyst, project
+                manager, and artist focused on building practical systems for
+                real people. I value clear outcomes, strong collaboration, and
+                continuous learning.
+              </p>
+            </section>
 
-      <section className={`${styles.section} ${styles.projectsShowcase}`}>
-        <div className={styles.sectionHeader}>
-          <p className={styles.kicker}>Project Portfolio</p>
-          <h2>Case Studies Built for Real Users</h2>
-          <p className={styles.sectionLead}>
-            Each project below highlights the problem space, my role, and the
-            measurable execution choices I made to deliver value.
-          </p>
-        </div>
-
-        <div className={styles.projectList}>
-          {projects.map((project, index) => (
-            <article
-              key={project.id}
-              id={project.id}
-              className={styles.projectPanel}
-            >
-              <div className={styles.projectContent}>
-                <p className={styles.projectNumber}>
-                  {String(index + 1).padStart(2, "0")}
+            <section className={`${styles.section} ${styles.projectsShowcase}`}>
+              <div className={styles.sectionHeader}>
+                <p className={styles.kicker}>Project Portfolio</p>
+                <h2>Case Studies Built for Real Users</h2>
+                <p className={styles.sectionLead}>
+                  Each project below highlights the problem space, my role, and
+                  the measurable execution choices I made to deliver value.
                 </p>
-                <h3 className={styles.projectName}>{project.name}</h3>
-                <p className={styles.projectSummary}>{project.summary}</p>
-
-                <ul className={styles.impactList}>
-                  {project.impact.map((item) => (
-                    <li key={item} className={styles.impactItem}>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className={styles.pillRow}>
-                  {project.roles.map((role) => (
-                    <span key={role} className={styles.pill}>
-                      {role}
-                    </span>
-                  ))}
-                </div>
-
-                <p className={styles.stackLine}>
-                  <span>Stack:</span> {project.stack.join(" / ")}
-                </p>
-
-                <div className={styles.cardLinks}>
-                  {project.href && (
-                    <Link
-                      href={project.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={styles.cardLink}
-                    >
-                      Visit project
-                    </Link>
-                  )}
-                  {project.repo && (
-                    <Link
-                      href={project.repo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={styles.cardLink}
-                    >
-                      View repo
-                    </Link>
-                  )}
-                </div>
               </div>
 
-              {(project.image1 && project.image2) ? (
-                <div className={styles.projectImages}>
-                  <TiltImage>
-                    <button className={styles.imageButton} onClick={() => openLightbox(project, 0)} aria-label={`${project.name} preview 1 — click to enlarge`}>
-                      <div className={styles.projectImage}>
-                        <Image
-                          src={project.image1}
-                          alt={`${project.name} preview 1`}
-                          width={560}
-                          height={320}
-                          className={styles.image}
-                          priority={index === 0}
-                        />
-                      </div>
-                    </button>
-                  </TiltImage>
-                  <TiltImage>
-                    <button className={styles.imageButton} onClick={() => openLightbox(project, 1)} aria-label={`${project.name} preview 2 — click to enlarge`}>
-                      <div className={styles.projectImage}>
-                        <Image
-                          src={project.image2}
-                          alt={`${project.name} preview 2`}
-                          width={560}
-                          height={320}
-                          className={styles.image}
-                        />
-                      </div>
-                    </button>
-                  </TiltImage>
-                </div>
-              ) : project.image ? (
-                <TiltImage>
-                  <button className={styles.imageButton} onClick={() => openLightbox(project, 0)} aria-label={`${project.name} preview — click to enlarge`}>
-                    <div className={styles.projectImage}>
-                      <Image
-                        src={project.image}
-                        alt={`${project.name} preview`}
-                        width={560}
-                        height={320}
-                        className={styles.image}
-                        priority={index === 0}
-                      />
-                    </div>
-                  </button>
-                </TiltImage>
-              ) : null}
-            </article>
-          ))}
-        </div>
-      </section>
+              <div className={styles.projectList}>
+                {projects.map((project, index) => (
+                  <article
+                    key={project.id}
+                    id={project.id}
+                    className={styles.projectPanel}
+                  >
+                    <div className={styles.projectContent}>
+<h3 className={styles.projectName}>{project.name}</h3>
+                      <p className={styles.projectSummary}>{project.summary}</p>
 
-      <section className={`${styles.section} ${styles.contact}`} id="contact">
-        <div className={styles.sectionHeader}>
-          <p className={styles.kicker}>Contact</p>
-          <h2>Let&apos;s Build Something Together</h2>
-          <p className={styles.sectionLead}>
-            Please reach out via email if you are interested in working with me.
-          </p>
-        </div>
-        <div className={styles.contactPanel}>
-          <div>
-            <p className={styles.contactLine}>
-              Email:{" "}
-              <a href="mailto:bradgcharles@gmail.com">bradgcharles@gmail.com</a>
-            </p>
-            <p className={styles.contactLine}>
-              GitHub:{" "}
-              <a
-                href="https://github.com/bradgcharles"
-                target="_blank"
-                rel="noreferrer"
-              >
-                github.com/bradgcharles
-              </a>
-            </p>
-            <p className={styles.contactLine}>
-              LinkedIn:{" "}
-              <a
-                href="https://www.linkedin.com/in/bradgcharles/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                linkedin.com/in/bradgcharles
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-    )}
-    </div>
+                      <ul className={styles.impactList}>
+                        {project.impact.map((item) => (
+                          <li key={item} className={styles.impactItem}>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className={styles.pillRow}>
+                        {project.roles.map((role) => (
+                          <span key={role} className={styles.pill}>
+                            {role}
+                          </span>
+                        ))}
+                      </div>
+
+                      <p className={styles.stackLine}>
+                        <span>Stack:</span> {project.stack.join(" / ")}
+                      </p>
+
+                      <div className={styles.cardLinks}>
+                        {project.href && (
+                          <Link
+                            href={project.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.cardLink}
+                          >
+                            Visit project
+                          </Link>
+                        )}
+                        {project.repo && (
+                          <Link
+                            href={project.repo}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.cardLink}
+                          >
+                            View repo
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+
+                    {project.image1 && project.image2 ? (
+                      <div className={styles.projectImages}>
+                        <TiltImage>
+                          <button
+                            className={styles.imageButton}
+                            onClick={() => openLightbox(project, 0)}
+                            aria-label={`${project.name} preview 1 — click to enlarge`}
+                          >
+                            <div className={styles.projectImage}>
+                              <Image
+                                src={project.image1}
+                                alt={`${project.name} preview 1`}
+                                width={560}
+                                height={320}
+                                className={styles.image}
+                                priority={index === 0}
+                              />
+                            </div>
+                          </button>
+                        </TiltImage>
+                        <TiltImage>
+                          <button
+                            className={styles.imageButton}
+                            onClick={() => openLightbox(project, 1)}
+                            aria-label={`${project.name} preview 2 — click to enlarge`}
+                          >
+                            <div className={styles.projectImage}>
+                              <Image
+                                src={project.image2}
+                                alt={`${project.name} preview 2`}
+                                width={560}
+                                height={320}
+                                className={styles.image}
+                              />
+                            </div>
+                          </button>
+                        </TiltImage>
+                      </div>
+                    ) : project.image ? (
+                      <TiltImage>
+                        <button
+                          className={styles.imageButton}
+                          onClick={() => openLightbox(project, 0)}
+                          aria-label={`${project.name} preview — click to enlarge`}
+                        >
+                          <div className={styles.projectImage}>
+                            <Image
+                              src={project.image}
+                              alt={`${project.name} preview`}
+                              width={560}
+                              height={320}
+                              className={styles.image}
+                              priority={index === 0}
+                            />
+                          </div>
+                        </button>
+                      </TiltImage>
+                    ) : null}
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section
+              className={`${styles.section} ${styles.contact}`}
+              id="contact"
+            >
+              <div className={styles.sectionHeader}>
+                <p className={styles.kicker}>Contact</p>
+                <h2>Let&apos;s Build Something Together</h2>
+                <p className={styles.sectionLead}>
+                  Please reach out via email if you are interested in working
+                  with me.
+                </p>
+              </div>
+              <div className={styles.contactPanel}>
+                <div>
+                  <p className={styles.contactLine}>
+                    Email:{" "}
+                    <a href="mailto:bradgcharles@gmail.com">
+                      bradgcharles@gmail.com
+                    </a>
+                  </p>
+                  <p className={styles.contactLine}>
+                    GitHub:{" "}
+                    <a
+                      href="https://github.com/bradgcharles"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      github.com/bradgcharles
+                    </a>
+                  </p>
+                  <p className={styles.contactLine}>
+                    LinkedIn:{" "}
+                    <a
+                      href="https://www.linkedin.com/in/bradgcharles/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      linkedin.com/in/bradgcharles
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </section>
+          </main>
+        )}
+      </div>
 
       {lightbox && (
         <Lightbox
@@ -300,7 +326,9 @@ export default function Home() {
           index={lightbox.index}
           projectName={lightbox.projectName}
           onClose={() => setLightbox(null)}
-          onNavigate={(i) => setLightbox((prev) => prev ? { ...prev, index: i } : null)}
+          onNavigate={(i) =>
+            setLightbox((prev) => (prev ? { ...prev, index: i } : null))
+          }
         />
       )}
     </>

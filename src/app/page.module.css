@@ -35,7 +35,7 @@
   justify-content: center;
   text-align: center;
   min-height: 72vh;
-  padding: 60px 24px 40px;
+  padding: 60px 32px 40px;
 }
 
 .heroKicker {
@@ -369,10 +369,5 @@
   .page {
     padding: 0 18px 84px;
     gap: 54px;
-  }
-
-  .hero {
-    text-align: left;
-    align-items: flex-start;
   }
 }
