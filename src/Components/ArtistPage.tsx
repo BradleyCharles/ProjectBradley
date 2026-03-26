@@ -1,6 +1,7 @@
 "use client";
 
 import { Playfair_Display } from "next/font/google";
+import Image from "next/image";
 import RoleTicker from "./RoleTicker";
 import { artistTitles } from "@/data/titles";
 import styles from "../styles/ArtistPage.module.css";
@@ -127,39 +128,48 @@ export default function ArtistPage() {
       {/* ── Contact ── */}
       <section className={styles.contact} id="contact">
         <div className={styles.contactInner}>
-          <p className={styles.kicker}>Get in Touch</p>
-          <h2 className={styles.contactTitle}>Let&apos;s Make Something</h2>
-          <p className={styles.contactLead}>
-            Whether you&apos;re interested in commissioning a piece,
-            collaborating on a project, or sitting down at the table — reach
-            out.
-          </p>
-          <div className={styles.contactLinks}>
-            <p>
-              Email:{" "}
-              <a href="mailto:bradgcharles@gmail.com">bradgcharles@gmail.com</a>
+          <div className={styles.contactLeft}>
+            <p className={styles.kicker}>Get in Touch</p>
+            <h2 className={styles.contactTitle}>Let&apos;s Make Something</h2>
+            <p className={styles.contactLead}>
+              Whether you&apos;re interested in commissioning a piece,
+              collaborating on a project, or sitting down at the table — reach
+              out.
             </p>
-            <p>
-              GitHub:{" "}
-              <a
-                href="https://github.com/bradgcharles"
-                target="_blank"
-                rel="noreferrer"
-              >
-                github.com/bradgcharles
-              </a>
-            </p>
-            <p>
-              LinkedIn:{" "}
-              <a
-                href="https://www.linkedin.com/in/bradgcharles/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                linkedin.com/in/bradgcharles
-              </a>
-            </p>
+            <div className={styles.contactLinks}>
+              <p>
+                Email:{" "}
+                <a href="mailto:bradgcharles@gmail.com">bradgcharles@gmail.com</a>
+              </p>
+              <p>
+                GitHub:{" "}
+                <a
+                  href="https://github.com/bradgcharles"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  github.com/bradgcharles
+                </a>
+              </p>
+              <p>
+                LinkedIn:{" "}
+                <a
+                  href="https://www.linkedin.com/in/bradgcharles/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  linkedin.com/in/bradgcharles
+                </a>
+              </p>
+            </div>
           </div>
+          <Image
+            src="/brad_henry.png"
+            alt="Bradley Charles"
+            width={220}
+            height={220}
+            className={styles.contactAvatar}
+          />
         </div>
       </section>
 

@@ -257,8 +257,26 @@
   border-radius: 24px;
   border: 1px solid rgba(201, 146, 74, 0.16);
   background: rgba(25, 14, 5, 0.6);
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.contactLeft {
+  display: flex;
+  flex-direction: column;
   gap: 14px;
+}
+
+.contactAvatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(201, 146, 74, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
 }
 
 .contactTitle {

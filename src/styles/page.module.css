@@ -414,12 +414,17 @@
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.4);
 }
 
-.contactPanel {
+.contactInner {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 18px;
+  align-items: center;
+  gap: 32px;
+}
+
+.contactLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .contactLine {
@@ -429,6 +434,16 @@
 
 .contact a {
   color: #e0f2fe;
+}
+
+.contactAvatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
 }
 
 @media (max-width: 960px) {

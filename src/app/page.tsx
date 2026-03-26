@@ -6,6 +6,7 @@ import Projects from "@/Components/Projects";
 import RoleTicker from "@/Components/RoleTicker";
 import { useMode } from "@/context/ModeContext";
 import { devTitles } from "@/data/titles";
+import Image from "next/image";
 import styles from "../styles/page.module.css";
 
 export default function Home() {
@@ -24,57 +25,66 @@ export default function Home() {
             <div className={styles.heroRule} />
             <p className={styles.heroStatement}>
               I am a software engineer, cybersecurity analyst, project manager,
-              and artist focused on building practical systems for real people. I
-              value clear outcomes, strong collaboration, and continuous
+              and artist focused on building practical systems for real people.
+              I value clear outcomes, strong collaboration, and continuous
               learning.
             </p>
           </section>
 
-          <Projects />
-
           <Certifications />
+
+          <Projects />
 
           <section
             className={`${styles.section} ${styles.contact}`}
             id="contact"
           >
-            <div className={styles.sectionHeader}>
-              <p className={styles.kicker}>Contact</p>
-              <h2>Let&apos;s Build Something Together</h2>
-              <p className={styles.sectionLead}>
-                Please reach out via email if you are interested in working with
-                me.
-              </p>
-            </div>
-            <div className={styles.contactPanel}>
-              <div>
-                <p className={styles.contactLine}>
-                  Email:{" "}
-                  <a href="mailto:bradgcharles@gmail.com">
-                    bradgcharles@gmail.com
-                  </a>
-                </p>
-                <p className={styles.contactLine}>
-                  GitHub:{" "}
-                  <a
-                    href="https://github.com/bradgcharles"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    github.com/bradgcharles
-                  </a>
-                </p>
-                <p className={styles.contactLine}>
-                  LinkedIn:{" "}
-                  <a
-                    href="https://www.linkedin.com/in/bradgcharles/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    linkedin.com/in/bradgcharles
-                  </a>
-                </p>
+            <div className={styles.contactInner}>
+              <div className={styles.contactLeft}>
+                <div className={styles.sectionHeader}>
+                  <p className={styles.kicker}>Contact</p>
+                  <h2>Let&apos;s Build Something Together</h2>
+                  <p className={styles.sectionLead}>
+                    Please reach out via email if you are interested in working
+                    with me.
+                  </p>
+                </div>
+                <div>
+                  <p className={styles.contactLine}>
+                    Email:{" "}
+                    <a href="mailto:bradgcharles@gmail.com">
+                      bradgcharles@gmail.com
+                    </a>
+                  </p>
+                  <p className={styles.contactLine}>
+                    GitHub:{" "}
+                    <a
+                      href="https://github.com/bradgcharles"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      github.com/bradgcharles
+                    </a>
+                  </p>
+                  <p className={styles.contactLine}>
+                    LinkedIn:{" "}
+                    <a
+                      href="https://www.linkedin.com/in/bradgcharles/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      linkedin.com/in/bradgcharles
+                    </a>
+                  </p>
+                </div>
               </div>
+              <Image
+                src="/brad_water.png"
+                alt="Bradley Charles"
+                width={220}
+                height={220}
+                className={styles.contactAvatar}
+              />
             </div>
           </section>
         </main>
