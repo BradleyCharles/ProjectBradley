@@ -326,6 +326,82 @@
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
 }
 
+.certsShowcase {
+  gap: 28px;
+}
+
+.certGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.certCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 16px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(186, 230, 253, 0.18);
+  background: radial-gradient(
+      circle at 50% 0%,
+      rgba(125, 211, 252, 0.14),
+      transparent 60%
+    ),
+    rgba(6, 12, 30, 0.72);
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  box-shadow: 0 8px 28px rgba(2, 6, 23, 0.4);
+}
+
+.certCard:hover,
+.certCard:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.6);
+  border-color: rgba(125, 211, 252, 0.4);
+}
+
+.certBadgeWrap {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certBadge {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.certInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.certName {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e0f2fe;
+  line-height: 1.45;
+}
+
+.certIssuer {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
 .contact {
   background: linear-gradient(
     135deg,
