@@ -207,7 +207,7 @@ export default function ArtistPage() {
             </div>
           </div>
           <Image
-            src="/brad_henry.png"
+            src="/brad_henry.webp"
             alt="Bradley Charles"
             width={220}
             height={220}

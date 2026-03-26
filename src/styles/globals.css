@@ -31,14 +31,14 @@ body::before {
   content: "";
   position: fixed;
   inset: -20px;
-  background: url("/mwbg4.png") top left / cover no-repeat;
+  background: url("/mwbg4.webp") top left / cover no-repeat;
   filter: blur(6px);
   opacity: 0.75;
   z-index: -1;
 }
 
 body.artist-mode::before {
-  background: url("/mwbg3.png") top left / cover no-repeat;
+  background: url("/mwbg3.webp") top left / cover no-repeat;
 }
 
 * {

@@ -79,7 +79,7 @@ export default function Home() {
                 </div>
               </div>
               <Image
-                src="/brad_water.png"
+                src="/brad_water.webp"
                 alt="Bradley Charles"
                 width={220}
                 height={220}
