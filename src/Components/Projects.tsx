@@ -141,7 +141,7 @@ export default function Projects() {
       <section className={`${styles.section} ${styles.projectsShowcase}`}>
         <div className={styles.sectionHeader}>
           <p className={styles.kicker}>Project Portfolio</p>
-          <h2>Case Studies Built for Real Users</h2>
+          <h2>Projects built for real users</h2>
           <p className={styles.sectionLead}>
             Each project below highlights the problem space, my role, and the
             measurable execution choices I made to deliver value.

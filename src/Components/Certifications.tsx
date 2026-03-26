@@ -16,7 +16,7 @@ const certifications: Cert[] = [
     name: "Enterprise Defense Administrator",
     issuer: "INE",
     href: "https://certs.ine.com/9e7d3e29-bcbf-45f3-8830-091ee2efb008#acc.oxJpmOgr",
-    image: "/eeda.png",
+    image: "/eeda2.png",
   },
   {
     id: "aws-cloud-foundations",
