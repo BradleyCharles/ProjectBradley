@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#100902"/>
+  <path d="M 240 300 Q 280 220 340 240 Q 380 255 400 300 Q 420 255 460 240 Q 520 220 560 300 Q 520 380 460 360 Q 420 345 400 300 Q 380 345 340 360 Q 280 380 240 300 Z" fill="#7a5818" opacity="0.75"/>
+  <path d="M 240 300 Q 280 220 340 240 Q 380 255 400 300 Q 420 255 460 240 Q 520 220 560 300 Q 520 380 460 360 Q 420 345 400 300 Q 380 345 340 360 Q 280 380 240 300 Z" fill="none" stroke="#c9a84c" stroke-width="2" opacity="0.6"/>
+  <circle cx="400" cy="300" r="18" fill="#c9a84c" opacity="0.8"/>
+  <circle cx="400" cy="300" r="10" fill="#f5e090" opacity="0.6"/>
+  <circle cx="290" cy="280" r="8" fill="#c9a84c" opacity="0.6"/>
+  <circle cx="510" cy="280" r="8" fill="#c9a84c" opacity="0.6"/>
+  <text x="400" y="545" text-anchor="middle" fill="rgba(201,168,76,0.25)" font-family="Georgia,serif" font-size="13" font-style="italic" letter-spacing="0.15em">jewelry</text>
+</svg>

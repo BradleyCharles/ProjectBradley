@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#070210"/>
+  <polygon points="400,240 430,330 525,330 450,385 478,475 400,420 322,475 350,385 275,330 370,330" fill="#2a1050" opacity="0.8"/>
+  <polygon points="400,240 430,330 525,330 450,385 478,475 400,420 322,475 350,385 275,330 370,330" fill="none" stroke="#b07fec" stroke-width="2" opacity="0.6"/>
+  <polygon points="400,258 425,338 510,338 443,388 467,468 400,415 333,468 357,388 290,338 375,338" fill="none" stroke="#8060c0" stroke-width="1" opacity="0.35"/>
+  <line x1="400" y1="200" x2="400" y2="240" stroke="#b07fec" stroke-width="2" opacity="0.5"/>
+  <line x1="400" y1="475" x2="400" y2="510" stroke="#b07fec" stroke-width="2" opacity="0.5"/>
+  <line x1="250" y1="357" x2="275" y2="330" stroke="#b07fec" stroke-width="2" opacity="0.4"/>
+  <line x1="550" y1="357" x2="525" y2="330" stroke="#b07fec" stroke-width="2" opacity="0.4"/>
+  <text x="400" y="560" text-anchor="middle" fill="rgba(176,127,236,0.25)" font-family="Georgia,serif" font-size="13" font-style="italic" letter-spacing="0.15em">worldbuilding</text>
+</svg>

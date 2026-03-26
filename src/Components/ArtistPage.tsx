@@ -3,6 +3,7 @@
 import { Playfair_Display } from "next/font/google";
 import Image from "next/image";
 import RoleTicker from "./RoleTicker";
+import DisciplineGallery, { GalleryImage } from "./DisciplineGallery";
 import { artistTitles } from "@/data/titles";
 import styles from "../styles/ArtistPage.module.css";
 
@@ -12,7 +13,17 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
-const disciplines = [
+type Discipline = {
+  id: string;
+  name: string;
+  description: string;
+  tags: string[];
+  gradient: string;
+  accent: string;
+  images: GalleryImage[];
+};
+
+const disciplines: Discipline[] = [
   {
     id: "ceramics",
     name: "Ceramics",
@@ -22,6 +33,12 @@ const disciplines = [
     gradient:
       "radial-gradient(ellipse 70% 60% at 55% 35%, #9b6540 0%, #4e2610 50%, #1c0c05 100%)",
     accent: "#d4916a",
+    images: [
+      { src: "/art/ceramics-1.svg", alt: "Ceramics piece — thrown vessel" },
+      { src: "/art/ceramics-2.svg", alt: "Ceramics piece — stacked bowls" },
+      { src: "/art/ceramics-3.svg", alt: "Ceramics piece — slab work" },
+      { src: "/art/ceramics-4.svg", alt: "Ceramics piece — tall form" },
+    ],
   },
   {
     id: "jewelry",
@@ -32,16 +49,31 @@ const disciplines = [
     gradient:
       "radial-gradient(ellipse 60% 55% at 40% 55%, #c9a84c 0%, #7a5818 50%, #1c1205 100%)",
     accent: "#e0bc5a",
+    images: [
+      { src: "/art/jewelry-1.svg", alt: "Jewelry piece — ring" },
+      { src: "/art/jewelry-2.svg", alt: "Jewelry piece — necklace" },
+      { src: "/art/jewelry-3.svg", alt: "Jewelry piece — pendant" },
+      { src: "/art/jewelry-4.svg", alt: "Jewelry piece — brooch" },
+    ],
   },
   {
     id: "printing",
-    name: "3D Printing & Props",
+    name: "Screenprinting",
     description:
-      "Where digital design becomes physical reality. Concept, model, print, finish — creating props, miniatures, and functional objects for tabletop and beyond.",
-    tags: ["FDM Printing", "Prop Design", "Miniatures"],
+      "Ink pressed through hand-cut stencils onto paper, fabric, and surface. Working in linoleum, copper, and mixed media to build layered prints with texture, depth, and intentional mark-making.",
+    tags: ["Linoleum", "Copper", "Mixed Media"],
     gradient:
       "radial-gradient(ellipse 65% 50% at 50% 35%, #2e5f7a 0%, #122535 55%, #060e18 100%)",
     accent: "#6ab8e0",
+    images: [
+      { src: "/art/screen-1.svg", alt: "Screenprint — linoleum block print" },
+      {
+        src: "/art/screen-2.svg",
+        alt: "Screenprint — mixed media composition",
+      },
+      { src: "/art/screen-3.svg", alt: "Screenprint — copper etching" },
+      { src: "/art/screen-4.svg", alt: "Screenprint — layered print" },
+    ],
   },
   {
     id: "worldbuilding",
@@ -52,13 +84,18 @@ const disciplines = [
     gradient:
       "radial-gradient(ellipse 60% 55% at 35% 45%, #503575 0%, #221040 55%, #0a0516 100%)",
     accent: "#b07fec",
+    images: [
+      { src: "/art/world-1.svg", alt: "Worldbuilding — campaign map" },
+      { src: "/art/world-2.svg", alt: "Worldbuilding — arcane symbol" },
+      { src: "/art/world-3.svg", alt: "Worldbuilding — d20 motif" },
+      { src: "/art/world-4.svg", alt: "Worldbuilding — constellation map" },
+    ],
   },
 ];
 
 export default function ArtistPage() {
   return (
     <div className={`${styles.artistPage} ${playfair.className}`}>
-
       {/* ── Hero ── */}
       <section className={styles.hero}>
         <p className={styles.heroKicker}>Portfolio of Making</p>
@@ -83,13 +120,18 @@ export default function ArtistPage() {
           {disciplines.map((d) => (
             <article
               key={d.id}
-              className={`${styles.disciplineCard} ${styles[d.id as keyof typeof styles]}`}
+              className={`${styles.disciplineCard} ${
+                styles[d.id as keyof typeof styles]
+              }`}
             >
-              <div
-                className={styles.disciplineImage}
-                style={{ background: d.gradient }}
-                aria-hidden="true"
-              />
+              <div className={styles.disciplineImage}>
+                <DisciplineGallery
+                  images={d.images}
+                  name={d.name}
+                  accent={d.accent}
+                  gradient={d.gradient}
+                />
+              </div>
               <div className={styles.disciplineBody}>
                 <h3
                   className={styles.disciplineName}
@@ -103,7 +145,10 @@ export default function ArtistPage() {
                     <span
                       key={tag}
                       className={styles.tag}
-                      style={{ borderColor: `${d.accent}40`, color: `${d.accent}cc` }}
+                      style={{
+                        borderColor: `${d.accent}40`,
+                        color: `${d.accent}cc`,
+                      }}
                     >
                       {tag}
                     </span>
@@ -120,7 +165,7 @@ export default function ArtistPage() {
         <div className={styles.statementRule} />
         <blockquote className={styles.quote}>
           Every medium is a language. I&apos;m learning to speak in clay, metal,
-          light, and story.
+          color, and story.
         </blockquote>
         <div className={styles.statementRule} />
       </section>
@@ -131,15 +176,13 @@ export default function ArtistPage() {
           <div className={styles.contactLeft}>
             <p className={styles.kicker}>Get in Touch</p>
             <h2 className={styles.contactTitle}>Let&apos;s Make Something</h2>
-            <p className={styles.contactLead}>
-              Whether you&apos;re interested in commissioning a piece,
-              collaborating on a project, or sitting down at the table — reach
-              out.
-            </p>
+
             <div className={styles.contactLinks}>
               <p>
                 Email:{" "}
-                <a href="mailto:bradgcharles@gmail.com">bradgcharles@gmail.com</a>
+                <a href="mailto:bradgcharles@gmail.com">
+                  bradgcharles@gmail.com
+                </a>
               </p>
               <p>
                 GitHub:{" "}
@@ -172,7 +215,6 @@ export default function ArtistPage() {
           />
         </div>
       </section>
-
     </div>
   );
 }
