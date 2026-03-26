@@ -85,7 +85,7 @@ const disciplines: Discipline[] = [
       "radial-gradient(ellipse 60% 55% at 35% 45%, #503575 0%, #221040 55%, #0a0516 100%)",
     accent: "#b07fec",
     images: [
-      { src: "/art/world-1.svg", alt: "Worldbuilding — campaign map" },
+      { src: "/art/world-1.webp", alt: "Worldbuilding — campaign map" },
       { src: "/art/world-2.svg", alt: "Worldbuilding — arcane symbol" },
       { src: "/art/world-3.svg", alt: "Worldbuilding — d20 motif" },
       { src: "/art/world-4.svg", alt: "Worldbuilding — constellation map" },
