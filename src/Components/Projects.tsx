@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Lightbox from "./Lightbox";
 import TiltImage from "./TiltImage";
-import styles from "../app/page.module.css";
+import styles from "../styles/page.module.css";
 
 type Project = {
   id: string;

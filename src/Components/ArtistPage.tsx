@@ -3,7 +3,7 @@
 import { Playfair_Display } from "next/font/google";
 import RoleTicker from "./RoleTicker";
 import { artistTitles } from "@/data/titles";
-import styles from "./ArtistPage.module.css";
+import styles from "../styles/ArtistPage.module.css";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],

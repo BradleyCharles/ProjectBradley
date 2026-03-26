@@ -6,7 +6,7 @@ import Projects from "@/Components/Projects";
 import RoleTicker from "@/Components/RoleTicker";
 import { useMode } from "@/context/ModeContext";
 import { devTitles } from "@/data/titles";
-import styles from "./page.module.css";
+import styles from "../styles/page.module.css";
 
 export default function Home() {
   const { mode } = useMode();

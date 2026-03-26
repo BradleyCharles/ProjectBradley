@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useCallback } from "react";
-import styles from "./Lightbox.module.css";
+import styles from "../styles/Lightbox.module.css";
 
 type Props = {
   images: string[];

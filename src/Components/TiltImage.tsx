@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, MouseEvent } from "react";
-import styles from "./TiltImage.module.css";
+import styles from "../styles/TiltImage.module.css";
 
 type Props = {
   children: React.ReactNode;
