@@ -28,8 +28,7 @@ export default function Home() {
             <p className={styles.heroStatement}>
               I am a software engineer, cybersecurity analyst, project manager,
               and artist focused on building practical systems for real people.
-              I value clear outcomes, strong collaboration, and continuous
-              learning.
+              I believe the best way to learn is by doing. I love building things and learning.
             </p>
           </section>
 
