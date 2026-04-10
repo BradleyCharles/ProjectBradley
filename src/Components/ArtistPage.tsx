@@ -2,6 +2,7 @@
 
 import { Playfair_Display } from "next/font/google";
 import Image from "next/image";
+import ArtistCanvas from "./ArtistCanvas";
 import RoleTicker from "./RoleTicker";
 import DisciplineGallery, { GalleryImage } from "./DisciplineGallery";
 import { artistTitles } from "@/data/titles";
@@ -97,7 +98,8 @@ export default function ArtistPage() {
   return (
     <div className={`${styles.artistPage} ${playfair.className}`}>
       {/* ── Hero ── */}
-      <section className={styles.hero}>
+      <section className={styles.hero} style={{ position: "relative" }}>
+        <ArtistCanvas />
         <p className={styles.heroKicker}>Portfolio of Making</p>
         <h1 className={styles.heroName}>Bradley Charles</h1>
         <RoleTicker titles={artistTitles} className={styles.heroTagline} />

@@ -2,6 +2,7 @@
 
 import ArtistPage from "@/Components/ArtistPage";
 import Certifications from "@/Components/Certifications";
+import HeroCanvas from "@/Components/HeroCanvas";
 import Projects from "@/Components/Projects";
 import RoleTicker from "@/Components/RoleTicker";
 import { useMode } from "@/context/ModeContext";
@@ -18,7 +19,8 @@ export default function Home() {
         <ArtistPage />
       ) : (
         <main className={styles.page}>
-          <section className={`${styles.section} ${styles.hero}`} id="top">
+          <section className={`${styles.section} ${styles.hero}`} id="top" style={{ position: "relative" }}>
+            <HeroCanvas />
             <p className={styles.heroKicker}>Full-Stack Portfolio</p>
             <h1 className={styles.heroName}>Bradley Charles</h1>
             <RoleTicker titles={devTitles} className={styles.heroTagline} />
