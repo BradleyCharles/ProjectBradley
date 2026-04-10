@@ -35,8 +35,8 @@ const projects: Project[] = [
     roles: ["AI Development", "Instructional Design", "Prompt Engineering"],
     stack: ["Claude Artifact", "Prompt Engineering", "AI Tutoring"],
     href: "https://claude.ai/public/artifacts/a9d2aeab-ae93-40d3-824b-f053a6d94a7c",
-    image1: "/tutor1.webp",
-    image2: "/tutor2.webp",
+    image1: "/tutor1.png",
+    image2: "/tutor2.png",
   },
   {
     id: "projects",
