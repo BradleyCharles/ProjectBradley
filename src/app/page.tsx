@@ -7,6 +7,7 @@ import Projects from "@/Components/Projects";
 import RoleTicker from "@/Components/RoleTicker";
 import { useMode } from "@/context/ModeContext";
 import { devTitles } from "@/data/titles";
+import ObfuscatedEmail from "@/Components/ObfuscatedEmail";
 import Image from "next/image";
 import styles from "../styles/page.module.css";
 
@@ -53,9 +54,7 @@ export default function Home() {
                 <div>
                   <p className={styles.contactLine}>
                     Email:{" "}
-                    <a href="mailto:bradgcharles@gmail.com">
-                      bradgcharles@gmail.com
-                    </a>
+                    <ObfuscatedEmail />
                   </p>
                   <p className={styles.contactLine}>
                     GitHub:{" "}
@@ -79,13 +78,21 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <Image
-                src="/brad_water.webp"
-                alt="Bradley Charles"
-                width={220}
-                height={220}
-                className={styles.contactAvatar}
-              />
+              <div style={{ position: "relative", display: "inline-block" }}>
+                <Image
+                  src="/brad_water.webp"
+                  alt="Bradley Charles"
+                  width={220}
+                  height={220}
+                  className={styles.contactAvatar}
+                  draggable={false}
+                  style={{ pointerEvents: "none", userSelect: "none" }}
+                />
+                <div
+                  style={{ position: "absolute", inset: 0, borderRadius: "50%", cursor: "default" }}
+                  onContextMenu={(e) => e.preventDefault()}
+                />
+              </div>
             </div>
           </section>
         </main>
