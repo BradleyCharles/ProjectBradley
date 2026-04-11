@@ -2,6 +2,8 @@
 
 import { Playfair_Display } from "next/font/google";
 import Image from "next/image";
+import ObfuscatedEmail from "./ObfuscatedEmail";
+import ArtistCanvas from "./ArtistCanvas";
 import RoleTicker from "./RoleTicker";
 import DisciplineGallery, { GalleryImage } from "./DisciplineGallery";
 import { artistTitles } from "@/data/titles";
@@ -112,7 +114,8 @@ export default function ArtistPage() {
   return (
     <div className={`${styles.artistPage} ${playfair.className}`}>
       {/* ── Hero ── */}
-      <section className={styles.hero}>
+      <section className={styles.hero} style={{ position: "relative" }}>
+        <ArtistCanvas />
         <p className={styles.heroKicker}>Portfolio of Making</p>
         <h1 className={styles.heroName}>Bradley Charles</h1>
         <RoleTicker titles={artistTitles} className={styles.heroTagline} />
@@ -249,9 +252,7 @@ export default function ArtistPage() {
             <div className={styles.contactLinks}>
               <p>
                 Email:{" "}
-                <a href="mailto:bradgcharles@gmail.com">
-                  bradgcharles@gmail.com
-                </a>
+                <ObfuscatedEmail />
               </p>
               <p>
                 GitHub:{" "}
@@ -275,13 +276,21 @@ export default function ArtistPage() {
               </p>
             </div>
           </div>
-          <Image
-            src="/brad_henry.webp"
-            alt="Bradley Charles"
-            width={220}
-            height={220}
-            className={styles.contactAvatar}
-          />
+          <div style={{ position: "relative", display: "inline-block" }}>
+            <Image
+              src="/brad_henry.webp"
+              alt="Bradley Charles"
+              width={220}
+              height={220}
+              className={styles.contactAvatar}
+              draggable={false}
+              style={{ pointerEvents: "none", userSelect: "none" }}
+            />
+            <div
+              style={{ position: "absolute", inset: 0, borderRadius: "50%", cursor: "default" }}
+              onContextMenu={(e) => e.preventDefault()}
+            />
+          </div>
         </div>
       </section>
     </div>

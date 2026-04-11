@@ -2,10 +2,12 @@
 
 import ArtistPage from "@/Components/ArtistPage";
 import Certifications from "@/Components/Certifications";
+import HeroCanvas from "@/Components/HeroCanvas";
 import Projects from "@/Components/Projects";
 import RoleTicker from "@/Components/RoleTicker";
 import { useMode } from "@/context/ModeContext";
 import { devTitles } from "@/data/titles";
+import ObfuscatedEmail from "@/Components/ObfuscatedEmail";
 import Image from "next/image";
 import styles from "../styles/page.module.css";
 
@@ -18,7 +20,8 @@ export default function Home() {
         <ArtistPage />
       ) : (
         <main className={styles.page}>
-          <section className={`${styles.section} ${styles.hero}`} id="top">
+          <section className={`${styles.section} ${styles.hero}`} id="top" style={{ position: "relative" }}>
+            <HeroCanvas />
             <p className={styles.heroKicker}>Full-Stack Portfolio</p>
             <h1 className={styles.heroName}>Bradley Charles</h1>
             <RoleTicker titles={devTitles} className={styles.heroTagline} />
@@ -26,8 +29,7 @@ export default function Home() {
             <p className={styles.heroStatement}>
               I am a software engineer, cybersecurity analyst, project manager,
               and artist focused on building practical systems for real people.
-              I value clear outcomes, strong collaboration, and continuous
-              learning.
+              I believe the best way to learn is by doing. I love building things and learning.
             </p>
           </section>
 
@@ -52,9 +54,7 @@ export default function Home() {
                 <div>
                   <p className={styles.contactLine}>
                     Email:{" "}
-                    <a href="mailto:bradgcharles@gmail.com">
-                      bradgcharles@gmail.com
-                    </a>
+                    <ObfuscatedEmail />
                   </p>
                   <p className={styles.contactLine}>
                     GitHub:{" "}
@@ -78,13 +78,21 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <Image
-                src="/brad_water.webp"
-                alt="Bradley Charles"
-                width={220}
-                height={220}
-                className={styles.contactAvatar}
-              />
+              <div style={{ position: "relative", display: "inline-block" }}>
+                <Image
+                  src="/brad_water.webp"
+                  alt="Bradley Charles"
+                  width={220}
+                  height={220}
+                  className={styles.contactAvatar}
+                  draggable={false}
+                  style={{ pointerEvents: "none", userSelect: "none" }}
+                />
+                <div
+                  style={{ position: "absolute", inset: 0, borderRadius: "50%", cursor: "default" }}
+                  onContextMenu={(e) => e.preventDefault()}
+                />
+              </div>
             </div>
           </section>
         </main>
