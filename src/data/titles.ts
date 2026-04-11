@@ -33,12 +33,17 @@ export const devTitles = [
 
 export const artistTitles = [
   "Ceramics Artist",
+  "Wheel Thrower",
+  "Hand Builder",
   "Jewelry Maker",
-  "3D Printing & Prop Designer",
-  "Digital Fabrication Hobbyist",
+  "Metalsmith",
+  "Mixed Media Artist",
+  "Screenprinter",
+  "Printmaker",
+  "Linoleum Block Printer",
+  "Copper Etcher",
   "Dungeon Master",
   "Narrative Systems Designer",
   "Worldbuilder",
-  "Game Systems Designer",
   "Homebrew Content Creator",
 ];

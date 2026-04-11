@@ -21,24 +21,37 @@ type Discipline = {
   gradient: string;
   accent: string;
   images: GalleryImage[];
+  previewLayout?: "2x2" | "4x2";
+  pdfLink?: { href: string; label: string };
 };
 
 const disciplines: Discipline[] = [
   {
-    id: "ceramics",
-    name: "Ceramics",
+    id: "printing",
+    name: "Screenprinting",
     description:
-      "Hand-thrown and sculpted forms that explore the conversation between earth and intention. Each piece begins as a lump of clay and becomes a vessel for function or feeling.",
-    tags: ["Wheel Throwing", "Hand Building", "Glazing"],
+      "Ink pressed through hand-cut stencils onto paper, fabric, and other surfaces. Working in linoleum, copper, and mixed media to build layered prints with texture, depth, and intentional mark-making. To me, the carving of the block is a way to physically interact with my art and the imperfections of the process are part of the beauty.",
+    tags: ["Linoleum", "Copper", "Mixed Media"],
     gradient:
-      "radial-gradient(ellipse 70% 60% at 55% 35%, #9b6540 0%, #4e2610 50%, #1c0c05 100%)",
-    accent: "#d4916a",
+      "radial-gradient(ellipse 65% 50% at 50% 35%, #2e5f7a 0%, #122535 55%, #060e18 100%)",
+    accent: "#6ab8e0",
     images: [
-      { src: "/art/ceramics-1.svg", alt: "Ceramics piece — thrown vessel" },
-      { src: "/art/ceramics-2.svg", alt: "Ceramics piece — stacked bowls" },
-      { src: "/art/ceramics-3.svg", alt: "Ceramics piece — slab work" },
-      { src: "/art/ceramics-4.svg", alt: "Ceramics piece — tall form" },
+      { src: "/art/sp0.webp", alt: "Screenprint" },
+      { src: "/art/sp1.webp", alt: "Screenprint" },
+      { src: "/art/sp2.webp", alt: "Screenprint" },
+      { src: "/art/sp3.webp", alt: "Screenprint" },
+      { src: "/art/sp4.webp", alt: "Screenprint" },
+      { src: "/art/sp5.webp", alt: "Screenprint" },
+      { src: "/art/sp6.webp", alt: "Screenprint" },
+      { src: "/art/sp7.webp", alt: "Screenprint" },
+      { src: "/art/sp8.webp", alt: "Screenprint" },
+      { src: "/art/sp9.webp", alt: "Screenprint" },
+      { src: "/art/sp10.webp", alt: "Screenprint" },
+      { src: "/art/sp11.webp", alt: "Screenprint" },
+      { src: "/art/sp12.webp", alt: "Screenprint" },
+      { src: "/art/sp13.webp", alt: "Screenprint" },
     ],
+    previewLayout: "4x2",
   },
   {
     id: "jewelry",
@@ -50,29 +63,29 @@ const disciplines: Discipline[] = [
       "radial-gradient(ellipse 60% 55% at 40% 55%, #c9a84c 0%, #7a5818 50%, #1c1205 100%)",
     accent: "#e0bc5a",
     images: [
-      { src: "/art/jewelry-1.svg", alt: "Jewelry piece — ring" },
-      { src: "/art/jewelry-2.svg", alt: "Jewelry piece — necklace" },
-      { src: "/art/jewelry-3.svg", alt: "Jewelry piece — pendant" },
-      { src: "/art/jewelry-4.svg", alt: "Jewelry piece — brooch" },
+      { src: "/art/jw0.webp", alt: "Jewelry piece" },
+      { src: "/art/jw1.webp", alt: "Jewelry piece" },
+      { src: "/art/jw2.webp", alt: "Jewelry piece" },
     ],
   },
   {
-    id: "printing",
-    name: "Screenprinting",
+    id: "ceramics",
+    name: "Ceramics",
     description:
-      "Ink pressed through hand-cut stencils onto paper, fabric, and surface. Working in linoleum, copper, and mixed media to build layered prints with texture, depth, and intentional mark-making.",
-    tags: ["Linoleum", "Copper", "Mixed Media"],
+      "Hand-thrown and sculpted forms that explore the conversation between earth and intention. Each piece begins as a lump of clay and becomes a vessel for function or feeling.",
+    tags: ["Wheel Throwing", "Hand Building", "Glazing"],
     gradient:
-      "radial-gradient(ellipse 65% 50% at 50% 35%, #2e5f7a 0%, #122535 55%, #060e18 100%)",
-    accent: "#6ab8e0",
+      "radial-gradient(ellipse 70% 60% at 55% 35%, #9b6540 0%, #4e2610 50%, #1c0c05 100%)",
+    accent: "#d4916a",
     images: [
-      { src: "/art/screen-1.svg", alt: "Screenprint — linoleum block print" },
-      {
-        src: "/art/screen-2.svg",
-        alt: "Screenprint — mixed media composition",
-      },
-      { src: "/art/screen-3.svg", alt: "Screenprint — copper etching" },
-      { src: "/art/screen-4.svg", alt: "Screenprint — layered print" },
+      { src: "/art/ce0.webp", alt: "Ceramics piece" },
+      { src: "/art/ce1.webp", alt: "Ceramics piece" },
+      { src: "/art/ce2.webp", alt: "Ceramics piece" },
+      { src: "/art/ce3.webp", alt: "Ceramics piece" },
+      { src: "/art/ce4.webp", alt: "Ceramics piece" },
+      { src: "/art/ce5.webp", alt: "Ceramics piece" },
+      { src: "/art/ce6.webp", alt: "Ceramics piece" },
+      { src: "/art/ce7.webp", alt: "Ceramics piece" },
     ],
   },
   {
@@ -85,11 +98,13 @@ const disciplines: Discipline[] = [
       "radial-gradient(ellipse 60% 55% at 35% 45%, #503575 0%, #221040 55%, #0a0516 100%)",
     accent: "#b07fec",
     images: [
-      { src: "/art/world-1.webp", alt: "Worldbuilding — campaign map" },
-      { src: "/art/world-2.svg", alt: "Worldbuilding — arcane symbol" },
-      { src: "/art/world-3.svg", alt: "Worldbuilding — d20 motif" },
-      { src: "/art/world-4.svg", alt: "Worldbuilding — constellation map" },
+      { src: "/art/wb0.webp", alt: "Worldbuilding" },
+      { src: "/art/wb1.png", alt: "Worldbuilding" },
+      { src: "/art/wb2.png", alt: "Worldbuilding" },
+      { src: "/art/wb3.png", alt: "Worldbuilding" },
+      { src: "/art/wb4.png", alt: "Worldbuilding" },
     ],
+    pdfLink: { href: "/Holiday Heist.pdf", label: "Holiday Heist" },
   },
 ];
 
@@ -130,6 +145,7 @@ export default function ArtistPage() {
                   name={d.name}
                   accent={d.accent}
                   gradient={d.gradient}
+                  previewLayout={d.previewLayout}
                 />
               </div>
               <div className={styles.disciplineBody}>
@@ -154,6 +170,59 @@ export default function ArtistPage() {
                     </span>
                   ))}
                 </div>
+                {d.pdfLink && (
+                  <div className={styles.pdfRow}>
+                    <a
+                      href={d.pdfLink.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.pdfPreview}
+                      style={{ borderColor: `${d.accent}40`, color: d.accent }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                      </svg>
+                      {d.pdfLink.label}
+                    </a>
+                    <a
+                      href={d.pdfLink.href}
+                      download
+                      className={styles.pdfDownload}
+                      style={{ borderColor: `${d.accent}40`, color: d.accent }}
+                      aria-label={`Download ${d.pdfLink.label}`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                      Download
+                    </a>
+                  </div>
+                )}
               </div>
             </article>
           ))}

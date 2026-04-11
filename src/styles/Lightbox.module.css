@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   background: rgba(2, 6, 23, 0.88);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -22,12 +23,8 @@
   width: 90vw;
   height: 90vh;
   cursor: default;
-  animation: scaleIn 180ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@keyframes scaleIn {
-  from { transform: scale(0.94); opacity: 0; }
-  to   { transform: scale(1);    opacity: 1; }
+  will-change: transform;
+  flex-shrink: 0;
 }
 
 .image {

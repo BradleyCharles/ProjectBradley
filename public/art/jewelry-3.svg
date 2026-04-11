@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#130c02"/>
-  <polygon points="400,160 430,250 520,250 450,305 475,395 400,345 325,395 350,305 280,250 370,250" fill="#7a5818" opacity="0.7"/>
-  <polygon points="400,160 430,250 520,250 450,305 475,395 400,345 325,395 350,305 280,250 370,250" fill="none" stroke="#c9a84c" stroke-width="2" opacity="0.7"/>
-  <polygon points="400,185 422,245 487,245 435,282 455,345 400,310 345,345 365,282 313,245 378,245" fill="none" stroke="#e8cc80" stroke-width="1" opacity="0.4"/>
-  <circle cx="400" cy="275" r="20" fill="#c9a84c" opacity="0.6"/>
-  <circle cx="400" cy="275" r="12" fill="#f5e090" opacity="0.5"/>
-  <text x="400" y="545" text-anchor="middle" fill="rgba(201,168,76,0.25)" font-family="Georgia,serif" font-size="13" font-style="italic" letter-spacing="0.15em">jewelry</text>
-</svg>

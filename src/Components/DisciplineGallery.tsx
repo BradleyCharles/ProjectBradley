@@ -13,9 +13,10 @@ type Props = {
   name: string;
   accent: string;
   gradient: string;
+  previewLayout?: "2x2" | "4x2";
 };
 
-export default function DisciplineGallery({ images, name, accent, gradient }: Props) {
+export default function DisciplineGallery({ images, name, accent, gradient, previewLayout = "2x2" }: Props) {
   const [gridOpen, setGridOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -23,7 +24,7 @@ export default function DisciplineGallery({ images, name, accent, gradient }: Pr
     return <div className={styles.collageEmpty} style={{ background: gradient }} />;
   }
 
-  const preview = images.slice(0, 4);
+  const preview = images.slice(0, previewLayout === "4x2" ? 8 : 4);
   const imgSrcs = images.map((i) => i.src);
 
   return (
@@ -34,7 +35,7 @@ export default function DisciplineGallery({ images, name, accent, gradient }: Pr
         onClick={() => setGridOpen(true)}
         aria-label={`View ${name} gallery`}
       >
-        <div className={styles.collageGrid}>
+        <div className={`${styles.collageGrid}${previewLayout === "4x2" ? ` ${styles.collageGrid4x2}` : ""}`}>
           {preview.map((img, i) => (
             <div key={i} className={styles.collageCell}>
               <Image
