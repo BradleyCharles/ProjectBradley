@@ -525,7 +525,7 @@ export default function MakiPage() {
                 <ul className={styles.personaTraits}>
                   <li>26, Osaka → Tokyo</li>
                   <li>Graphic designer</li>
-                  <li>Openly warm</li>
+                  <li>Openly excited</li>
                   <li>Warm from message one</li>
                   <li><code>yuki/memory/</code></li>
                 </ul>
@@ -594,51 +594,6 @@ export default function MakiPage() {
                 <span className={styles.screenshotLabel}>Screenshot coming soon</span>
               </div>
             ))}
-          </div>
-        </Reveal>
-      </section>
-
-      {/* ── Yuki Teaser ───────────────────────────────────────── */}
-      <section className={styles.yukiSection} id="yuki">
-        <Reveal>
-          <div className={styles.yukiInner}>
-            <div className={styles.yukiText}>
-              <p className={`${styles.kicker} ${styles.yukiKicker}`}>Second Persona</p>
-              <h2 className={`${styles.sectionTitle} ${styles.yukiTitle}`}>Meet Yuki</h2>
-              <p className={styles.yukiBody}>
-                26, Osaka upbringing → Tokyo, graphic designer. Openly warm and
-                affectionate from the first message. Doesn&apos;t make people guess where they
-                stand.
-              </p>
-              <p className={styles.yukiBody}>
-                Yuki maintains completely separate memory from Maki. Different facts, different
-                familiarity scores, different history. The same user is a stranger to both of
-                them until they&apos;ve talked.
-              </p>
-              <div className={styles.yukiCompare}>
-                <div className={styles.yukiCompareCard} data-side="maki">
-                  <strong>Maki</strong>
-                  <p>Reserved</p>
-                  <p>Dark aesthetic</p>
-                  <p>Warms up slowly</p>
-                  <p>Dry, indirect</p>
-                </div>
-                <div className={styles.yukiCompareCard} data-side="yuki">
-                  <strong>Yuki</strong>
-                  <p>Open from day one</p>
-                  <p>Bright aesthetic</p>
-                  <p>Immediately warm</p>
-                  <p>Direct, expressive</p>
-                </div>
-              </div>
-            </div>
-            <div className={styles.yukiCharWrap}>
-              <CharacterImage
-                src="/Yuki.png" alt="Yuki"
-                width={360} height={480}
-                className={styles.yukiChar}
-              />
-            </div>
           </div>
         </Reveal>
       </section>
