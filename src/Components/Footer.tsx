@@ -13,7 +13,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Source
+            Project Bradley
           </a>
         </p>
       </div>

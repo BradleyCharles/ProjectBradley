@@ -462,3 +462,20 @@
     gap: 54px;
   }
 }
+
+@media (max-width: 600px) {
+  .contactInner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contactLeft {
+    align-items: center;
+  }
+
+  .contactAvatar {
+    width: 160px;
+    height: 160px;
+  }
+}
