@@ -50,7 +50,7 @@ const projects: Project[] = [
     ],
     roles: ["Software Engineering", "AI Integration", "Project Leadership"],
     stack: ["Next.js", "Python", "Ollama", "Prompt Engineering"],
-    repo: "https://github.com/SeattleColleges/belindas-closet-nextjs",
+    repo: "https://github.com/OC-Chatbot/Secure-Internal-Chatbot-Design",
     image1: "/occb1.webp",
     image2: "/occb2.webp",
   },
