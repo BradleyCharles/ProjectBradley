@@ -337,7 +337,7 @@ export default function MakiPage() {
           <div className={styles.heroText}>
             <ThemeToggle theme={theme} onChange={setTheme} />
             <p className={styles.heroKicker}>Discord Bot · Local AI · Persistent Memory</p>
-            <h1 className={styles.heroTitle}>MAKI</h1>
+            <h1 className={styles.heroTitle}>PROJECT MAKI</h1>
             <p className={styles.heroSubtitle}>
               A local AI chatbot with persistent memory,<br />
               character depth, and a Discord home.
@@ -373,9 +373,9 @@ export default function MakiPage() {
         <Reveal>
           <div className={styles.sectionInner}>
             <p className={styles.kicker}>About the Project</p>
-            <h2 className={styles.sectionTitle}>What Is Maki?</h2>
+            <h2 className={styles.sectionTitle}>What Is Project Maki?</h2>
             <p className={styles.sectionLead}>
-              Maki started as a learning project for local LLM inference via Ollama. What began
+              Project Maki started as a learning project for local LLM inference via Ollama. What began
               as curiosity about running models without cloud dependencies evolved into a
               character-driven Discord bot with persistent per-user memory, a personality that
               genuinely develops over time, and two fully independent personas.
