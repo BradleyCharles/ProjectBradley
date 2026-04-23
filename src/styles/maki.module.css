@@ -200,13 +200,12 @@
 .heroInner {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 80px 48px 60px;
+  padding: 0 48px;
   flex: 1;
   width: 100%;
 }
@@ -214,7 +213,9 @@
 .heroText {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .heroKicker {
@@ -227,27 +228,28 @@
 }
 
 .heroTitle {
-  font-size: clamp(5rem, 12vw, 10rem);
+  font-size: clamp(5rem, 16vw, 14rem);
   font-weight: 900;
   letter-spacing: -0.04em;
-  line-height: 0.9;
-  margin: 0 0 20px;
+  line-height: 0.88;
+  margin: 0 0 24px;
   color: var(--c-text);
-  text-shadow: 0 0 120px var(--c-glow), 0 4px 32px var(--c-shadow);
+  text-shadow: 0 0 160px var(--c-glow), 0 4px 48px var(--c-shadow);
 }
 
 .heroSubtitle {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   color: var(--c-text2);
   line-height: 1.75;
-  max-width: 440px;
-  margin: 0 0 36px;
+  max-width: 600px;
+  margin: 0 0 40px;
 }
 
 .heroCtas {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  justify-content: center;
 }
 
 .heroCharWrap {
@@ -1076,8 +1078,7 @@
 
 @media (max-width: 1024px) {
   .heroInner {
-    padding: 72px 32px 56px;
-    gap: 32px;
+    padding: 0 32px;
   }
 
   .statsRow {
@@ -1091,34 +1092,7 @@
 
 @media (max-width: 860px) {
   .heroInner {
-    grid-template-columns: 1fr;
-    padding: 64px 28px 40px;
-    text-align: center;
-  }
-
-  .heroText {
-    align-items: center;
-    order: 2;
-  }
-
-  .heroCharWrap {
-    order: 1;
-  }
-
-  .heroChar {
-    max-height: 320px;
-  }
-
-  .toggleBar {
-    justify-content: center;
-  }
-
-  .heroSubtitle {
-    text-align: center;
-  }
-
-  .heroCtas {
-    justify-content: center;
+    padding: 0 24px;
   }
 
   .featureBlock {

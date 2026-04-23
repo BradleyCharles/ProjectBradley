@@ -148,6 +148,31 @@ export default function Projects() {
           </p>
         </div>
 
+        <Link href="/maki" className={styles.makiFeatured} aria-label="Explore Project Maki">
+          <div className={styles.makiFeaturedInner}>
+            <div className={styles.makiFeaturedContent}>
+              <span className={styles.makiFeaturedBadge}>
+                <span className={styles.makiFeaturedBadgeDot} />
+                Featured Project
+              </span>
+              <h3 className={styles.makiFeaturedTitle}>Project Maki</h3>
+              <p className={styles.makiFeaturedDesc}>
+                A local AI Discord bot with persistent per-user memory, a personality that
+                deepens over time, and two fully independent personas — all running on hardware
+                you own.
+              </p>
+              <div className={styles.makiFeaturedPills}>
+                {["Node.js v22", "discord.js v14", "Ollama", "Gemma 4 E4B", "RTX 4060"].map((t) => (
+                  <span key={t} className={styles.makiFeaturedPill}>{t}</span>
+                ))}
+              </div>
+            </div>
+            <span className={styles.makiFeaturedCta}>
+              Explore Project →
+            </span>
+          </div>
+        </Link>
+
         <div className={styles.projectList}>
           {projects.map((project, index) => (
             <article

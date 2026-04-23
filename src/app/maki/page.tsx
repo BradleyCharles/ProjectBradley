@@ -1,11 +1,16 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/maki.module.css";
 
-type Theme = "maki" | "yuki";
+/* ── Body-class mount/unmount ───────────────────────────── */
+function useMakiBodyClass() {
+  useEffect(() => {
+    document.body.classList.add("maki-page");
+    return () => document.body.classList.remove("maki-page");
+  }, []);
+}
 
 /* ── Scroll-reveal hook ─────────────────────────────────── */
 function useReveal(threshold = 0.12) {
@@ -26,32 +31,8 @@ function useReveal(threshold = 0.12) {
   return [ref, visible] as const;
 }
 
-/* ── Character image with fallback ─────────────────────── */
-function CharacterImage({
-  src, alt, className, width, height, priority,
-}: {
-  src: string; alt: string; className?: string;
-  width: number; height: number; priority?: boolean;
-}) {
-  const [err, setErr] = useState(false);
-  if (err) {
-    return (
-      <div className={`${styles.charFallback} ${className ?? ""}`} aria-label={alt}>
-        <span>{alt.charAt(0)}</span>
-      </div>
-    );
-  }
-  return (
-    <Image
-      src={src} alt={alt} width={width} height={height}
-      className={className} priority={priority}
-      onError={() => setErr(true)} draggable={false}
-    />
-  );
-}
-
 /* ── Animated particle canvas ───────────────────────────── */
-function ParticleField({ theme }: { theme: Theme }) {
+function ParticleField() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const canvas = ref.current;
@@ -67,7 +48,7 @@ function ParticleField({ theme }: { theme: Theme }) {
     resize();
     window.addEventListener("resize", resize);
 
-    const rgb = theme === "maki" ? "196,30,58" : "76,175,80";
+    const rgb = "196,30,58";
     type P = { x: number; y: number; vx: number; vy: number; r: number; a: number; da: number };
     const pts: P[] = Array.from({ length: 55 }, () => ({
       x: Math.random() * canvas.width,
@@ -110,35 +91,8 @@ function ParticleField({ theme }: { theme: Theme }) {
     };
     draw();
     return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
-  }, [theme]);
+  }, []);
   return <canvas ref={ref} className={styles.particleCanvas} />;
-}
-
-/* ── Theme toggle ───────────────────────────────────────── */
-function ThemeToggle({ theme, onChange }: { theme: Theme; onChange: (t: Theme) => void }) {
-  return (
-    <div className={styles.toggleBar} role="group" aria-label="Character theme">
-      <div className={`${styles.toggle} ${theme === "yuki" ? styles.toggleRight : ""}`}>
-        <div className={styles.toggleSlider} />
-        <button
-          className={`${styles.toggleOpt} ${theme === "maki" ? styles.toggleOptActive : ""}`}
-          onClick={() => onChange("maki")}
-          aria-pressed={theme === "maki"}
-        >
-          <span className={styles.makiDot} />
-          Maki
-        </button>
-        <button
-          className={`${styles.toggleOpt} ${theme === "yuki" ? styles.toggleOptActive : ""}`}
-          onClick={() => onChange("yuki")}
-          aria-pressed={theme === "yuki"}
-        >
-          <span className={styles.yukiDot} />
-          Yuki
-        </button>
-      </div>
-    </div>
-  );
 }
 
 /* ── Scroll-reveal wrapper ──────────────────────────────── */
@@ -325,17 +279,15 @@ async function correctLoop(history, persona) {
 
 /* ── Page ───────────────────────────────────────────────── */
 export default function MakiPage() {
-  const [theme, setTheme] = useState<Theme>("maki");
-
+  useMakiBodyClass();
   return (
-    <div className={styles.page} data-theme={theme}>
+    <div className={styles.page}>
 
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section className={styles.hero} id="top">
-        <ParticleField theme={theme} />
+        <ParticleField />
         <div className={styles.heroInner}>
           <div className={styles.heroText}>
-            <ThemeToggle theme={theme} onChange={setTheme} />
             <p className={styles.heroKicker}>Discord Bot · Local AI · Persistent Memory</p>
             <h1 className={styles.heroTitle}>PROJECT MAKI</h1>
             <p className={styles.heroSubtitle}>
@@ -354,15 +306,6 @@ export default function MakiPage() {
                 Jump to Features ↓
               </a>
             </div>
-          </div>
-          <div className={styles.heroCharWrap}>
-            <CharacterImage
-              src={theme === "maki" ? "/maki.png" : "/Yuki.png"}
-              alt={theme === "maki" ? "Maki" : "Yuki"}
-              width={420} height={560}
-              className={styles.heroChar}
-              priority
-            />
           </div>
         </div>
         <div className={styles.heroFade} />
