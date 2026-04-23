@@ -7,7 +7,14 @@ const Footer = () => {
       <div className="container">
         <p>
           &copy; {new Date().getFullYear()} Bradley Charles. All rights
-          reserved.
+          reserved.{" "}
+          <a
+            href="https://github.com/BradleyCharles/ProjectBradley"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Source
+          </a>
         </p>
       </div>
     </footer>
