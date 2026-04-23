@@ -188,7 +188,7 @@ const TIME_WINDOWS = [
 
 const TIMELINE = [
   {
-    phase: "01", title: "Project Kickoff", period: "Early 2025",
+    phase: "01", title: "Project Kickoff", period: "",
     bullets: [
       "discord.js v14 with Mistral 7B as the initial LLM",
       "Rolling conversation history with username injection into every prompt",
@@ -196,15 +196,15 @@ const TIMELINE = [
     ],
   },
   {
-    phase: "02", title: "Personality Build", period: "Early 2025",
+    phase: "02", title: "Personality Build", period: "",
     bullets: [
-      "Tsundere system prompt design with detailed speech style guide",
+      "System prompt design with detailed speech style guide",
       "System prompt injection fix — persona now active on every message",
       "Initial character lore: Tokyo background, reserved demeanor",
     ],
   },
   {
-    phase: "03", title: "Model Problems", period: "Early 2025",
+    phase: "03", title: "Model Problems", period: "",
     bullets: [
       "Mistral 7B repeated itself and looped on long contexts",
       "Hallucinated user opinions and invented facts without prompting",
@@ -212,7 +212,7 @@ const TIMELINE = [
     ],
   },
   {
-    phase: "04", title: "Model Upgrade", period: "Mid 2025",
+    phase: "04", title: "Model Upgrade", period: "",
     bullets: [
       "Migrated to Qwen3 8B — significant quality improvement immediately",
       "Discovered think: mode for internal chain-of-thought reasoning",
@@ -220,7 +220,7 @@ const TIMELINE = [
     ],
   },
   {
-    phase: "05", title: "Memory System", period: "Mid 2025",
+    phase: "05", title: "Memory System", period: "",
     bullets: [
       "Per-user JSON files: rolling history, extracted facts, lastSeen, score",
       "Two background LLM extraction passes per reply — user facts + self-facts",
@@ -228,7 +228,7 @@ const TIMELINE = [
     ],
   },
   {
-    phase: "06", title: "Familiarity System", period: "Mid 2025",
+    phase: "06", title: "Familiarity System", period: "",
     bullets: [
       "Numeric score: +1 per exchange, +2 when new personal facts found",
       "Five relationship tiers that change how the persona behaves",
@@ -236,7 +236,7 @@ const TIMELINE = [
     ],
   },
   {
-    phase: "07", title: "Loop Detection", period: "Late 2025",
+    phase: "07", title: "Loop Detection", period: "",
     bullets: [
       "detectLoop() scans recent assistant turns for >80% similarity",
       "correctLoop() fires a second LLM pass — user never sees the repeated reply",
@@ -244,7 +244,7 @@ const TIMELINE = [
     ],
   },
   {
-    phase: "08", title: "Character Depth", period: "Late 2025",
+    phase: "08", title: "Character Depth", period: "",
     bullets: [
       "Full backstory: brother Naota, Seattle transplant, infrastructure career",
       "Fixed continuity bug where Maki contradicted earlier self-disclosures",
@@ -252,7 +252,7 @@ const TIMELINE = [
     ],
   },
   {
-    phase: "09", title: "Gemma 4 E4B + Yuki", period: "2026",
+    phase: "09", title: "Gemma 4 E4B + Yuki", period: "",
     bullets: [
       "Edge-optimised Gemma 4 E4B with internal reasoning layer",
       "Built Yuki as a fully independent persona with separate memory directory",
@@ -525,7 +525,7 @@ export default function MakiPage() {
                 <ul className={styles.personaTraits}>
                   <li>26, Osaka → Tokyo</li>
                   <li>Graphic designer</li>
-                  <li>Openly warm, deredere</li>
+                  <li>Openly warm</li>
                   <li>Warm from message one</li>
                   <li><code>yuki/memory/</code></li>
                 </ul>
@@ -606,7 +606,7 @@ export default function MakiPage() {
               <p className={`${styles.kicker} ${styles.yukiKicker}`}>Second Persona</p>
               <h2 className={`${styles.sectionTitle} ${styles.yukiTitle}`}>Meet Yuki</h2>
               <p className={styles.yukiBody}>
-                26, Osaka upbringing → Tokyo, graphic designer. Deredere — openly warm and
+                26, Osaka upbringing → Tokyo, graphic designer. Openly warm and
                 affectionate from the first message. Doesn&apos;t make people guess where they
                 stand.
               </p>
