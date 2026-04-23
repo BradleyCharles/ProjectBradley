@@ -580,6 +580,18 @@
 
   .contactInner {
     padding: 32px 22px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contactLeft {
+    align-items: center;
+  }
+
+  .contactAvatar {
+    width: 160px;
+    height: 160px;
   }
 
   .imageGrid {

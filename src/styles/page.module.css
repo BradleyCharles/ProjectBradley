@@ -114,6 +114,161 @@
   line-height: 1.7;
 }
 
+/* ─── Featured Maki card ──────────────────────────────────────────────────── */
+
+@keyframes makiBorderPulse {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 1; }
+}
+
+@keyframes makiShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.makiFeatured {
+  position: relative;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    rgba(196, 30, 58, 0.9) 0%,
+    rgba(139, 0, 0, 0.6) 35%,
+    rgba(212, 175, 55, 0.7) 65%,
+    rgba(196, 30, 58, 0.9) 100%
+  );
+  background-size: 300% 300%;
+  animation: makiShimmer 5s linear infinite;
+  box-shadow:
+    0 0 40px rgba(196, 30, 58, 0.22),
+    0 24px 64px rgba(0, 0, 0, 0.55);
+  transition: box-shadow 300ms ease, transform 300ms ease;
+  text-decoration: none;
+  display: block;
+}
+
+.makiFeatured:hover,
+.makiFeatured:focus-visible {
+  box-shadow:
+    0 0 72px rgba(196, 30, 58, 0.45),
+    0 28px 72px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
+}
+
+.makiFeaturedInner {
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 20% 0%,   rgba(139, 0, 0, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(212, 175, 55, 0.12) 0%, transparent 50%),
+    rgba(10, 10, 10, 0.97);
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+
+.makiFeaturedContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.makiFeaturedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d4af37;
+  width: fit-content;
+}
+
+.makiFeaturedBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c41e3a;
+  animation: makiBorderPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.makiFeaturedTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #f5f0e8;
+  margin: 0;
+  text-shadow: 0 0 60px rgba(196, 30, 58, 0.5);
+}
+
+.makiFeaturedDesc {
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  color: rgba(245, 240, 232, 0.62);
+  line-height: 1.75;
+  max-width: 560px;
+  margin: 0;
+}
+
+.makiFeaturedPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.makiFeaturedPill {
+  padding: 4px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 30, 58, 0.35);
+  background: rgba(196, 30, 58, 0.1);
+  color: rgba(245, 240, 232, 0.65);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.makiFeaturedCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: #c41e3a;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 8px 28px rgba(196, 30, 58, 0.45);
+  transition: background-color 160ms ease, transform 160ms ease, box-shadow 200ms ease;
+  align-self: center;
+}
+
+.makiFeatured:hover .makiFeaturedCta,
+.makiFeatured:focus-visible .makiFeaturedCta {
+  background: #e02040;
+  transform: translateX(3px);
+  box-shadow: 0 12px 36px rgba(196, 30, 58, 0.6);
+}
+
+@media (max-width: 720px) {
+  .makiFeaturedInner {
+    grid-template-columns: 1fr;
+    padding: 28px 24px;
+    gap: 20px;
+  }
+
+  .makiFeaturedCta {
+    align-self: flex-start;
+  }
+}
+
+/* ─── end Featured Maki card ──────────────────────────────────────────────── */
+
 .projectsShowcase {
   gap: 28px;
 }
@@ -460,5 +615,22 @@
   .page {
     padding: 0 18px 84px;
     gap: 54px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contactInner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contactLeft {
+    align-items: center;
+  }
+
+  .contactAvatar {
+    width: 160px;
+    height: 160px;
   }
 }

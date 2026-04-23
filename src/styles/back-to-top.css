@@ -35,6 +35,11 @@ body.artist-mode .back-to-top {
   background: linear-gradient(135deg, #c9924a, #7a4a1e);
 }
 
+body.maki-page .back-to-top {
+  background: linear-gradient(135deg, #c41e3a, #8b0000);
+  box-shadow: 0 16px 32px rgba(196, 30, 58, 0.4);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .back-to-top {
     transition: none;

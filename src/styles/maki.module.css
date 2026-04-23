@@ -1,0 +1,1186 @@
+/* ─── Theme Variables ─────────────────────────────────────────────────────── */
+
+.page {
+  /* Maki (default) */
+  --c-bg:        #0D0D0D;
+  --c-bg2:       #1A1A1A;
+  --c-bg3:       #141414;
+  --c-bg4:       #0A0A0A;
+  --c-accent:    #C41E3A;
+  --c-accent2:   #8B0000;
+  --c-gold:      #D4AF37;
+  --c-gold2:     #FFD700;
+  --c-text:      #F5F0E8;
+  --c-text2:     rgba(245, 240, 232, 0.68);
+  --c-text3:     rgba(245, 240, 232, 0.40);
+  --c-border:    rgba(196, 30, 58, 0.28);
+  --c-glow:      rgba(196, 30, 58, 0.40);
+  --c-code-bg:   #0A0A0A;
+  --c-code-text: #D4AF37;
+  --c-shadow:    rgba(0, 0, 0, 0.75);
+  --c-kicker:    #D4AF37;
+  /* identity colors — constant across themes */
+  --c-maki:      #C41E3A;
+  --c-yuki:      #4CAF50;
+
+  background: var(--c-bg);
+  color: var(--c-text);
+  min-height: 100vh;
+  font-family: var(--font-geist-sans, Arial, sans-serif);
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+}
+
+.page[data-theme="yuki"] {
+  --c-bg:        #F5FBF6;
+  --c-bg2:       #FFFFFF;
+  --c-bg3:       #EBF5EB;
+  --c-bg4:       #E8F5E9;
+  --c-accent:    #4CAF50;
+  --c-accent2:   #2E7D32;
+  --c-gold:      #F9A825;
+  --c-gold2:     #FFB300;
+  --c-text:      #1A2E1A;
+  --c-text2:     rgba(26, 46, 26, 0.70);
+  --c-text3:     rgba(26, 46, 26, 0.45);
+  --c-border:    rgba(76, 175, 80, 0.30);
+  --c-glow:      rgba(76, 175, 80, 0.32);
+  --c-code-bg:   #E8F5E9;
+  --c-code-text: #1B5E20;
+  --c-shadow:    rgba(0, 0, 0, 0.10);
+  --c-kicker:    #2E7D32;
+}
+
+/* Apply color transitions broadly to catch theme changes */
+.page,
+.page section,
+.page div,
+.page p,
+.page h1,
+.page h2,
+.page h3,
+.page span,
+.page a,
+.page ul,
+.page li,
+.page pre,
+.page code {
+  transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease,
+    box-shadow 400ms ease;
+}
+
+/* Override for elements with their own motion transitions */
+.page canvas,
+.page img,
+.reveal,
+.revealed,
+.ctaPrimary,
+.ctaSecondary,
+.tierCard,
+.timeCard,
+.stackBadge,
+.toggleSlider,
+.toggle {
+  transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease,
+    box-shadow 400ms ease, opacity 600ms ease, transform 600ms ease;
+}
+
+/* ─── Scroll reveal ───────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Theme toggle ────────────────────────────────────────────────────────── */
+
+.toggleBar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 32px;
+}
+
+.toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 0;
+  box-shadow: 0 4px 20px var(--c-shadow);
+}
+
+.toggleSlider {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background: var(--c-accent);
+  box-shadow: 0 0 16px var(--c-glow);
+  transition: left 350ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color 400ms ease,
+    box-shadow 400ms ease;
+  pointer-events: none;
+}
+
+.toggle.toggleRight .toggleSlider {
+  left: calc(50%);
+}
+
+.toggleOpt {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--c-text2);
+  transition: color 300ms ease;
+  white-space: nowrap;
+}
+
+.toggleOptActive {
+  color: #ffffff;
+}
+
+.page[data-theme="yuki"] .toggleOptActive {
+  color: #ffffff;
+}
+
+.makiDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-maki);
+  flex-shrink: 0;
+}
+
+.yukiDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-yuki);
+  flex-shrink: 0;
+}
+
+/* ─── Hero ────────────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.particleCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  flex: 1;
+  width: 100%;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.heroKicker {
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-kicker);
+  margin: 0 0 16px;
+}
+
+.heroTitle {
+  font-size: clamp(5rem, 16vw, 14rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  margin: 0 0 24px;
+  color: var(--c-text);
+  text-shadow: 0 0 160px var(--c-glow), 0 4px 48px var(--c-shadow);
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: var(--c-text2);
+  line-height: 1.75;
+  max-width: 600px;
+  margin: 0 0 40px;
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.heroCharWrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+
+.heroChar {
+  max-height: 580px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 60px var(--c-glow));
+  transition: filter 400ms ease, opacity 500ms ease;
+}
+
+.charFallback {
+  width: 340px;
+  height: 460px;
+  border-radius: 24px;
+  background: var(--c-bg2);
+  border: 2px dashed var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--c-accent);
+  opacity: 0.5;
+}
+
+.heroFade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, var(--c-bg));
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ─── CTA buttons ─────────────────────────────────────────────────────────── */
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 26px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  background: var(--c-accent);
+  color: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 6px 24px var(--c-glow);
+  transition: transform 160ms ease, box-shadow 200ms ease, background-color 400ms ease;
+}
+
+.ctaPrimary:hover,
+.ctaPrimary:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px var(--c-glow);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 26px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  background: transparent;
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  transition: transform 160ms ease, border-color 200ms ease, background-color 400ms ease,
+    color 400ms ease;
+}
+
+.ctaSecondary:hover,
+.ctaSecondary:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--c-accent);
+}
+
+/* ─── Shared section layout ───────────────────────────────────────────────── */
+
+.sectionWrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px;
+  width: 100%;
+  scroll-margin-top: 80px;
+}
+
+.sectionInner {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.kicker {
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-kicker);
+  margin: 0;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 8px 0 0;
+  color: var(--c-text);
+}
+
+.sectionLead {
+  font-size: clamp(1rem, 1.6vw, 1.12rem);
+  color: var(--c-text2);
+  line-height: 1.8;
+  max-width: 680px;
+  margin: 0;
+}
+
+/* ─── Stats row ───────────────────────────────────────────────────────────── */
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 20px;
+  border-radius: 16px;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 4px 20px var(--c-shadow);
+}
+
+.statValue {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  color: var(--c-accent);
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: var(--c-text2);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+/* ─── Stack badges ────────────────────────────────────────────────────────── */
+
+.stackRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stackBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  background: var(--c-bg2);
+  color: var(--c-text2);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.stackBadge em {
+  font-style: normal;
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+/* ─── Features ────────────────────────────────────────────────────────────── */
+
+.featuresHeader {
+  margin-bottom: 8px;
+}
+
+.featureBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 48px 0;
+  border-top: 1px solid var(--c-border);
+}
+
+.featureReverse {
+  direction: rtl;
+}
+
+.featureReverse > * {
+  direction: ltr;
+}
+
+.featureContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featureIcon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.featureTitle {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.featureBody {
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  color: var(--c-text2);
+  line-height: 1.85;
+  margin: 0;
+}
+
+.inlineCode {
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.88em;
+  color: var(--c-gold);
+  background: var(--c-code-bg);
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid var(--c-border);
+}
+
+.featureVisual {
+  min-width: 0;
+}
+
+/* ─── Code block ──────────────────────────────────────────────────────────── */
+
+.codeBlock {
+  background: var(--c-code-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  overflow-x: auto;
+  font-family: var(--font-geist-mono, "Courier New", monospace);
+  font-size: 0.78rem;
+  line-height: 1.75;
+  color: var(--c-code-text);
+  white-space: pre;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.codeBlock code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ─── Familiarity tier grid ───────────────────────────────────────────────── */
+
+.tierGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tierCard {
+  display: grid;
+  grid-template-columns: 130px 70px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  transition: transform 160ms ease, border-color 200ms ease, background-color 400ms ease;
+}
+
+.tierCard:hover {
+  transform: translateX(4px);
+  border-color: var(--c-accent);
+}
+
+.tierCard[data-tier="0"] { opacity: 0.6; }
+.tierCard[data-tier="1"] { opacity: 0.72; }
+.tierCard[data-tier="2"] { opacity: 0.84; }
+.tierCard[data-tier="3"] { opacity: 0.93; }
+.tierCard[data-tier="4"] { opacity: 1; border-color: var(--c-gold); }
+
+.tierName {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--c-text);
+  letter-spacing: 0.04em;
+}
+
+.tierRange {
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.8rem;
+  color: var(--c-accent);
+  font-weight: 700;
+}
+
+.tierDesc {
+  font-size: 0.82rem;
+  color: var(--c-text2);
+  line-height: 1.5;
+}
+
+/* ─── Time windows ────────────────────────────────────────────────────────── */
+
+.timeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.timeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  transition: transform 160ms ease, border-color 200ms ease, background-color 400ms ease;
+}
+
+.timeCard:hover {
+  border-color: var(--c-accent);
+  transform: translateY(-2px);
+}
+
+.timeIcon {
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.timeRange {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--c-accent);
+  letter-spacing: 0.04em;
+}
+
+.timeMood {
+  font-size: 0.78rem;
+  color: var(--c-text2);
+  line-height: 1.45;
+}
+
+/* ─── Persona comparison ──────────────────────────────────────────────────── */
+
+.personaCompare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.personaVs {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--c-text3);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.personaCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 20px;
+  border-radius: 16px;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+}
+
+.personaCard[data-persona="maki"] {
+  border-color: rgba(196, 30, 58, 0.4);
+}
+
+.personaCard[data-persona="yuki"] {
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+.personaName {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--c-text);
+}
+
+.personaCard[data-persona="maki"] .personaName {
+  color: var(--c-maki);
+}
+
+.personaCard[data-persona="yuki"] .personaName {
+  color: var(--c-yuki);
+}
+
+.personaTraits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.personaTraits li {
+  font-size: 0.83rem;
+  color: var(--c-text2);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.personaTraits li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--c-text3);
+}
+
+.personaTraits code {
+  font-family: var(--font-geist-mono, monospace);
+  font-size: 0.82em;
+  color: var(--c-gold);
+  background: var(--c-code-bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* ─── Timeline ────────────────────────────────────────────────────────────── */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 32px;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  position: relative;
+}
+
+.timelineMarker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.timelinePhase {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--c-bg2);
+  border: 2px solid var(--c-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-family: var(--font-geist-mono, monospace);
+  color: var(--c-accent);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px var(--c-glow);
+  transition: background-color 400ms ease, border-color 400ms ease, box-shadow 400ms ease;
+}
+
+.timelineLine {
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--c-accent), transparent);
+  min-height: 40px;
+  opacity: 0.35;
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 40px;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.timelineTitle {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0;
+}
+
+.timelinePeriod {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-text3);
+}
+
+.timelineBullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.timelineBullets li {
+  font-size: 0.88rem;
+  color: var(--c-text2);
+  line-height: 1.65;
+  padding-left: 18px;
+  position: relative;
+}
+
+.timelineBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  opacity: 0.7;
+}
+
+/* ─── Screenshots ─────────────────────────────────────────────────────────── */
+
+.screenshotGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.screenshotCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 4px 20px var(--c-shadow);
+  min-height: 160px;
+}
+
+.discordBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.discordAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.discordMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.discordUser {
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--c-accent);
+}
+
+.discordTime {
+  font-size: 0.7rem;
+  color: var(--c-text3);
+}
+
+.discordMsg {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 42px;
+  flex: 1;
+}
+
+.discordLine {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--c-bg3);
+  opacity: 0.7;
+}
+
+.screenshotLabel {
+  font-size: 0.72rem;
+  color: var(--c-text3);
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 4px;
+  border-top: 1px solid var(--c-border);
+}
+
+/* ─── Yuki section ────────────────────────────────────────────────────────── */
+/* Always uses Yuki palette regardless of active theme */
+
+.yukiSection {
+  --y-bg:      #E8F5E9;
+  --y-bg2:     #FFFFFF;
+  --y-accent:  #4CAF50;
+  --y-accent2: #2E7D32;
+  --y-gold:    #F9A825;
+  --y-text:    #1A2E1A;
+  --y-text2:   rgba(26, 46, 26, 0.70);
+  --y-border:  rgba(76, 175, 80, 0.30);
+  --y-glow:    rgba(76, 175, 80, 0.30);
+  --y-shadow:  rgba(0, 0, 0, 0.08);
+
+  background: var(--y-bg);
+  margin: 0 0 0;
+  padding: 0;
+  /* gradient transition from page bg */
+  position: relative;
+}
+
+.yukiSection::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--c-bg), var(--y-bg));
+  pointer-events: none;
+}
+
+.yukiSection::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--y-bg), var(--c-bg));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.yukiSection .sectionWrap {
+  background: transparent;
+}
+
+.yukiInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+.yukiText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.yukiKicker {
+  color: var(--y-accent2);
+}
+
+.yukiTitle {
+  color: var(--y-text);
+}
+
+.yukiBody {
+  font-size: clamp(0.95rem, 1.5vw, 1.06rem);
+  color: var(--y-text2);
+  line-height: 1.85;
+  max-width: 540px;
+  margin: 0;
+}
+
+.yukiCompare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.yukiCompareCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 18px;
+  border-radius: 14px;
+  background: var(--y-bg2);
+  border: 1px solid var(--y-border);
+}
+
+.yukiCompareCard strong {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.yukiCompareCard[data-side="maki"] strong {
+  color: var(--c-maki);
+}
+
+.yukiCompareCard[data-side="yuki"] strong {
+  color: var(--y-accent);
+}
+
+.yukiCompareCard p {
+  font-size: 0.83rem;
+  color: var(--y-text2);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.yukiCharWrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.yukiChar {
+  max-height: 480px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 40px var(--y-glow));
+}
+
+/* ─── Footer CTA ──────────────────────────────────────────────────────────── */
+
+.footerCta {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px 100px;
+  width: 100%;
+}
+
+.footerCtaInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  padding: 56px 48px;
+  border-radius: 24px;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 16px 50px var(--c-shadow);
+}
+
+.footerCtaTitle {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--c-text);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.footerCtaBody {
+  font-size: 0.95rem;
+  color: var(--c-text2);
+  max-width: 440px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.footerCtaBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .heroInner {
+    padding: 0 32px;
+  }
+
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .screenshotGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .heroInner {
+    padding: 0 24px;
+  }
+
+  .featureBlock {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 36px 0;
+  }
+
+  .featureReverse {
+    direction: ltr;
+  }
+
+  .yukiInner {
+    grid-template-columns: 1fr;
+    padding: 80px 28px;
+    gap: 40px;
+  }
+
+  .yukiCharWrap {
+    order: -1;
+  }
+
+  .yukiChar {
+    max-height: 320px;
+  }
+
+  .yukiCompare {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .personaCompare {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .personaVs {
+    display: none;
+  }
+
+  .tierCard {
+    grid-template-columns: 110px 60px 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .sectionWrap,
+  .footerCta {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .screenshotGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tierCard {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .tierRange {
+    display: inline;
+  }
+
+  .timeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .yukiCompare {
+    grid-template-columns: 1fr;
+  }
+
+  .footerCtaInner {
+    padding: 40px 24px;
+  }
+
+  .timelineItem {
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+  }
+
+  .toggleOpt {
+    padding: 8px 14px;
+    font-size: 0.83rem;
+  }
+}
