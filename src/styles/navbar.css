@@ -5,14 +5,14 @@
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 50;
+  z-index: 200;
   padding: 1rem 1.5rem;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   background: linear-gradient(
     180deg,
     rgba(11, 11, 21, 0.55) 0%,
-    rgba(11, 11, 21, 0.0) 100%
+    rgba(11, 11, 21, 0) 100%
   );
 }
 
@@ -48,10 +48,7 @@
   font: inherit;
   cursor: pointer;
   border-radius: 10px;
-  transition:
-    color 180ms ease,
-    transform 180ms ease,
-    box-shadow 220ms ease,
+  transition: color 180ms ease, transform 180ms ease, box-shadow 220ms ease,
     background-color 180ms ease;
 }
 
@@ -89,9 +86,7 @@
   opacity: 0;
   transform: translateY(-6px) scaleY(0.96);
   pointer-events: none;
-  transition:
-    opacity 160ms ease,
-    transform 160ms ease;
+  transition: opacity 160ms ease, transform 160ms ease;
   z-index: 5;
 }
 
@@ -110,9 +105,7 @@
   padding: 0.45rem 0.6rem;
   border-radius: 10px;
   color: #eef2ff;
-  transition:
-    background-color 140ms ease,
-    color 140ms ease;
+  transition: background-color 140ms ease, color 140ms ease;
 }
 
 .dropdown-menu a:hover,
@@ -133,10 +126,7 @@
   text-decoration: none;
   padding: 0.35rem 0.6rem;
   border-radius: 10px;
-  transition:
-    color 180ms ease,
-    transform 180ms ease,
-    box-shadow 220ms ease;
+  transition: color 180ms ease, transform 180ms ease, box-shadow 220ms ease;
 }
 
 .navbar-links a:hover,
@@ -145,7 +135,6 @@
   transform: translateY(-1px);
   box-shadow: 0 10px 28px rgba(124, 58, 237, 0.35);
 }
-
 
 .navbar-button {
   color: white;
@@ -187,12 +176,8 @@
 .navbar-brand,
 .navbar-links,
 .navbar-links a {
-  transition:
-    opacity 220ms ease,
-    transform 220ms ease,
-    max-width 220ms ease,
-    padding 220ms ease,
-    margin 220ms ease;
+  transition: opacity 220ms ease, transform 220ms ease, max-width 220ms ease,
+    padding 220ms ease, margin 220ms ease;
 }
 
 /* ── Mode toggle ───────────────────────────────────────── */
@@ -230,7 +215,6 @@
   background: rgba(255, 255, 255, 0.14);
 }
 
-
 @media (max-width: 767px) {
   .mode-toggle {
     padding: 2px;
@@ -239,6 +223,54 @@
     padding: 4px 12px;
     font-size: 0.72rem;
   }
+}
+
+/* ── Brand / home link ─────────────────────────────────── */
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 10px;
+  transition: color 180ms ease, opacity 180ms ease, text-shadow 180ms ease;
+}
+
+/* Default (any unlisted page) */
+.navbar-brand-default {
+  color: #e7e7ff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.navbar-brand-default:hover {
+  color: #ffffff;
+}
+
+/* Project Maki */
+.navbar-brand-maki {
+  color: #c41e3a;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+.navbar-brand-maki:hover {
+  color: #e0304d;
+}
+
+/* CP2077 */
+.navbar-brand-cp2077 {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #f5d300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.navbar-brand-cp2077:hover {
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(245, 211, 0, 0.55);
 }
 
 /* ── Accessibility ─────────────────────────────────────── */
