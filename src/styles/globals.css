@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Oswald:wght@300;400;500&display=swap');
+
 :root {
   --background: #0b0b15;
   --foreground: #e9e9f2;
@@ -79,6 +81,55 @@ body.maki-page footer a {
 
 body.maki-page footer a:hover {
   color: #d4af37;
+}
+
+body.cp2077-page::before {
+  opacity: 0;
+}
+
+body.cp2077-page {
+  background: #0a0c0f;
+}
+
+body.cp2077-page .navbar {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 15, 0.92) 0%,
+    rgba(10, 12, 15, 0.0) 100%
+  );
+  border-bottom: 1px solid rgba(245, 211, 0, 0.15);
+}
+
+body.cp2077-page .mode-toggle {
+  border-color: rgba(245, 211, 0, 0.2);
+  background: rgba(245, 211, 0, 0.04);
+}
+
+body.cp2077-page .toggle-active {
+  background: rgba(245, 211, 0, 0.15);
+  color: #f5d300;
+}
+
+body.cp2077-page .navbar-links a:hover,
+body.cp2077-page .navbar-links a:focus-visible,
+body.cp2077-page .dropdown-trigger:hover,
+body.cp2077-page .dropdown-trigger:focus-visible {
+  box-shadow: 0 10px 28px rgba(245, 211, 0, 0.2);
+}
+
+body.cp2077-page .dropdown-menu a:hover,
+body.cp2077-page .dropdown-menu a:focus-visible {
+  background-color: rgba(245, 211, 0, 0.12);
+}
+
+body.cp2077-page footer {
+  background: #0a0c0f;
+  border-top: 1px solid rgba(245, 211, 0, 0.12);
+  color: rgba(200, 212, 224, 0.4);
+}
+
+body.cp2077-page footer a:hover {
+  color: #f5d300;
 }
 
 * {
