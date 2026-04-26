@@ -1,0 +1,477 @@
+/* cp2077.module.css — Cyberpunk 2077 Iconic Weapons Checklist */
+
+/* ── Variables ──────────────────────────────────────────── */
+.page {
+  --cp-bg: #0a0c0f;
+  --cp-bg2: #0f1215;
+  --cp-bg3: #141820;
+  --cp-panel: #111419;
+  --cp-border: #1e2530;
+  --cp-yellow: #f5d300;
+  --cp-cyan: #00c8ff;
+  --cp-red: #ff3355;
+  --cp-orange: #ff8c00;
+  --cp-green: #00e57a;
+  --cp-purple: #b060ff;
+  --cp-dim: #4a5568;
+  --cp-text: #c8d4e0;
+  --cp-text2: #7a8a9a;
+
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  color: var(--cp-text);
+  min-height: 100vh;
+  background: var(--cp-bg);
+  position: relative;
+}
+
+/* Scanlines overlay */
+.page::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.header {
+  background: linear-gradient(135deg, #0f1215 0%, #131a20 100%);
+  border-bottom: 2px solid var(--cp-yellow);
+  padding: 20px 24px 16px;
+  position: sticky;
+  top: 60px; /* clear the site navbar */
+  z-index: 100; /* navbar is 200, so dropdown always renders above this */
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.titleBlock h1 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cp-yellow);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.titleBlock p {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--cp-dim);
+  letter-spacing: 2px;
+  margin-top: 3px;
+}
+
+.counter {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: var(--cp-cyan);
+  letter-spacing: 1px;
+  background: rgba(0, 200, 255, 0.06);
+  border: 1px solid rgba(0, 200, 255, 0.2);
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+
+/* ── Progress bar ───────────────────────────────────────── */
+.progressBar {
+  height: 2px;
+  background: var(--cp-border);
+  margin-top: 10px;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--cp-yellow);
+  transition: width 0.35s ease;
+}
+
+/* ── Legend ─────────────────────────────────────────────── */
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--cp-border);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: var(--cp-text2);
+  letter-spacing: 1px;
+}
+
+/* ── Badges ─────────────────────────────────────────────── */
+.badge {
+  padding: 2px 7px;
+  font-size: 9px;
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 1px;
+  font-weight: bold;
+  border: 1px solid;
+  display: inline-block;
+}
+
+.badgeMiss { color: var(--cp-red); border-color: var(--cp-red); background: rgba(255, 51, 85, 0.08); }
+.badgeCare { color: var(--cp-orange); border-color: var(--cp-orange); background: rgba(255, 140, 0, 0.08); }
+.badgeSafe { color: var(--cp-green); border-color: var(--cp-green); background: rgba(0, 229, 122, 0.08); }
+.badgeLock { color: var(--cp-cyan); border-color: var(--cp-cyan); background: rgba(0, 200, 255, 0.08); }
+.badgePost { color: var(--cp-purple); border-color: var(--cp-purple); background: rgba(176, 96, 255, 0.08); }
+.badgeExcl { color: var(--cp-yellow); border-color: var(--cp-yellow); background: rgba(245, 211, 0, 0.08); }
+
+/* ── Search bar ─────────────────────────────────────────── */
+.searchBar {
+  background: var(--cp-bg3);
+  border-bottom: 1px solid var(--cp-border);
+  padding: 10px 24px;
+}
+
+.searchBar input {
+  background: var(--cp-panel);
+  border: 1px solid var(--cp-border);
+  color: var(--cp-text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  padding: 7px 12px;
+  width: 100%;
+  max-width: 420px;
+  outline: none;
+  letter-spacing: 1px;
+  transition: border-color 150ms ease;
+}
+
+.searchBar input:focus {
+  border-color: var(--cp-cyan);
+}
+
+.searchBar input::placeholder {
+  color: var(--cp-dim);
+}
+
+/* ── Filter groups ──────────────────────────────────────── */
+.filterGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--cp-border);
+  background: var(--cp-bg3);
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filterGroupLabel {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  color: var(--cp-dim);
+  width: 46px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.filterBtn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border: 1px solid var(--cp-border);
+  background: transparent;
+  color: var(--cp-text2);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.12s ease;
+}
+
+.filterBtn:hover,
+.filterBtnActive {
+  border-color: var(--cp-yellow) !important;
+  color: var(--cp-yellow) !important;
+  background: rgba(245, 211, 0, 0.05) !important;
+}
+
+
+.clearBtn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 51, 85, 0.3);
+  background: transparent;
+  color: var(--cp-red);
+  cursor: pointer;
+  margin-left: auto;
+  text-transform: uppercase;
+  transition: background 0.12s ease;
+}
+
+.clearBtn:hover {
+  background: rgba(255, 51, 85, 0.08);
+}
+
+/* ── Main content ───────────────────────────────────────── */
+.main {
+  padding: 0 16px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Section ────────────────────────────────────────────── */
+.section {
+  margin-top: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0 8px;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid var(--cp-border);
+  margin-bottom: 4px;
+  transition: color 0.15s;
+}
+
+.sectionHeader:hover .sectionTitle {
+  color: var(--cp-yellow);
+}
+
+.sectionLine {
+  width: 4px;
+  height: 14px;
+  flex-shrink: 0;
+  border-radius: 1px;
+}
+
+.sectionIcon {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+  color: var(--cp-text2);
+}
+
+.sectionTitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cp-text);
+  transition: color 0.15s;
+  flex: 1;
+}
+
+.sectionCount {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: var(--cp-dim);
+}
+
+.sectionToggle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: var(--cp-dim);
+  width: 16px;
+  text-align: center;
+}
+
+/* ── Items ──────────────────────────────────────────────── */
+.itemsList {
+  overflow: hidden;
+}
+
+.subsectionLabel {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--cp-dim);
+  text-transform: uppercase;
+  padding: 12px 0 4px 36px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 7px 8px;
+  border-bottom: 1px solid rgba(30, 37, 48, 0.5);
+  cursor: pointer;
+  transition: background 0.1s;
+  min-height: 40px;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.itemChecked {
+  opacity: 0.35;
+}
+
+/* ── Item checkbox ──────────────────────────────────────── */
+.itemCheck {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--cp-dim);
+  flex-shrink: 0;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--cp-yellow);
+  transition: all 0.1s;
+}
+
+.itemCheckDone {
+  border-color: var(--cp-yellow);
+  background: rgba(245, 211, 0, 0.15);
+}
+
+/* ── Item body ──────────────────────────────────────────── */
+.itemBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemTop {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.itemName {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cp-text);
+  white-space: nowrap;
+}
+
+.itemType {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: var(--cp-text2);
+  letter-spacing: 1px;
+}
+
+.itemDetails {
+  margin-top: 3px;
+  font-size: 15px;
+  color: var(--cp-text2);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.questName {
+  color: var(--cp-text);
+  font-weight: 400;
+}
+
+.note {
+  color: var(--cp-cyan);
+  font-size: 13px;
+  font-family: 'Share Tech Mono', monospace;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.nearby {
+  color: var(--cp-yellow);
+  font-size: 13px;
+  font-family: 'Share Tech Mono', monospace;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* ── Back link ──────────────────────────────────────────── */
+.backLink {
+  text-align: center;
+  padding: 32px 16px 48px;
+}
+
+.backLink a {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px;
+  color: var(--cp-dim);
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 1px solid var(--cp-border);
+  padding: 8px 18px;
+  transition: all 0.15s ease;
+}
+
+.backLink a:hover {
+  color: var(--cp-yellow);
+  border-color: var(--cp-yellow);
+  background: rgba(245, 211, 0, 0.05);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .header {
+    padding: 14px 14px 12px;
+    top: 52px;
+  }
+
+  .titleBlock h1 {
+    font-size: 15px;
+    letter-spacing: 1.5px;
+  }
+
+  .counter {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .legend {
+    gap: 10px;
+  }
+
+  .legendItem {
+    font-size: 9px;
+  }
+
+  .searchBar {
+    padding: 8px 14px;
+  }
+
+  .filterGroups {
+    padding: 8px 14px;
+  }
+
+  .main {
+    padding: 0 8px 40px;
+  }
+
+  .sectionTitle {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+}
