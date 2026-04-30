@@ -108,9 +108,11 @@ const Navbar: React.FC = () => {
               </li>
             </ul>
           </li>
-          <li>
-            <Link href="#contact">Contact</Link>
-          </li>
+          {isHome && (
+            <li>
+              <Link href="#contact">Contact</Link>
+            </li>
+          )}
         </ul>
 
       </div>
