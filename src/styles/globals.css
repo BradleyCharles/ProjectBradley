@@ -132,6 +132,29 @@ body.cp2077-page footer a:hover {
   color: #f5d300;
 }
 
+body.retro90-page {
+  background-color: #000080;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+body.retro90-page a {
+  color: #00ffff;
+  text-decoration: underline;
+}
+
+body.retro90-page a:visited {
+  color: #ff69b4;
+}
+
+body.retro90-page a:hover {
+  color: #ffff00;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

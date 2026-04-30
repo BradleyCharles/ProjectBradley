@@ -4,30 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-/* Body theme override */
-:global(body.retro90-page) {
-  background-color: #000080;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-  font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
-  color: #ffffff;
-  min-height: 100vh;
-}
-
-:global(body.retro90-page) a {
-  color: #00ffff;
-  text-decoration: underline;
-}
-
-:global(body.retro90-page) a:visited {
-  color: #ff69b4;
-}
-
-:global(body.retro90-page) a:hover {
-  color: #ffff00;
-}
-
 /* ============================================================
    PAGE WRAPPER
    ============================================================ */
