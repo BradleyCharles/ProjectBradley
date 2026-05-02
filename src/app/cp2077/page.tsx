@@ -21,8 +21,13 @@ type SectionFilter =
   | "dlc-main"  | "dlc-side"
   | "world" | "craft" | "vendor"
   | null;
-type WeaponTypeFilter = "pistol" | "revolver" | "shotgun" | "smg" | "rifle" | "melee" | "other" | null;
-type WeaponSubTypeFilter = "power" | "tech" | "smart" | "precision" | null;
+type WeaponTypeFilter =
+  | "pistol" | "revolver" | "shotgun" | "smg"
+  | "assault-rifle" | "precision-rifle" | "sniper-rifle" | "lmg"
+  | "one-handed-club" | "two-handed-club" | "knife" | "katana" | "hammer" | "axe"
+  | "other"
+  | null;
+type WeaponSubTypeFilter = "power" | "tech" | "smart" | "throwable" | "melee" | null;
 
 interface WeaponItem {
   id: string;
@@ -1139,16 +1144,22 @@ export default function Cp2077Page() {
     if (weaponTypeFilter !== null) {
       const t = item.type.toUpperCase();
       switch (weaponTypeFilter) {
-        case "pistol":   if (!t.includes("PISTOL"))   return false; break;
-        case "revolver": if (!t.includes("REVOLVER")) return false; break;
-        case "shotgun":  if (!t.includes("SHOTGUN"))  return false; break;
-        case "smg":      if (!t.includes("SMG"))      return false; break;
-        case "rifle":    if (!t.includes("RIFLE"))    return false; break;
-        case "melee":
-          if (!["KATANA","CLUB","KNIFE","HAMMER","AXE"].some((k) => t.includes(k))) return false;
-          break;
+        case "pistol":          if (!t.includes("PISTOL"))          return false; break;
+        case "revolver":        if (!t.includes("REVOLVER"))        return false; break;
+        case "shotgun":         if (!t.includes("SHOTGUN"))         return false; break;
+        case "smg":             if (!t.includes("SMG"))             return false; break;
+        case "assault-rifle":   if (!t.includes("ASSAULT RIFLE") && !t.includes(" AR")) return false; break;
+        case "precision-rifle": if (!t.includes("PRECISION"))       return false; break;
+        case "sniper-rifle":    if (!t.includes("SNIPER"))          return false; break;
+        case "one-handed-club": if (!t.includes("ONE-HANDED CLUB")) return false; break;
+        case "two-handed-club": if (!t.includes("TWO-HANDED CLUB")) return false; break;
+        case "knife":           if (!t.includes("KNIFE"))           return false; break;
+        case "katana":          if (!t.includes("KATANA"))          return false; break;
+        case "hammer":          if (!t.includes("HAMMER"))          return false; break;
+        case "axe":             if (!t.includes("AXE"))             return false; break;
+        case "lmg":             if (!t.includes("LMG"))             return false; break;
         case "other":
-          if (["PISTOL","REVOLVER","SHOTGUN","SMG","RIFLE","KATANA","CLUB","KNIFE","HAMMER","AXE"].some((k) => t.includes(k))) return false;
+          if (["PISTOL","REVOLVER","SHOTGUN","SMG","RIFLE","LMG","KATANA","CLUB","KNIFE","HAMMER","AXE"].some((k) => t.includes(k))) return false;
           break;
       }
     }
@@ -1159,7 +1170,10 @@ export default function Cp2077Page() {
         case "power":     if (!t.includes("POWER"))     return false; break;
         case "tech":      if (!t.includes("TECH"))      return false; break;
         case "smart":     if (!t.includes("SMART"))     return false; break;
-        case "precision": if (!t.includes("PRECISION")) return false; break;
+        case "throwable": if (!t.includes("THROWABLE")) return false; break;
+        case "melee":
+          if (!["KATANA","CLUB","KNIFE","HAMMER","AXE"].some((k) => t.includes(k))) return false;
+          break;
       }
     }
 
@@ -1283,13 +1297,21 @@ export default function Cp2077Page() {
           <span className={styles.filterGroupLabel}>TYPE</span>
           {(
             [
-              { key: "pistol",   label: "PISTOL" },
-              { key: "revolver", label: "REVOLVER" },
-              { key: "shotgun",  label: "SHOTGUN" },
-              { key: "smg",      label: "SMG" },
-              { key: "rifle",    label: "RIFLE" },
-              { key: "melee",    label: "MELEE" },
-              { key: "other",    label: "OTHER" },
+              { key: "pistol",          label: "PISTOL" },
+              { key: "revolver",        label: "REVOLVER" },
+              { key: "shotgun",         label: "SHOTGUN" },
+              { key: "smg",             label: "SMG" },
+              { key: "assault-rifle",   label: "ASSAULT RIFLE" },
+              { key: "precision-rifle", label: "PRECISION RIFLE" },
+              { key: "sniper-rifle",    label: "SNIPER RIFLE" },
+              { key: "one-handed-club", label: "ONE-HANDED CLUB" },
+              { key: "two-handed-club", label: "TWO-HANDED CLUB" },
+              { key: "knife",           label: "KNIFE" },
+              { key: "katana",          label: "KATANA" },
+              { key: "hammer",          label: "HAMMER" },
+              { key: "axe",             label: "AXE" },
+              { key: "lmg",             label: "LMG" },
+              { key: "other",           label: "OTHER" },
             ] as { key: WeaponTypeFilter; label: string }[]
           ).map(({ key, label }) => (
             <button
@@ -1308,7 +1330,8 @@ export default function Cp2077Page() {
               { key: "power",     label: "POWER" },
               { key: "tech",      label: "TECH" },
               { key: "smart",     label: "SMART" },
-              { key: "precision", label: "PRECISION" },
+              { key: "throwable", label: "THROWABLE" },
+              { key: "melee",     label: "MELEE" },
             ] as { key: WeaponSubTypeFilter; label: string }[]
           ).map(({ key, label }) => (
             <button
