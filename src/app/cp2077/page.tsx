@@ -22,6 +22,7 @@ type SectionFilter =
   | "world" | "craft" | "vendor"
   | null;
 type WeaponTypeFilter = "pistol" | "revolver" | "shotgun" | "smg" | "rifle" | "melee" | "other" | null;
+type WeaponSubTypeFilter = "power" | "tech" | "smart" | "precision" | null;
 
 interface WeaponItem {
   id: string;
@@ -1055,6 +1056,7 @@ export default function Cp2077Page() {
   const [badgeFilter, setBadgeFilter] = useState<BadgeFilter>(null);
   const [sectionFilter, setSectionFilter] = useState<SectionFilter>(null);
   const [weaponTypeFilter, setWeaponTypeFilter] = useState<WeaponTypeFilter>(null);
+  const [weaponSubTypeFilter, setWeaponSubTypeFilter] = useState<WeaponSubTypeFilter>(null);
   const [search, setSearch] = useState("");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
 
@@ -1105,6 +1107,7 @@ export default function Cp2077Page() {
     setBadgeFilter(null);
     setSectionFilter(null);
     setWeaponTypeFilter(null);
+    setWeaponSubTypeFilter(null);
   };
 
   const isVisible = (item: WeaponItem): boolean => {
@@ -1147,6 +1150,16 @@ export default function Cp2077Page() {
         case "other":
           if (["PISTOL","REVOLVER","SHOTGUN","SMG","RIFLE","KATANA","CLUB","KNIFE","HAMMER","AXE"].some((k) => t.includes(k))) return false;
           break;
+      }
+    }
+
+    if (weaponSubTypeFilter !== null) {
+      const t = item.type.toUpperCase();
+      switch (weaponSubTypeFilter) {
+        case "power":     if (!t.includes("POWER"))     return false; break;
+        case "tech":      if (!t.includes("TECH"))      return false; break;
+        case "smart":     if (!t.includes("SMART"))     return false; break;
+        case "precision": if (!t.includes("PRECISION")) return false; break;
       }
     }
 
@@ -1283,6 +1296,25 @@ export default function Cp2077Page() {
               key={key as string}
               className={[styles.filterBtn, weaponTypeFilter === key ? styles.filterBtnActive : ""].filter(Boolean).join(" ")}
               onClick={() => setWeaponTypeFilter((prev) => (prev === key ? null : key))}
+            >{label}</button>
+          ))}
+        </div>
+
+        {/* Group 5 — Weapon sub-type */}
+        <div className={styles.filterGroup}>
+          <span className={styles.filterGroupLabel}>SUB-TYPE</span>
+          {(
+            [
+              { key: "power",     label: "POWER" },
+              { key: "tech",      label: "TECH" },
+              { key: "smart",     label: "SMART" },
+              { key: "precision", label: "PRECISION" },
+            ] as { key: WeaponSubTypeFilter; label: string }[]
+          ).map(({ key, label }) => (
+            <button
+              key={key as string}
+              className={[styles.filterBtn, weaponSubTypeFilter === key ? styles.filterBtnActive : ""].filter(Boolean).join(" ")}
+              onClick={() => setWeaponSubTypeFilter((prev) => (prev === key ? null : key))}
             >{label}</button>
           ))}
         </div>
