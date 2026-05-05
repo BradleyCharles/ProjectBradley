@@ -261,7 +261,7 @@
 
 /* CP2077 */
 .navbar-brand-cp2077 {
-  font-family: "Rajdhani", sans-serif;
+  font-family: var(--font-rajdhani), sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
   color: #f5d300;

@@ -17,7 +17,7 @@
   --cp-text: #c8d4e0;
   --cp-text2: #7a8a9a;
 
-  font-family: 'Oswald', sans-serif;
+  font-family: var(--font-oswald), sans-serif;
   font-weight: 300;
   color: var(--cp-text);
   min-height: 100vh;
@@ -60,7 +60,7 @@
 }
 
 .titleBlock h1 {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-rajdhani), sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: var(--cp-yellow);
@@ -69,7 +69,7 @@
 }
 
 .titleBlock p {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 10px;
   color: var(--cp-dim);
   letter-spacing: 2px;
@@ -77,7 +77,7 @@
 }
 
 .counter {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 13px;
   color: var(--cp-cyan);
   letter-spacing: 1px;
@@ -114,7 +114,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 10px;
   color: var(--cp-text2);
   letter-spacing: 1px;
@@ -124,7 +124,7 @@
 .badge {
   padding: 2px 7px;
   font-size: 9px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   letter-spacing: 1px;
   font-weight: bold;
   border: 1px solid;
@@ -149,7 +149,7 @@
   background: var(--cp-panel);
   border: 1px solid var(--cp-border);
   color: var(--cp-text);
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 12px;
   padding: 7px 12px;
   width: 100%;
@@ -185,7 +185,7 @@
 }
 
 .filterGroupLabel {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 8px;
   letter-spacing: 1.5px;
   color: var(--cp-dim);
@@ -195,7 +195,7 @@
 }
 
 .filterBtn {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 9px;
   letter-spacing: 1px;
   padding: 4px 10px;
@@ -216,7 +216,7 @@
 
 
 .clearBtn {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 9px;
   letter-spacing: 1px;
   padding: 4px 10px;
@@ -276,7 +276,7 @@
 }
 
 .sectionTitle {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-rajdhani), sans-serif;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 3px;
@@ -287,13 +287,13 @@
 }
 
 .sectionCount {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 13px;
   color: var(--cp-dim);
 }
 
 .sectionToggle {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 13px;
   color: var(--cp-dim);
   width: 16px;
@@ -306,7 +306,7 @@
 }
 
 .subsectionLabel {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 11px;
   letter-spacing: 2px;
   color: var(--cp-dim);
@@ -367,7 +367,7 @@
 }
 
 .itemName {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-rajdhani), sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: var(--cp-text);
@@ -375,7 +375,7 @@
 }
 
 .itemType {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 11px;
   color: var(--cp-text2);
   letter-spacing: 1px;
@@ -397,7 +397,7 @@
 .note {
   color: var(--cp-cyan);
   font-size: 13px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   margin-top: 3px;
   line-height: 1.4;
 }
@@ -405,7 +405,7 @@
 .nearby {
   color: var(--cp-yellow);
   font-size: 13px;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   margin-top: 3px;
   line-height: 1.4;
 }
@@ -417,7 +417,7 @@
 }
 
 .backLink a {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: var(--font-share-tech-mono), monospace;
   font-size: 14px;
   color: var(--cp-dim);
   letter-spacing: 1px;

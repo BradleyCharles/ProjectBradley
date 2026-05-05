@@ -1,6 +1,6 @@
 // app/layout.tsx or app/layout.js
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Rajdhani, Share_Tech_Mono, Oswald } from "next/font/google";
 import "../styles/globals.css";
 import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
@@ -16,6 +16,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const rajdhani = Rajdhani({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-rajdhani",
+});
+
+const shareTechMono = Share_Tech_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-share-tech-mono",
+});
+
+const oswald = Oswald({
+  weight: ["300", "400", "500"],
+  subsets: ["latin"],
+  variable: "--font-oswald",
+});
+
 export const metadata: Metadata = {
   title: "Bradley Charles",
   description: "Created by Bradley Charles",
@@ -28,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
       <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${rajdhani.variable} ${shareTechMono.variable} ${oswald.variable}`}>
       <ClientLayout>
         <div className="root-layout">
           <Navbar />
