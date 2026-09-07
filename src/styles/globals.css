@@ -130,6 +130,55 @@ body.cp2077-page footer a:hover {
   color: #f5d300;
 }
 
+body.rds-page::before {
+  opacity: 0;
+}
+
+body.rds-page {
+  background: #100d08;
+}
+
+body.rds-page .navbar {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 13, 8, 0.88) 0%,
+    rgba(16, 13, 8, 0.0) 100%
+  );
+  border-bottom: 1px solid rgba(227, 169, 74, 0.15);
+}
+
+body.rds-page .mode-toggle {
+  border-color: rgba(227, 169, 74, 0.2);
+  background: rgba(227, 169, 74, 0.05);
+}
+
+body.rds-page .toggle-active {
+  background: rgba(227, 169, 74, 0.18);
+  color: #e3a94a;
+}
+
+body.rds-page .navbar-links a:hover,
+body.rds-page .navbar-links a:focus-visible,
+body.rds-page .dropdown-trigger:hover,
+body.rds-page .dropdown-trigger:focus-visible {
+  box-shadow: 0 10px 28px rgba(227, 169, 74, 0.28);
+}
+
+body.rds-page .dropdown-menu a:hover,
+body.rds-page .dropdown-menu a:focus-visible {
+  background-color: rgba(227, 169, 74, 0.14);
+}
+
+body.rds-page footer {
+  background: #100d08;
+  border-top: 1px solid rgba(227, 169, 74, 0.14);
+  color: rgba(239, 233, 222, 0.4);
+}
+
+body.rds-page footer a:hover {
+  color: #e3a94a;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

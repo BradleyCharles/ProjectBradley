@@ -114,52 +114,52 @@
   line-height: 1.7;
 }
 
-/* ─── Featured Maki card ──────────────────────────────────────────────────── */
+/* ─── Featured project card ──────────────────────────────────────────────── */
 
-@keyframes makiBorderPulse {
+@keyframes featuredBorderPulse {
   0%, 100% { opacity: 0.55; }
   50%       { opacity: 1; }
 }
 
-@keyframes makiShimmer {
+@keyframes featuredShimmer {
   0%   { background-position: -200% center; }
   100% { background-position:  200% center; }
 }
 
-.makiFeatured {
+.featuredProject {
   position: relative;
   border-radius: 24px;
   padding: 2px;
   background: linear-gradient(
     135deg,
-    rgba(196, 30, 58, 0.9) 0%,
-    rgba(139, 0, 0, 0.6) 35%,
-    rgba(212, 175, 55, 0.7) 65%,
-    rgba(196, 30, 58, 0.9) 100%
+    rgba(227, 169, 74, 0.9) 0%,
+    rgba(126, 90, 25, 0.6) 35%,
+    rgba(127, 189, 178, 0.55) 65%,
+    rgba(227, 169, 74, 0.9) 100%
   );
   background-size: 300% 300%;
-  animation: makiShimmer 5s linear infinite;
+  animation: featuredShimmer 5s linear infinite;
   box-shadow:
-    0 0 40px rgba(196, 30, 58, 0.22),
+    0 0 40px rgba(227, 169, 74, 0.22),
     0 24px 64px rgba(0, 0, 0, 0.55);
   transition: box-shadow 300ms ease, transform 300ms ease;
   text-decoration: none;
   display: block;
 }
 
-.makiFeatured:hover,
-.makiFeatured:focus-visible {
+.featuredProject:hover,
+.featuredProject:focus-visible {
   box-shadow:
-    0 0 72px rgba(196, 30, 58, 0.45),
+    0 0 72px rgba(227, 169, 74, 0.42),
     0 28px 72px rgba(0, 0, 0, 0.65);
   transform: translateY(-3px);
 }
 
-.makiFeaturedInner {
+.featuredProjectInner {
   border-radius: 22px;
   background:
-    radial-gradient(ellipse at 20% 0%,   rgba(139, 0, 0, 0.45) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 100%, rgba(212, 175, 55, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 0%,   rgba(126, 90, 25, 0.4) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(127, 189, 178, 0.14) 0%, transparent 50%),
     rgba(10, 10, 10, 0.97);
   padding: 36px 40px;
   display: grid;
@@ -168,13 +168,13 @@
   align-items: center;
 }
 
-.makiFeaturedContent {
+.featuredProjectContent {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.makiFeaturedBadge {
+.featuredProjectBadge {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -182,30 +182,30 @@
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #d4af37;
+  color: #7fbdb2;
   width: fit-content;
 }
 
-.makiFeaturedBadgeDot {
+.featuredProjectBadgeDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #c41e3a;
-  animation: makiBorderPulse 2s ease-in-out infinite;
+  background: #e3a94a;
+  animation: featuredBorderPulse 2s ease-in-out infinite;
   flex-shrink: 0;
 }
 
-.makiFeaturedTitle {
+.featuredProjectTitle {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1;
   color: #f5f0e8;
   margin: 0;
-  text-shadow: 0 0 60px rgba(196, 30, 58, 0.5);
+  text-shadow: 0 0 60px rgba(227, 169, 74, 0.45);
 }
 
-.makiFeaturedDesc {
+.featuredProjectDesc {
   font-size: clamp(0.9rem, 1.4vw, 1rem);
   color: rgba(245, 240, 232, 0.62);
   line-height: 1.75;
@@ -213,61 +213,61 @@
   margin: 0;
 }
 
-.makiFeaturedPills {
+.featuredProjectPills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.makiFeaturedPill {
+.featuredProjectPill {
   padding: 4px 11px;
   border-radius: 999px;
-  border: 1px solid rgba(196, 30, 58, 0.35);
-  background: rgba(196, 30, 58, 0.1);
+  border: 1px solid rgba(227, 169, 74, 0.35);
+  background: rgba(227, 169, 74, 0.1);
   color: rgba(245, 240, 232, 0.65);
   font-size: 0.76rem;
   font-weight: 500;
   letter-spacing: 0.03em;
 }
 
-.makiFeaturedCta {
+.featuredProjectCta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
   border-radius: 12px;
-  background: #c41e3a;
-  color: #ffffff;
+  background: #e3a94a;
+  color: #1a1305;
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   white-space: nowrap;
   flex-shrink: 0;
-  box-shadow: 0 8px 28px rgba(196, 30, 58, 0.45);
+  box-shadow: 0 8px 28px rgba(227, 169, 74, 0.4);
   transition: background-color 160ms ease, transform 160ms ease, box-shadow 200ms ease;
   align-self: center;
 }
 
-.makiFeatured:hover .makiFeaturedCta,
-.makiFeatured:focus-visible .makiFeaturedCta {
-  background: #e02040;
+.featuredProject:hover .featuredProjectCta,
+.featuredProject:focus-visible .featuredProjectCta {
+  background: #f0bd6b;
   transform: translateX(3px);
-  box-shadow: 0 12px 36px rgba(196, 30, 58, 0.6);
+  box-shadow: 0 12px 36px rgba(227, 169, 74, 0.55);
 }
 
 @media (max-width: 720px) {
-  .makiFeaturedInner {
+  .featuredProjectInner {
     grid-template-columns: 1fr;
     padding: 28px 24px;
     gap: 20px;
   }
 
-  .makiFeaturedCta {
+  .featuredProjectCta {
     align-self: flex-start;
   }
 }
 
-/* ─── end Featured Maki card ──────────────────────────────────────────────── */
+/* ─── end Featured project card ─────────────────────────────────────────── */
 
 .projectsShowcase {
   gap: 28px;

@@ -25,6 +25,14 @@ function BrandLink() {
     );
   }
 
+  if (pathname.startsWith("/projects/rds")) {
+    return (
+      <Link href="/" className="navbar-brand navbar-brand-rds">
+        Bradley Charles
+      </Link>
+    );
+  }
+
   return (
     <Link href="/" className="navbar-brand navbar-brand-default">
       Bradley Charles
@@ -96,6 +104,11 @@ const Navbar: React.FC = () => {
               <span className={`chevron${dropdownOpen ? " open" : ""}`}>▾</span>
             </button>
             <ul className={`dropdown-menu${dropdownOpen ? " open" : ""}`}>
+              <li>
+                <Link href="/projects/rds" onClick={() => setDropdownOpen(false)}>
+                  RO Dev Suite
+                </Link>
+              </li>
               <li>
                 <Link href="/maki" onClick={() => setDropdownOpen(false)}>
                   Project Maki

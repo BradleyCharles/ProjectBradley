@@ -148,26 +148,27 @@ export default function Projects() {
           </p>
         </div>
 
-        <Link href="/maki" className={styles.makiFeatured} aria-label="Explore Project Maki">
-          <div className={styles.makiFeaturedInner}>
-            <div className={styles.makiFeaturedContent}>
-              <span className={styles.makiFeaturedBadge}>
-                <span className={styles.makiFeaturedBadgeDot} />
+        <Link href="/projects/rds" className={styles.featuredProject} aria-label="Explore RO Dev Suite">
+          <div className={styles.featuredProjectInner}>
+            <div className={styles.featuredProjectContent}>
+              <span className={styles.featuredProjectBadge}>
+                <span className={styles.featuredProjectBadgeDot} />
                 Featured Project
               </span>
-              <h3 className={styles.makiFeaturedTitle}>Project Maki</h3>
-              <p className={styles.makiFeaturedDesc}>
-                A local AI Discord bot with persistent per-user memory, a personality that
-                deepens over time, and two fully independent personas — all running on hardware
-                you own.
+              <h3 className={styles.featuredProjectTitle}>RO Dev Suite</h3>
+              <p className={styles.featuredProjectDesc}>
+                A browser-based tool suite for a private Ragnarok Online server — decoding the
+                client&apos;s compiled binary to map every visual effect, and authoring skills,
+                items, and NPC scripts directly against real server files. Nothing is ever
+                uploaded; every tool runs entirely against the developer&apos;s own local files.
               </p>
-              <div className={styles.makiFeaturedPills}>
-                {["Node.js v22", "discord.js v14", "Ollama", "Gemma 4 E4B", "RTX 4060"].map((t) => (
-                  <span key={t} className={styles.makiFeaturedPill}>{t}</span>
+              <div className={styles.featuredProjectPills}>
+                {["Next.js 16", "WebGL2", "File System Access API", "Binary reverse engineering", "IndexedDB + OPFS"].map((t) => (
+                  <span key={t} className={styles.featuredProjectPill}>{t}</span>
                 ))}
               </div>
             </div>
-            <span className={styles.makiFeaturedCta}>
+            <span className={styles.featuredProjectCta}>
               Explore Project →
             </span>
           </div>

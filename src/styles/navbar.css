@@ -259,6 +259,18 @@
   color: #e0304d;
 }
 
+/* RO Dev Suite */
+.navbar-brand-rds {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #e3a94a;
+  letter-spacing: 0.02em;
+}
+.navbar-brand-rds:hover {
+  color: #f0bd6b;
+}
+
 /* CP2077 */
 .navbar-brand-cp2077 {
   font-family: var(--font-rajdhani), sans-serif;
