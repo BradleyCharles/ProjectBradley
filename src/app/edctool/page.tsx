@@ -20,6 +20,12 @@ function useEdcToolBodyClass() {
 /* ── Types ──────────────────────────────────────────────── */
 type CarrierType = "none" | "fleet" | "squadron";
 
+const CARRIER_DEFAULT_CAPACITY: Record<CarrierType, number | null> = {
+  none: null,
+  fleet: 25000,
+  squadron: 60000,
+};
+
 interface SavedState {
   carrierType: CarrierType;
   carrierCapacity: string;
@@ -142,7 +148,21 @@ export default function EdcToolPage() {
   };
 
   const changeCarrierType = (carrierType: CarrierType) => {
-    setState((s) => ({ ...s, carrierType }));
+    setState((s) => {
+      const knownDefaults = new Set(
+        Object.values(CARRIER_DEFAULT_CAPACITY)
+          .filter((v): v is number => v !== null)
+          .map(String)
+      );
+      const shouldAutofill = s.carrierCapacity === "" || knownDefaults.has(s.carrierCapacity);
+      const nextDefault = CARRIER_DEFAULT_CAPACITY[carrierType];
+      return {
+        ...s,
+        carrierType,
+        carrierCapacity:
+          shouldAutofill && nextDefault !== null ? String(nextDefault) : s.carrierCapacity,
+      };
+    });
   };
 
   /* ── Row actions ──────────────────────────────────────── */
@@ -298,7 +318,9 @@ export default function EdcToolPage() {
                   type="number"
                   inputMode="numeric"
                   min={0}
-                  placeholder="e.g. 25000"
+                  placeholder={
+                    state.carrierType === "squadron" ? "e.g. 60000" : "e.g. 25000"
+                  }
                   value={state.carrierCapacity}
                   onChange={(e) =>
                     setState((s) => ({ ...s, carrierCapacity: e.target.value }))
@@ -306,8 +328,9 @@ export default function EdcToolPage() {
                   className={styles.numberInput}
                 />
                 <p className={styles.fieldHint}>
-                  Depends on your carrier&apos;s cargo module loadout — enter your
-                  current actual capacity.
+                  Defaults to the max for your carrier type (Fleet: 25,000T,
+                  Squadron: 60,000T) — adjust if your cargo module loadout
+                  differs.
                 </p>
               </div>
             )}
