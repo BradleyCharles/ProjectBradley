@@ -1,0 +1,67 @@
+Structure,Max Pad,Prerequisites,System Unlock,Strong Link Unlock,T2,T3,,Security,Tech Level,Wealth,Standard of Living,Development Level,Facility Economy,Economy Influence,Init. Pop. Inc.,Max Pop. Inc.,Total amount of Commodities,# Trips with 1298 cargo space (L),# Trips with 400 cargo space (M)
+Orbital - Starport - Coriolis (Primary),L,Primary slot,,,-3,1,,-2,2,3,3,3,Colony,,1,1,"70,533",55,177
+Orbital - Starport - Asteroid Base (Primary),L,Primary slot,,,-3,1,,-1,3,5,-4,7,Extraction,,1,1,"70,533",55,177
+Orbital - Starport - Ocellus (Primary),L,Primary slot,,,,-6,,-3,7,8,5,9,Colony,,5,1,"242,742",188,607
+Orbital - Starport - Orbis (Primary),L,Primary slot,,,,-6,,-3,7,8,5,9,Colony,,5,1,"242,742",188,607
+Orbital - Starport - Dodecahedron (Primary),L,Primary slot,,,,-6,,-4,8,9,7,10,Colony,,8,4,"269,924",208,675
+Orbital - Outpost - Commercial (Primary),M,Primary slot,,,1,,,-1,,3,5,,Colony,,1,1,"21,835",17,55
+Orbital - Outpost - Industrial (Primary),M,Primary slot,,,1,,,,3,,,3,Industrial,Industrial,1,1,"21,835",17,55
+Orbital - Outpost - Criminal (Primary),M,Primary slot,,,1,,,-2,,3,,,Contraband,Contraband,1,1,"21,835",17,55
+Orbital - Outpost - Civilian (Primary),M,Primary slot,,,1,,,-1,,1,2,1,Colony,,1,1,"21,835",17,55
+Orbital - Outpost - Scientific (Primary),M,Primary slot,,,1,,,,3,,,,High Tech,High Tech,1,1,"21,835",17,55
+Orbital - Outpost - Military (Primary),M,Primary slot,,,1,,,2,,,,,Military,Military,1,1,"21,835",17,55
+Orbital - Starport - Coriolis,L,,,,-3,1,,-2,2,3,3,3,Colony,,1,1,"53,723",42,135
+Orbital - Starport - Asteroid Base,L,,,,-3,1,,-1,3,5,-4,7,Extraction,,1,1,"53,723",42,135
+Orbital - Starport - Ocellus,L,,,,,-6,,-3,7,8,5,9,Colony,,5,1,"209,122",162,523
+Orbital - Starport - Orbis,L,,,,,-6,,-3,7,8,5,9,Colony,,5,1,"209,122",162,523
+Orbital - Starport - Dodecahedron,L,,,,,-6,,-4,8,9,7,10,Colony,,8,4,"236,304",183,591
+Orbital - Outpost - Commercial,M,,,,1,,,-1,,3,5,,Colony,,1,1,"18,988",15,48
+Orbital - Outpost - Industrial,M,,,,1,,,,3,,,3,Industrial,Industrial,1,1,"18,987",15,48
+Orbital - Outpost - Criminal,M,,,,1,,,-2,,3,,,Contraband,Contraband,1,1,"18,988",15,48
+Orbital - Outpost - Civilian,M,,,,1,,,-1,,1,2,1,Colony,,1,1,"18,988",15,48
+Orbital - Outpost - Scientific,M,,,,1,,,,3,,,,High Tech,High Tech,1,1,"18,988",15,48
+Orbital - Outpost - Military,M,,,,1,,,2,,,,,Military,Military,1,1,"18,988",15,48
+Orbital - Installation - Satellite,❌,,Tourist Settlements,UC & VG at T1 Surface or T2 orbital ports,1,,,,,1,2,1,,,,,"6,721",6,17
+Orbital - Installation - Comm Station,❌,,Exploration Hub,"UC & VG, Commodities at Pirate, Scientific or Military Outposts",1,,,1,3,,,,,,,,"6,721",6,17
+Orbital - Installation - Space Farm,❌,,Outpost Hub,,1,,,,,,5,1,*Agricultural,Agricultural,,,"6,722",6,17
+Orbital - Installation - Pirate Base,❌,,,Black Market,1,,,-4,,4,,,*Contraband,Contraband,,,"6,721",6,17
+Orbital - Installation - Mining Outpost,❌,,Industrial Hub,,1,,,,,4,-2,,*Extraction,Extraction,,,"6,723",6,17
+Orbital - Installation - Relay Station,❌,,,"UC & VG, Commodities at Pirate, Scientific or Military Outposts",1,,,1,,,,1,*High Tech,High Tech,,,"6,721",6,17
+Orbital - Installation - Military,❌,Settlement - Military,"Military Hub, Shipyard at T1 surface ports, Outfitting at non-Military Outposts and non-Industrial T1 surface ports",,-1,1,,7,,,,,*Military,Military,,,"10,080",8,26
+Orbital - Installation - Security Station,❌,Installation - Relay Station,,,-1,1,,9,,,3,3,*Military,Military,,,"10,082",8,26
+Orbital - Installation - Government,❌,,,,-1,1,,2,,,7,3,,,,,"10,077",8,26
+Orbital - Installation - Medical,❌,,VG at T1 Surface or T2 orbital ports,,-1,1,,,3,,5,,*High Tech,High Tech,,,"10,081",8,26
+Orbital - Installation - Research Station,❌,Settlement - Research Bio,UC at T1 Surface or T2 orbital ports,,-1,1,,,8,,,3,*High Tech,High Tech,,,"10,083",8,26
+Orbital - Installation - Tourist,❌,Satellite ➔ Tourism Settlement,"Commodities at Pirate, Scientific or Military Outposts",,-1,1,,-3,,6,,3,*Tourism,Tourism,,,"10,087",8,26
+Orbital - Installation - Space Bar,❌,,"Crew Lounge at non-Civilian T1 ports, Commodities at Pirate, Scientific or Military Outposts",,-1,1,,-2,,3,3,,*Tourism,Tourism,,,"10,076",8,26
+Surface - Planetary Port - Outpost Civilian,L,,,,1,,,-2,,,3,,Colony,,2,1,"36,829",29,93
+Surface - Planetary Port - Outpost Industrial,L,,,,1,,,-1,,3,,,Industrial,Industrial,1,1,"36,829",29,93
+Surface - Planetary Port - Outpost Scientific,L,,,,1,,,-1,5,,,1,High Tech,High Tech,1,1,"36,829",29,93
+Surface - Planetary Port - Port,L,,,,,-6,,-3,5,5,7,10,Colony,,10,10,"216,030",167,541
+Surface - Settlement - Agriculture T1 S,S,,,,1,,,,,,3,,Agricultural,Agricultural,1,1,"2,839",3,8
+Surface - Settlement - Agriculture T1 M,S/L,,,,1,,,,,,7,,Agricultural,Agricultural,1,1,"5,678",5,15
+Surface - Settlement - Agriculture T2 L,L,,,,-1,2,,,,,10,,Agricultural,Agricultural,1,1,"8,517",7,22
+Surface - Settlement - Extraction T1 S,S,,,,1,,,,,3,,,Extraction,Extraction,1,1,"2,845",3,8
+Surface - Settlement - Extraction T1 M,M/L,,,,1,,,,,5,,,Extraction,Extraction,1,1,"5,690",5,15
+Surface - Settlement - Extraction T2 L,L,,,,-1,2,,,2,8,-2,,Extraction,Extraction,1,1,"8,535",7,22
+Surface - Settlement - Industrial T1 S,S,,,,1,,,,,,,3,Industrial,Industrial,1,1,"2,845",3,8
+Surface - Settlement - Industrial T1 M,M/L,,,,1,,,,,,,6,Industrial,Industrial,1,1,"5,690",5,15
+Surface - Settlement - Industrial T2 L,L,,,,-1,2,,,,3,,9,Industrial,Industrial,1,1,"8,535",7,22
+Surface - Settlement - Military T1 S,M,,Military Installations,,1,,,2,,,,,Military,Military,1,1,"2,842",3,8
+Surface - Settlement - Military T1 M,S/M,,Military Installations,,1,,,4,,,,,Military,Military,1,1,"5,684",5,15
+Surface - Settlement - Military T2 L,L,,Military Installations,,-1,2,,7,,,,3,Military,Military,1,1,"8,526",7,22
+Surface - Settlement - Research Bio T1 S,S,,Scientific Installations,,-1,1,,,3,,,1,High Tech,High Tech,1,1,"2,841",3,8
+Surface - Settlement - Research Bio T1 M,S,,Scientific Installations,,-1,1,,,7,,,1,High Tech,High Tech,1,1,"5,682",5,15
+Surface - Settlement - Research Bio T2 L,L,,Scientific Installations,,-1,2,,,10,,,3,High Tech,High Tech,1,1,"8,523",7,22
+Surface - Settlement - Tourism T1 S,M,Installation - Satellite,Tourist Installations,,-1,1,,-1,,1,,,Tourism,Tourism,1,1,"2,846",3,8
+Surface - Settlement - Tourism T1 M,L,Installation - Satellite,Tourist Installations,,-1,1,,-1,,3,,,Tourism,Tourism,1,1,"5,692",5,15
+Surface - Settlement - Tourism T2 L,L,Installation - Satellite,Tourist Installations,,-1,2,,-2,,5,,,Tourism,Tourism,1,1,"8,538",7,22
+Surface - Hub - Extraction,❌,Settlement - Extraction,,,-1,1,,,,10,-4,3,*Extraction,Extraction,1,1,"9,893",8,25
+Surface - Hub - Civilian,❌,Settlement - Agriculture,,,-1,1,,-3,,,3,3,,,1,1,"9,772",8,25
+Surface - Hub - Exploration,❌,Installation - Comm Station,UC at T1 Surface or T2 orbital ports,,-1,1,,-1,7,,,3,*Tourism,Tourism,1,1,"9,923",8,25
+Surface - Hub - Outpost,❌,Installation - Space Farm,"Commodities at Pirate, Scientific or Military Outposts",,-1,1,,-2,,,3,3,,,1,1,"9,198",8,23
+Surface - Hub - Scientific,❌,,VG at T1 Surface or T2 orbital ports,,-1,1,,,10,,,,*High Tech,High Tech,1,1,"9,924",8,25
+Surface - Hub - Military,❌,Mil. Settlement ➔ Mil. Installation,,,-1,1,,10,,,,,*Military,Military,1,1,"9,922",8,25
+Surface - Hub - Refinery,❌,,,,-1,1,,-1,3,5,-2,7,,Refinery,1,1,"9,919",8,25
+Surface - Hub - High Tech,❌,,Outfitting at non-Military Outposts and non-Industrial T1 surface ports,Shipyard at T1 surface ports,-1,1,,-2,10,3,,,*High Tech,High Tech,1,1,"9,921",8,25
+Surface - Hub - Industrial,❌,Installation - Mining Outpost,Shipyard at T1 surface ports,Outfitting at non-Military Outposts and non-Industrial T1 surface ports,-1,1,,,3,5,-4,3,*Industrial,Industrial,1,1,"9,753",8,25
