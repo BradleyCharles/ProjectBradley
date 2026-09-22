@@ -26,6 +26,27 @@ const CARRIER_DEFAULT_CAPACITY: Record<CarrierType, number | null> = {
   squadron: 60000,
 };
 
+type SortKey =
+  | "default"
+  | "alpha"
+  | "remaining-desc"
+  | "remaining-asc"
+  | "progress-desc"
+  | "progress-asc"
+  | "completed-first"
+  | "completed-last";
+
+const SORT_OPTIONS: { key: SortKey; label: string }[] = [
+  { key: "default", label: "Default Order" },
+  { key: "alpha", label: "Alphabetical (A → Z)" },
+  { key: "remaining-desc", label: "Tons Remaining (High → Low)" },
+  { key: "remaining-asc", label: "Tons Remaining (Low → High)" },
+  { key: "progress-desc", label: "% Complete (High → Low)" },
+  { key: "progress-asc", label: "% Complete (Low → High)" },
+  { key: "completed-first", label: "Completed First" },
+  { key: "completed-last", label: "Completed Last" },
+];
+
 interface SavedState {
   carrierType: CarrierType;
   carrierCapacity: string;
@@ -35,6 +56,8 @@ interface SavedState {
   premiumPct: number;
   progress: Record<string, number>;
   checkpoints: Record<string, number>;
+  sortBy: SortKey;
+  hideCompleted: boolean;
 }
 
 const STORAGE_KEY = "edctool-state-v1";
@@ -48,6 +71,8 @@ const DEFAULT_STATE: SavedState = {
   premiumPct: 0,
   progress: {},
   checkpoints: {},
+  sortBy: "default",
+  hideCompleted: false,
 };
 
 const FACILITIES_BY_CATEGORY = new Map<string, FacilityType[]>(
@@ -237,6 +262,57 @@ export default function EdcToolPage() {
     return { remaining, trips };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [requirements, state.progress, state.premiumPct, shipCapacityNum]);
+
+  const rowData = useMemo(() => {
+    return requirements.map((req) => {
+      const target = targetFor(req.tonnage);
+      const collected = state.progress[req.commodity] ?? 0;
+      const remaining = Math.max(0, target - collected);
+      const pct = target > 0 ? Math.min(100, (collected / target) * 100) : 0;
+      const isComplete = target > 0 && collected >= target;
+      return { req, target, collected, remaining, pct, isComplete };
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [requirements, state.progress, state.premiumPct]);
+
+  const hiddenCompletedCount = useMemo(
+    () => rowData.filter((r) => r.isComplete).length,
+    [rowData]
+  );
+
+  const displayRows = useMemo(() => {
+    const filtered = state.hideCompleted
+      ? rowData.filter((r) => !r.isComplete)
+      : rowData;
+
+    const sorted = [...filtered];
+    switch (state.sortBy) {
+      case "alpha":
+        sorted.sort((a, b) => a.req.commodity.localeCompare(b.req.commodity));
+        break;
+      case "remaining-desc":
+        sorted.sort((a, b) => b.remaining - a.remaining);
+        break;
+      case "remaining-asc":
+        sorted.sort((a, b) => a.remaining - b.remaining);
+        break;
+      case "progress-desc":
+        sorted.sort((a, b) => b.pct - a.pct);
+        break;
+      case "progress-asc":
+        sorted.sort((a, b) => a.pct - b.pct);
+        break;
+      case "completed-first":
+        sorted.sort((a, b) => Number(b.isComplete) - Number(a.isComplete));
+        break;
+      case "completed-last":
+        sorted.sort((a, b) => Number(a.isComplete) - Number(b.isComplete));
+        break;
+      default:
+        break;
+    }
+    return sorted;
+  }, [rowData, state.sortBy, state.hideCompleted]);
 
   return (
     <div className={styles.page}>
@@ -455,7 +531,48 @@ export default function EdcToolPage() {
 
         {/* ── Tracking list ───────────────────────────────── */}
         <section className={styles.trackingPanel} aria-label="Commodity tracking">
-          <h2 className={styles.panelTitle}>Work The List</h2>
+          <div className={styles.trackingHeader}>
+            <h2 className={styles.panelTitle}>Work The List</h2>
+
+            {facility && (
+              <div className={styles.trackingControls}>
+                <label className={styles.sortControl} htmlFor="sort-by">
+                  <span className={styles.fieldLabel}>Sort</span>
+                  <select
+                    id="sort-by"
+                    className={`${styles.selectInput} ${styles.sortSelect}`}
+                    value={state.sortBy}
+                    onChange={(e) =>
+                      setState((s) => ({ ...s, sortBy: e.target.value as SortKey }))
+                    }
+                  >
+                    {SORT_OPTIONS.map((opt) => (
+                      <option key={opt.key} value={opt.key}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <button
+                  type="button"
+                  className={[
+                    styles.btnGroupBtn,
+                    state.hideCompleted ? styles.btnGroupBtnActive : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  aria-pressed={state.hideCompleted}
+                  disabled={hiddenCompletedCount === 0 && !state.hideCompleted}
+                  onClick={() =>
+                    setState((s) => ({ ...s, hideCompleted: !s.hideCompleted }))
+                  }
+                >
+                  {state.hideCompleted ? "Show Completed" : "Hide Completed"}
+                </button>
+              </div>
+            )}
+          </div>
 
           {!facility && (
             <p className={styles.emptyState}>
@@ -471,14 +588,22 @@ export default function EdcToolPage() {
             </p>
           )}
 
+          {facility && state.hideCompleted && hiddenCompletedCount > 0 && (
+            <p className={styles.filteredNote}>
+              {hiddenCompletedCount} completed material
+              {hiddenCompletedCount === 1 ? "" : "s"} hidden.
+            </p>
+          )}
+
+          {facility && displayRows.length === 0 && requirements.length > 0 && (
+            <p className={styles.emptyState}>
+              All materials complete — nothing left to haul.
+            </p>
+          )}
+
           {facility && (
             <div className={styles.rows}>
-              {requirements.map((req) => {
-                const target = targetFor(req.tonnage);
-                const collected = state.progress[req.commodity] ?? 0;
-                const pct = target > 0 ? Math.min(100, (collected / target) * 100) : 0;
-                const checked = target > 0 && collected >= target;
-
+              {displayRows.map(({ req, target, collected, pct, isComplete: checked }) => {
                 return (
                   <div key={req.commodity} className={styles.row}>
                     <div className={styles.rowHead}>
