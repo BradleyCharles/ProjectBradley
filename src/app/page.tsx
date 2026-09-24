@@ -59,11 +59,11 @@ export default function Home() {
                   <p className={styles.contactLine}>
                     GitHub:{" "}
                     <a
-                      href="https://github.com/bradgcharles"
+                      href="https://github.com/BradleyCharles"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      github.com/bradgcharles
+                      github.com/BradleyCharles
                     </a>
                   </p>
                   <p className={styles.contactLine}>

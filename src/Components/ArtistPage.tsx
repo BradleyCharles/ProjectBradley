@@ -257,11 +257,11 @@ export default function ArtistPage() {
               <p>
                 GitHub:{" "}
                 <a
-                  href="https://github.com/bradgcharles"
+                  href="https://github.com/BradleyCharles"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  github.com/bradgcharles
+                  github.com/BradleyCharles
                 </a>
               </p>
               <p>
