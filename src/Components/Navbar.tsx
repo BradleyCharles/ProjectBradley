@@ -33,6 +33,14 @@ function BrandLink() {
     );
   }
 
+  if (pathname.startsWith("/edctool")) {
+    return (
+      <Link href="/" className="navbar-brand navbar-brand-edctool">
+        Bradley Charles
+      </Link>
+    );
+  }
+
   return (
     <Link href="/" className="navbar-brand navbar-brand-default">
       Bradley Charles
@@ -117,6 +125,11 @@ const Navbar: React.FC = () => {
               <li>
                 <Link href="/cp2077" onClick={() => setDropdownOpen(false)}>
                   CP2077 Iconic Checklist
+                </Link>
+              </li>
+              <li>
+                <Link href="/edctool" onClick={() => setDropdownOpen(false)}>
+                  Elite Dangerous Colonization Tracker
                 </Link>
               </li>
             </ul>

@@ -285,6 +285,19 @@
   text-shadow: 0 0 14px rgba(245, 211, 0, 0.55);
 }
 
+/* Elite Dangerous Colonization Tracker */
+.navbar-brand-edctool {
+  font-family: var(--font-share-tech-mono), monospace;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #ff8c00;
+  letter-spacing: 0.04em;
+}
+.navbar-brand-edctool:hover {
+  color: #ffb347;
+  text-shadow: 0 0 14px rgba(255, 140, 0, 0.45);
+}
+
 /* ── Accessibility ─────────────────────────────────────── */
 
 .sr-only {
