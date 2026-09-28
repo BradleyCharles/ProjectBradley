@@ -35,6 +35,8 @@ const projects: Project[] = [
     roles: ["AI Development", "Backend Engineering", "Systems Design"],
     stack: ["Node.js", "discord.js", "Ollama", "Gemma 4 E4B"],
     href: "/maki",
+    image1: "/maki1.png",
+    image2: "/maki2.png",
   },
   {
     id: "nsc-ai-tutor",
