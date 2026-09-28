@@ -23,6 +23,20 @@ type Project = {
 
 const projects: Project[] = [
   {
+    id: "maki",
+    name: "Project Maki",
+    summary:
+      "Built a local AI Discord bot with persistent per-user memory, a personality that develops over time, and two fully independent personas, running entirely on local inference via Ollama.",
+    impact: [
+      "Per-user memory system with weighted fact extraction (core, recent, stale) and a numeric familiarity score across five relationship tiers.",
+      "Loop detection and self-correction — repeated replies are caught and silently regenerated before the user ever sees them.",
+      "Dual persona architecture with fully separate memory stores, plus time-of-day context shaping tone across six mood windows.",
+    ],
+    roles: ["AI Development", "Backend Engineering", "Systems Design"],
+    stack: ["Node.js", "discord.js", "Ollama", "Gemma 4 E4B"],
+    href: "/maki",
+  },
+  {
     id: "nsc-ai-tutor",
     name: "North Seattle College AI Tutor",
     summary:
