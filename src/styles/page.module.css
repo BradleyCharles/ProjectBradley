@@ -128,7 +128,7 @@
 
 .featuredProject {
   position: relative;
-  border-radius: 24px;
+  border-radius: 10px;
   padding: 2px;
   background: linear-gradient(
     135deg,
@@ -156,7 +156,7 @@
 }
 
 .featuredProjectInner {
-  border-radius: 22px;
+  border-radius: 10px;
   background:
     radial-gradient(ellipse at 20% 0%,   rgba(126, 90, 25, 0.4) 0%, transparent 55%),
     radial-gradient(ellipse at 85% 100%, rgba(127, 189, 178, 0.14) 0%, transparent 50%),
@@ -221,7 +221,7 @@
 
 .featuredProjectPill {
   padding: 4px 11px;
-  border-radius: 999px;
+  border-radius: 8px;
   border: 1px solid rgba(227, 169, 74, 0.35);
   background: rgba(227, 169, 74, 0.1);
   color: rgba(245, 240, 232, 0.65);
@@ -235,7 +235,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: 12px;
+  border-radius: 5px;
   background: #e3a94a;
   color: #1a1305;
   font-size: 0.88rem;
@@ -280,7 +280,7 @@
 
 .projectPanel {
   scroll-margin-top: 128px;
-  border-radius: 24px;
+  border-radius: 10px;
   border: 1px solid rgba(186, 230, 253, 0.22);
   background: radial-gradient(
       circle at 0% 0%,
@@ -362,7 +362,7 @@
   top: 10px;
   width: 7px;
   height: 7px;
-  border-radius: 999px;
+  border-radius: 8px;
   background: linear-gradient(135deg, #38bdf8, #f59e0b);
 }
 
@@ -376,7 +376,7 @@
   display: inline-flex;
   align-items: center;
   padding: 6px 10px;
-  border-radius: 999px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(148, 163, 184, 0.12);
   color: #f0f9ff;
@@ -424,7 +424,7 @@
   all: unset;
   display: block;
   cursor: zoom-in;
-  border-radius: 16px;
+  border-radius: 6px;
 }
 
 .imageButton:focus-visible .projectImage {
@@ -445,7 +445,7 @@
 
 .projectImage {
   position: relative;
-  border-radius: 16px;
+  border-radius: 6px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.16);
   align-self: stretch;
@@ -465,7 +465,7 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 18px;
-  border-radius: 12px;
+  border-radius: 5px;
   font-weight: 700;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.06);
@@ -497,7 +497,7 @@
   align-items: center;
   gap: 14px;
   padding: 24px 16px 20px;
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid rgba(186, 230, 253, 0.18);
   background: radial-gradient(
       circle at 50% 0%,
@@ -529,7 +529,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 3px;
 }
 
 .certInfo {
@@ -563,7 +563,7 @@
     rgba(56, 189, 248, 0.12),
     rgba(251, 191, 36, 0.12)
   );
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 26px 24px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.4);

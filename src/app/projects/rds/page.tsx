@@ -123,12 +123,9 @@ const STACK_CHIPS = [
   "Vitest + Playwright",
 ];
 
-type ToolStatus = "active" | "wip" | "soon";
-
-const TOOLS: { name: string; status: ToolStatus; desc: string; bullets: string[] }[] = [
+const TOOLS: { name: string; desc: string; bullets: string[] }[] = [
   {
     name: "Effects Viewer",
-    status: "active",
     desc: "Browses and renders every .str visual effect the client can produce, decoded straight from the game's own compiled executable.",
     bullets: [
       "Reverse-engineered effect ID → filename table, decoded from disassembled switch-dispatch code",
@@ -138,7 +135,6 @@ const TOOLS: { name: string; status: ToolStatus; desc: string; bullets: string[]
   },
   {
     name: "Sprite Viewer",
-    status: "active",
     desc: "Browses NPC, monster, and homunculus sprites with full .spr/.act animation playback.",
     bullets: [
       "Binary sprite/action parsers built from scratch, corrected against real files",
@@ -148,7 +144,6 @@ const TOOLS: { name: string; status: ToolStatus; desc: string; bullets: string[]
   },
   {
     name: "Skill Builder",
-    status: "active",
     desc: "Authors skill tooltips and mechanics against the client's own skillinfoz Lua tables.",
     bullets: [
       "Hand-written Lua tokenizer/parser reading the live client folder",
@@ -158,7 +153,6 @@ const TOOLS: { name: string; status: ToolStatus; desc: string; bullets: string[]
   },
   {
     name: "Item Builder",
-    status: "active",
     desc: "Authors item display data and the full rAthena item_db.yml schema, writing directly into real files.",
     bullets: [
       "Byte-exact writes preserve legacy Latin-1/EUC-KR bytes a clipboard paste would silently corrupt",
@@ -168,7 +162,6 @@ const TOOLS: { name: string; status: ToolStatus; desc: string; bullets: string[]
   },
   {
     name: "NPC Builder",
-    status: "wip",
     desc: "Authors NPC scripts — placement, sprite, shops, warps, dialogue — with a live in-game preview.",
     bullets: [
       "Hybrid editor: structured header form, raw script body with lint and snippets",
@@ -178,7 +171,6 @@ const TOOLS: { name: string; status: ToolStatus; desc: string; bullets: string[]
   },
   {
     name: "Set Builder",
-    status: "soon",
     desc: "Item set combo bonuses. Registry placeholder only — scoped, not started.",
     bullets: [
       "Will sit alongside the Item Builder's layered item_combos.yml data, already surfaced read-only there",
@@ -186,19 +178,12 @@ const TOOLS: { name: string; status: ToolStatus; desc: string; bullets: string[]
   },
   {
     name: "Quest Builder",
-    status: "soon",
     desc: "Quest chains spanning multiple NPCs and files. Shared quest module already built and mounted inside the NPC Builder.",
     bullets: [
       "Deliberately not merged into the NPC Builder nor fully separated — see Engineering Practices, below",
     ],
   },
 ];
-
-const STATUS_LABEL: Record<ToolStatus, string> = {
-  active: "Active",
-  wip: "In progress",
-  soon: "Planned",
-};
 
 const FORMATS = [
   {
@@ -397,16 +382,7 @@ export default function RdsPage() {
           <div className={styles.toolGrid}>
             {TOOLS.map((t) => (
               <div key={t.name} className={styles.toolCard}>
-                <div className={styles.toolCardHead}>
-                  <h3 className={styles.toolName}>{t.name}</h3>
-                  <span className={`${styles.toolStatus} ${
-                    t.status === "active" ? styles.statusActive
-                      : t.status === "wip" ? styles.statusWip
-                      : styles.statusSoon
-                  }`}>
-                    {STATUS_LABEL[t.status]}
-                  </span>
-                </div>
+                <h3 className={styles.toolName}>{t.name}</h3>
                 <p className={styles.toolDesc}>{t.desc}</p>
                 <ul className={styles.toolList}>
                   {t.bullets.map((b) => <li key={b}>{b}</li>)}
@@ -810,15 +786,15 @@ export default function RdsPage() {
         <Reveal>
           <div className={styles.tableWrap} style={{ marginTop: 32 }}>
             <table className={styles.dataTable}>
-              <thead><tr><th>Tool</th><th>Status</th><th>What it does</th></tr></thead>
+              <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
               <tbody>
-                <tr><td>Effects Viewer</td><td>Active</td><td>Browse &amp; render .str visual effects, ID-space fully decoded</td></tr>
-                <tr><td>Sprite Viewer</td><td>Active</td><td>Browse &amp; animate NPC / monster / homunculus sprites</td></tr>
-                <tr><td>Skill Builder</td><td>Active</td><td>Author skill tooltips &amp; mechanics against live client Lua data</td></tr>
-                <tr><td>Item Builder</td><td>Active</td><td>Author item display data + rAthena item_db.yml</td></tr>
-                <tr><td>NPC Builder</td><td>In progress</td><td>Author NPC scripts with live in-game preview</td></tr>
-                <tr><td>Set Builder</td><td>Planned</td><td>Item set combo bonuses</td></tr>
-                <tr><td>Quest Builder</td><td>Planned</td><td>Multi-NPC quest chains, on the shared quest module</td></tr>
+                <tr><td>Effects Viewer</td><td>Browse &amp; render .str visual effects, ID-space fully decoded</td></tr>
+                <tr><td>Sprite Viewer</td><td>Browse &amp; animate NPC / monster / homunculus sprites</td></tr>
+                <tr><td>Skill Builder</td><td>Author skill tooltips &amp; mechanics against live client Lua data</td></tr>
+                <tr><td>Item Builder</td><td>Author item display data + rAthena item_db.yml</td></tr>
+                <tr><td>NPC Builder</td><td>Author NPC scripts with live in-game preview</td></tr>
+                <tr><td>Set Builder</td><td>Item set combo bonuses</td></tr>
+                <tr><td>Quest Builder</td><td>Multi-NPC quest chains, on the shared quest module</td></tr>
               </tbody>
             </table>
           </div>

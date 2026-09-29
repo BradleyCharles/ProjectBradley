@@ -1,6 +1,6 @@
 import styles from "../../styles/resume.module.css";
 
-const RESUME_PDF = "/resume.pdf";
+const RESUME_PDF = "/Bradley_Charles_General_Resume.pdf";
 
 export default function ResumePage() {
   return (

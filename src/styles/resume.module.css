@@ -38,7 +38,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 22px;
-  border-radius: 999px;
+  border-radius: 8px;
   background: rgba(125, 211, 252, 0.12);
   border: 1px solid rgba(125, 211, 252, 0.4);
   color: #e0f2fe;
@@ -58,7 +58,7 @@
   position: relative;
   flex: 1;
   min-height: 78vh;
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(186, 230, 253, 0.22);
   background: rgba(6, 12, 30, 0.76);

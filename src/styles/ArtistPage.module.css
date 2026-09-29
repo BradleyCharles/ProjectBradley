@@ -118,7 +118,7 @@
 }
 
 .disciplineCard {
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(201, 146, 74, 0.12);
   background: rgba(18, 10, 4, 0.55);
@@ -253,7 +253,7 @@
 .gridPanel {
   background: rgba(14, 7, 2, 0.97);
   border: 1px solid rgba(201, 146, 74, 0.2);
-  border-radius: 20px;
+  border-radius: 8px;
   width: 100%;
   max-width: 860px;
   max-height: 88vh;
@@ -315,7 +315,7 @@
   padding: 0;
   cursor: pointer;
   background: rgba(20, 10, 4, 0.6);
-  border-radius: 12px;
+  border-radius: 5px;
   overflow: hidden;
   border: 1px solid rgba(201, 146, 74, 0.1);
   transition: border-color 200ms ease, box-shadow 200ms ease;
@@ -328,7 +328,7 @@
 
 .gridThumb {
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 5px;
   transition: transform 300ms ease;
 }
 
@@ -395,7 +395,7 @@
 .tag {
   display: inline-flex;
   padding: 3px 10px;
-  border-radius: 999px;
+  border-radius: 8px;
   border: 1px solid;
   font-size: 0.72rem;
   letter-spacing: 0.04em;
@@ -417,7 +417,7 @@
   align-items: center;
   gap: 6px;
   padding: 4px 12px;
-  border-radius: 999px;
+  border-radius: 8px;
   border: 1px solid;
   font-size: 0.72rem;
   letter-spacing: 0.04em;
@@ -474,7 +474,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 48px 40px;
-  border-radius: 24px;
+  border-radius: 10px;
   border: 1px solid rgba(201, 146, 74, 0.16);
   background: rgba(25, 14, 5, 0.6);
   display: flex;
@@ -606,7 +606,7 @@
   }
 
   .gridPanel {
-    border-radius: 16px 16px 0 0;
+    border-radius: 6px 6px 0 0;
     max-height: 92vh;
   }
 }
