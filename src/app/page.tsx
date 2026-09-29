@@ -2,13 +2,12 @@
 
 import ArtistPage from "@/Components/ArtistPage";
 import Certifications from "@/Components/Certifications";
+import Contact from "@/Components/Contact";
 import HeroCanvas from "@/Components/HeroCanvas";
 import Projects from "@/Components/Projects";
 import RoleTicker from "@/Components/RoleTicker";
 import { useMode } from "@/context/ModeContext";
 import { devTitles } from "@/data/titles";
-import ObfuscatedEmail from "@/Components/ObfuscatedEmail";
-import Image from "next/image";
 import styles from "../styles/page.module.css";
 
 export default function Home() {
@@ -37,64 +36,7 @@ export default function Home() {
 
           <Projects />
 
-          <section
-            className={`${styles.section} ${styles.contact}`}
-            id="contact"
-          >
-            <div className={styles.contactInner}>
-              <div className={styles.contactLeft}>
-                <div className={styles.sectionHeader}>
-                  <p className={styles.kicker}>Contact</p>
-                  <h2>Let&apos;s Build Something Together</h2>
-                  <p className={styles.sectionLead}>
-                    Please reach out via email if you are interested in working
-                    with me.
-                  </p>
-                </div>
-                <div>
-                  <p className={styles.contactLine}>
-                    Email:{" "}
-                    <ObfuscatedEmail />
-                  </p>
-                  <p className={styles.contactLine}>
-                    GitHub:{" "}
-                    <a
-                      href="https://github.com/BradleyCharles"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      github.com/BradleyCharles
-                    </a>
-                  </p>
-                  <p className={styles.contactLine}>
-                    LinkedIn:{" "}
-                    <a
-                      href="https://www.linkedin.com/in/bradgcharles/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      linkedin.com/in/bradgcharles
-                    </a>
-                  </p>
-                </div>
-              </div>
-              <div style={{ position: "relative", display: "inline-block" }}>
-                <Image
-                  src="/brad_water.webp"
-                  alt="Bradley Charles"
-                  width={220}
-                  height={220}
-                  className={styles.contactAvatar}
-                  draggable={false}
-                  style={{ pointerEvents: "none", userSelect: "none" }}
-                />
-                <div
-                  style={{ position: "absolute", inset: 0, borderRadius: "50%", cursor: "default" }}
-                  onContextMenu={(e) => e.preventDefault()}
-                />
-              </div>
-            </div>
-          </section>
+          <Contact />
         </main>
       )}
     </div>

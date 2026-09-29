@@ -52,6 +52,7 @@ const Navbar: React.FC = () => {
   const { mode, setMode } = useMode();
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const hasContactSection = isHome || pathname === "/resume";
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
@@ -137,9 +138,9 @@ const Navbar: React.FC = () => {
           <li>
             <Link href="/resume">Resume</Link>
           </li>
-          {isHome && (
+          {hasContactSection && (
             <li>
-              <Link href="#contact">Contact</Link>
+              <Link href={isHome ? "#contact" : "/resume#contact"}>Contact</Link>
             </li>
           )}
         </ul>
