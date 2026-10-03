@@ -80,22 +80,6 @@ const STAR = [
 ];
 const STAR_PAL = { o: "#2a1a08", y: "#f2c14e", h: "#fff2b0" };
 
-const SLIME = [
-  "....oooo....",
-  "..oohllloo..",
-  ".ohhllllllo.",
-  "ohlllllllllo",
-  "olleelleello",
-  "olleelleello",
-  "ollllllllllo",
-  "ommllllllmmo",
-  ".ommmmmmmmo.",
-  "..oooooooo..",
-];
-const SLIME_GREEN = { o: "#12261c", h: "#c9ffd9", l: "#5fd38d", m: "#2e8f5a", e: "#10202a" };
-const SLIME_BLUE = { o: "#0f1638", h: "#d6e6ff", l: "#6fa8ff", m: "#3b5fc9", e: "#c2185b" };
-const SLIME_EMBER = { o: "#2a0d05", h: "#ffd2b8", l: "#ff8a5c", m: "#c24a1d", e: "#2a0d05" };
-
 const MOON = [
   "...mmmm...",
   ".mmmmmmmm.",
@@ -361,25 +345,6 @@ const BOSSES = [
   },
 ];
 
-const GLITCHES = [
-  {
-    name: "Every day is the first day",
-    body: "Godot writes the meeting flag with the full NPC id and Python reads it with the first word only, so NPCs always think they're meeting you for the first time. You can see it in Amara's Day 2 greeting below.",
-  },
-  {
-    name: "No timeout on a model call",
-    body: "A hung request blocks the run indefinitely, despite a comment in the code that claims otherwise.",
-  },
-  {
-    name: "Rumours untested in the wild",
-    body: "The weekly chronicle and rumour system is implemented but hasn't been through a real play session yet.",
-  },
-  {
-    name: "No test suite",
-    body: "No automated tests or CI, and pipeline logs only go to stdout.",
-  },
-];
-
 const EQUIPMENT = [
   ["ENGINE", "Godot 4.6 · GDScript"],
   ["ORACLE", "Gemma 4 E4B (Q4), swappable by env var"],
@@ -389,6 +354,61 @@ const EQUIPMENT = [
   ["ARTISAN", "Aseprite · AsepriteWizard"],
   ["SCRIBE", "Almendra / Almendra SC"],
   ["FORGE", "RTX 4060 class, 8 GB VRAM"],
+];
+
+const CRAFTPIX_CREDITS = [
+  { name: "Slime Mobs", url: "https://craftpix.net/freebies/free-slime-mobs-pixel-art-top-down-sprite-pack/" },
+  { name: "Orc Game Character", url: "https://craftpix.net/freebies/free-top-down-orc-game-character-pixel-art/" },
+  { name: "Predator Plant Mobs", url: "https://craftpix.net/freebies/free-predator-plant-mobs-pixel-art-pack/" },
+  { name: "Vampire Sprite Pack", url: "https://craftpix.net/freebies/free-vampire-4-direction-pixel-character-sprite-pack/" },
+  { name: "Swordsman 1-3 Level Sprite Character", url: "https://craftpix.net/freebies/free-swordsman-1-3-level-pixel-top-down-sprite-character-pack/" },
+  { name: "Glassblower's Workshop", url: "https://craftpix.net/freebies/free-glassblowers-workshop-top-down-pixel-art-asset/" },
+  { name: "Guild Hall Asset Pack", url: "https://craftpix.net/freebies/free-top-down-pixel-art-guild-hall-asset-pack/" },
+  { name: "Dungeon Objects", url: "https://craftpix.net/freebies/free-pixel-art-dungeon-objects-asset-pack/" },
+  { name: "Crystals", url: "https://craftpix.net/freebies/top-down-crystals-pixel-art/" },
+  { name: "Bushes", url: "https://craftpix.net/freebies/free-top-down-bushes-pixel-art/" },
+  { name: "Plants for Farm", url: "https://craftpix.net/freebies/free-pixel-art-plants-for-farm/" },
+  { name: "Forest Objects", url: "https://craftpix.net/freebies/free-forest-objects-top-down-pixel-art/" },
+  { name: "Trees", url: "https://craftpix.net/freebies/free-top-down-trees-pixel-art/" },
+  { name: "Slash Sprite Cartoon Effects", url: "https://craftpix.net/freebies/free-slash-sprite-cartoon-effects/" },
+];
+
+const MUSIC_CREDITS = [
+  {
+    name: "16-Bit Fantasy & Adventure Music",
+    url: "https://xdeviruchi.itch.io/16-bit-fantasy-adventure-music-pack",
+    by: "Marllon Silva (xDeviruchi)",
+  },
+];
+
+const SFX_CREDITS = [
+  {
+    name: "Swords & Blades Sound Pack",
+    url: "https://thesoundrack.itch.io/swords-blades-sound-pack",
+    by: "Leonardo Calvo",
+    note: "CC BY 4.0",
+  },
+  {
+    name: "Free Footsteps Pack",
+    url: "https://mayragandra.itch.io/free-footsteps-sound-effects",
+    by: "Mayra",
+  },
+  {
+    name: "Impact Gore Sfx",
+    url: "https://nvthicprod.itch.io/impact-sfx",
+    by: "Nvthic Sounds",
+  },
+];
+
+const FONT_TOOL_CREDITS = [
+  { name: "Xolonium", by: "Severin Meyer", note: "SIL Open Font License" },
+  { name: "Almendra", by: "Ana Sanfelippo", note: "SIL Open Font License" },
+  {
+    name: "AsepriteWizard",
+    url: "https://github.com/viniciusgerevini/godot-aseprite-wizard",
+    by: "Vinicius Gerevini",
+    note: "MIT License",
+  },
 ];
 
 const SHOTS = [
@@ -616,17 +636,17 @@ export default function BardPage() {
           </p>
           <ul className={styles.bestiary}>
             <li>
-              <Sprite rows={SLIME} palette={SLIME_GREEN} px={5} />
+              <span className={`${styles.slimeSprite} ${styles.slime1}`} role="img" aria-label="Slime I idle animation" />
               <p className={styles.beastName}>SLIME I</p>
               <p className={styles.beastBody}>Pack hunter. Runs when alone, chases when friends are near, and spreads aggro through the group.</p>
             </li>
             <li>
-              <Sprite rows={SLIME} palette={SLIME_BLUE} px={5} />
+              <span className={`${styles.slimeSprite} ${styles.slime2}`} role="img" aria-label="Slime II idle animation" />
               <p className={styles.beastName}>SLIME II</p>
               <p className={styles.beastBody}>Minds its own business until you hit it. Then it calls in every slime nearby.</p>
             </li>
             <li>
-              <Sprite rows={SLIME} palette={SLIME_EMBER} px={5} />
+              <span className={`${styles.slimeSprite} ${styles.slime3}`} role="img" aria-label="Slime III idle animation" />
               <p className={styles.beastName}>SLIME III</p>
               <p className={styles.beastBody}>Doesn&apos;t need help. Comes straight at you.</p>
             </li>
@@ -654,26 +674,6 @@ export default function BardPage() {
               </li>
             ))}
           </ul>
-        </Window>
-
-        {/* ── Known glitches ── */}
-        <Window title="KNOWN GLITCHES">
-          <p className={styles.p}>
-            When I audited the finished repo, I found real defects. Here are the ones worth knowing about:
-          </p>
-          <ul className={styles.glitches}>
-            {GLITCHES.map((g) => (
-              <li key={g.name}>
-                <p className={styles.glitchName}>{g.name}</p>
-                <p className={styles.glitchBody}>{g.body}</p>
-              </li>
-            ))}
-          </ul>
-          <blockquote className={styles.quote}>
-            <span className={styles.quoteWho}>Amara, Day 2</span>
-            Welcome to Thornwall. I haven&apos;t seen your face around, so please, come in and let
-            me take your coat.
-          </blockquote>
         </Window>
 
         {/* ── Equipment ── */}
@@ -709,6 +709,57 @@ export default function BardPage() {
                   </button>
                   <figcaption>{s.cap}</figcaption>
                 </figure>
+              </li>
+            ))}
+          </ul>
+        </Window>
+
+        {/* ── Asset credits ── */}
+        <Window title="ASSET CREDITS" className={styles.windowWide}>
+          <p className={styles.p}>
+            BARD is built on original code and design, but leans on free third-party art, music and
+            sound packs. Full credit to the artists below.
+          </p>
+
+          <p className={styles.creditGroup}>Art &amp; tilesets — craftpix.net</p>
+          <ul className={styles.creditInline}>
+            {CRAFTPIX_CREDITS.map((c) => (
+              <li key={c.url}>
+                <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a>
+              </li>
+            ))}
+          </ul>
+
+          <p className={styles.creditGroup}>Music</p>
+          <ul className={styles.creditList}>
+            {MUSIC_CREDITS.map((c) => (
+              <li key={c.name}>
+                <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a>
+                <span className={styles.creditMeta}> — {c.by}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className={styles.creditGroup}>Sound effects</p>
+          <ul className={styles.creditList}>
+            {SFX_CREDITS.map((c) => (
+              <li key={c.name}>
+                <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a>
+                <span className={styles.creditMeta}> — {c.by}{c.note ? `, ${c.note}` : ""}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className={styles.creditGroup}>Fonts &amp; tools</p>
+          <ul className={styles.creditList}>
+            {FONT_TOOL_CREDITS.map((c) => (
+              <li key={c.name}>
+                {c.url ? (
+                  <a href={c.url} target="_blank" rel="noreferrer">{c.name}</a>
+                ) : (
+                  <span className={styles.creditName}>{c.name}</span>
+                )}
+                <span className={styles.creditMeta}> — {c.by}{c.note ? `, ${c.note}` : ""}</span>
               </li>
             ))}
           </ul>

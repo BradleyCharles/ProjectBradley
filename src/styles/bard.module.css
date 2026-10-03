@@ -632,14 +632,6 @@
   margin-bottom: 0;
 }
 
-.quoteWho {
-  display: block;
-  font-family: var(--pixel);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-}
-
 /* ── Continue? fallback chain ─────────────────────────────── */
 
 .continues {
@@ -693,12 +685,26 @@
   text-align: center;
 }
 
-.bestiary svg {
-  animation: bob 0.9s steps(2) infinite;
+.slimeSprite {
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  animation: slimeIdle 0.6s steps(6) infinite;
 }
 
-.bestiary li:nth-child(2) svg { animation-delay: -0.3s; }
-.bestiary li:nth-child(3) svg { animation-delay: -0.6s; }
+.slime1 { background-image: url("/slime1-idle.png"); background-size: 768px 128px; }
+.slime2 { background-image: url("/slime2-idle.png"); background-size: 768px 128px; }
+.slime3 { background-image: url("/slime3-idle.png"); background-size: 768px 128px; }
+
+.bestiary li:nth-child(2) .slimeSprite { animation-delay: -0.2s; }
+.bestiary li:nth-child(3) .slimeSprite { animation-delay: -0.4s; }
+
+@keyframes slimeIdle {
+  from { background-position-x: 0; }
+  to { background-position-x: -768px; }
+}
 
 @keyframes bob {
   0%, 100% { transform: translateY(0); }
@@ -790,51 +796,6 @@
   line-height: 1.5;
 }
 
-/* ── Known glitches ───────────────────────────────────────── */
-
-.glitches {
-  list-style: none;
-  margin: 4px 0 18px;
-  padding: 0;
-  display: grid;
-  gap: 12px;
-}
-
-.glitches li {
-  padding-left: 30px;
-  position: relative;
-}
-
-.glitches li::before {
-  content: "!";
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 20px;
-  height: 20px;
-  display: grid;
-  place-items: center;
-  background: var(--gold);
-  color: #000;
-  font-family: var(--pixel);
-  font-weight: 700;
-  font-size: 0.8rem;
-}
-
-.glitchName {
-  margin: 0;
-  font-family: var(--pixel);
-  font-size: 0.85rem;
-  color: var(--text);
-  text-shadow: 2px 0 rgba(255, 42, 109, 0.7), -2px 0 rgba(45, 226, 230, 0.7);
-}
-
-.glitchBody {
-  margin: 2px 0 0;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-
 /* ── Equipment ────────────────────────────────────────────── */
 
 .equip {
@@ -864,6 +825,80 @@
 .equipRow dd {
   margin: 0;
   font-size: 0.95rem;
+}
+
+/* ── Asset credits ────────────────────────────────────────── */
+
+.creditGroup {
+  margin: 18px 0 6px;
+  font-family: var(--pixel);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.creditGroup:first-of-type {
+  margin-top: 10px;
+}
+
+.creditInline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+.creditInline li::after {
+  content: "·";
+  margin-left: 10px;
+  color: var(--frame-inner);
+}
+
+.creditInline li:last-child::after {
+  content: "";
+  margin: 0;
+}
+
+.creditInline a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--muted);
+}
+
+.creditInline a:hover {
+  color: var(--gold-hi);
+  border-bottom-color: var(--gold-hi);
+}
+
+.creditList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.creditList a,
+.creditName {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--muted);
+}
+
+.creditName {
+  border-bottom-color: transparent;
+}
+
+.creditList a:hover {
+  color: var(--gold-hi);
+  border-bottom-color: var(--gold-hi);
+}
+
+.creditMeta {
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 /* ── Screenshots ──────────────────────────────────────────── */
@@ -1020,7 +1055,7 @@
   .caret,
   .contArrow,
   .achievementStar,
-  .bestiary svg {
+  .slimeSprite {
     animation: none;
   }
   .shotButton {
