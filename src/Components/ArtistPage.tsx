@@ -88,6 +88,13 @@ const disciplines: Discipline[] = [
       { src: "/art/ce5.webp", alt: "Ceramics piece" },
       { src: "/art/ce6.webp", alt: "Ceramics piece" },
       { src: "/art/ce7.webp", alt: "Ceramics piece" },
+      { src: "/art/ce8.webp", alt: "Ceramics piece" },
+      { src: "/art/ce9.webp", alt: "Ceramics piece" },
+      { src: "/art/ce10.jpg", alt: "Ceramics piece" },
+      { src: "/art/ce11.jpg", alt: "Ceramics piece" },
+      { src: "/art/ce12.jpg", alt: "Ceramics piece" },
+      { src: "/art/ce13.jpg", alt: "Ceramics piece" },
+      { src: "/art/ce14.jpg", alt: "Ceramics piece" },
     ],
   },
   {
