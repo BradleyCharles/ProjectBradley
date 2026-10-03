@@ -38,8 +38,8 @@ const projects: Project[] = [
     award: "1st Place, Hands-on Demo (audience vote)",
     href: "/projects/bard",
     repo: "https://github.com/BradleyCharles/BARD",
-    image1: "/bard2.jpeg",
-    image2: "/bard4.jpeg",
+    image1: "/bard2.png",
+    image2: "/bard4.png",
   },
   {
     id: "maki",

@@ -392,12 +392,12 @@ const EQUIPMENT = [
 ];
 
 const SHOTS = [
-  { src: "/bard2.jpeg", w: 1280, h: 720, cap: "Elara Vance, an innkeeper, greeting the hunter on Day 2 with dialogue written overnight." },
-  { src: "/bard3.jpeg", w: 1280, h: 720, cap: "The Bounty Board: contracts across four zones. Quantities stay hidden from the player and the model." },
-  { src: "/bard4.jpeg", w: 1280, h: 647, cap: "In the field with the axe, a plant creature mid-swing and the minimap in the corner." },
-  { src: "/bard5.jpeg", w: 1280, h: 647, cap: "Lysandra Grove: the guild hall, the inn and the bounty board." },
+  { src: "/bard2.png", w: 1280, h: 720, cap: "Elara Vance, an innkeeper, greeting the hunter on Day 2 with dialogue written overnight." },
+  { src: "/bard3.png", w: 1280, h: 720, cap: "The Bounty Board: contracts across four zones. Quantities stay hidden from the player and the model." },
+  { src: "/bard4.png", w: 1280, h: 647, cap: "In the field with the axe, a plant creature mid-swing and the minimap in the corner." },
+  { src: "/bard5.png", w: 1280, h: 647, cap: "Lysandra Grove: the guild hall, the inn and the bounty board." },
 ];
-const GALLERY = ["/bard1.jpeg", ...SHOTS.map((s) => s.src)];
+const GALLERY = ["/bard1.png", ...SHOTS.map((s) => s.src)];
 
 /* ── Page ───────────────────────────────────────────────── */
 export default function BardPage() {
@@ -696,7 +696,7 @@ export default function BardPage() {
         <Window title="SCREENSHOTS" className={styles.windowWide}>
           <figure className={styles.poster}>
             <button className={styles.shotButton} onClick={() => setLightbox(0)} aria-label="Open the capstone poster">
-              <Image src="/bard1.jpeg" alt="BARD capstone poster" width={1280} height={720} className={styles.shot} />
+              <Image src="/bard1.png" alt="BARD capstone poster" width={1280} height={720} className={styles.shot} />
             </button>
             <figcaption>The poster I designed for demo day.</figcaption>
           </figure>
