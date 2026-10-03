@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import styles from "../../styles/maki.module.css";
+import styles from "../../../styles/maki.module.css";
 
 /* ── Body-class mount/unmount ───────────────────────────── */
 function useMakiBodyClass() {

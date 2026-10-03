@@ -9,7 +9,7 @@ import { useMode } from "@/context/ModeContext";
 function BrandLink() {
   const pathname = usePathname();
 
-  if (pathname.startsWith("/maki")) {
+  if (pathname.startsWith("/projects/maki")) {
     return (
       <Link href="/" className="navbar-brand navbar-brand-maki">
         Bradley Charles
@@ -119,7 +119,7 @@ const Navbar: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/maki" onClick={() => setDropdownOpen(false)}>
+                <Link href="/projects/maki" onClick={() => setDropdownOpen(false)}>
                   Project Maki
                 </Link>
               </li>
