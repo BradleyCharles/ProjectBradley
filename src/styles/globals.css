@@ -228,6 +228,57 @@ body.edctool-page footer a:hover {
   color: #ff8c00;
 }
 
+body.bard-page::before {
+  opacity: 0;
+}
+
+body.bard-page {
+  background: #0d0b1e;
+}
+
+body.bard-page .navbar {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: #0d0b1e;
+  border-bottom: 4px solid #000;
+  box-shadow: 0 4px 0 #2b2457;
+}
+
+body.bard-page .dropdown-menu {
+  border-radius: 0;
+  background: #1b2a8a;
+  border: 3px solid #e8e8f0;
+  box-shadow: 0 0 0 3px #000;
+}
+
+body.bard-page .dropdown-menu a {
+  border-radius: 0;
+}
+
+body.bard-page .navbar-links a:hover,
+body.bard-page .navbar-links a:focus-visible,
+body.bard-page .dropdown-trigger:hover,
+body.bard-page .dropdown-trigger:focus-visible {
+  box-shadow: none;
+  color: #f2c14e;
+}
+
+body.bard-page .dropdown-menu a:hover,
+body.bard-page .dropdown-menu a:focus-visible {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #f2c14e;
+}
+
+body.bard-page footer {
+  background: #0d0b1e;
+  border-top: 4px solid #000;
+  color: rgba(232, 232, 240, 0.45);
+}
+
+body.bard-page footer a:hover {
+  color: #f2c14e;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

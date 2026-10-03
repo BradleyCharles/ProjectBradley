@@ -33,6 +33,14 @@ function BrandLink() {
     );
   }
 
+  if (pathname.startsWith("/projects/bard")) {
+    return (
+      <Link href="/" className="navbar-brand navbar-brand-bard">
+        Bradley Charles
+      </Link>
+    );
+  }
+
   if (pathname.startsWith("/edctool")) {
     return (
       <Link href="/" className="navbar-brand navbar-brand-edctool">
@@ -116,6 +124,11 @@ const Navbar: React.FC = () => {
               <li>
                 <Link href="/projects/rds" onClick={() => setDropdownOpen(false)}>
                   RO Dev Suite
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects/bard" onClick={() => setDropdownOpen(false)}>
+                  BARD
                 </Link>
               </li>
               <li>

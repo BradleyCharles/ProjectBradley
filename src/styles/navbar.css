@@ -298,6 +298,19 @@
   text-shadow: 0 0 14px rgba(255, 140, 0, 0.45);
 }
 
+/* BARD */
+.navbar-brand-bard {
+  font-family: var(--font-silkscreen), monospace;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #f2c14e;
+  letter-spacing: 0.02em;
+  text-shadow: 2px 2px 0 #3a1f05;
+}
+.navbar-brand-bard:hover {
+  color: #fff2b0;
+}
+
 /* ── Accessibility ─────────────────────────────────────── */
 
 .sr-only {

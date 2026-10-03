@@ -1,6 +1,6 @@
 // app/layout.tsx or app/layout.js
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Rajdhani, Share_Tech_Mono, Oswald, JetBrains_Mono, Spectral } from "next/font/google";
+import { Geist, Geist_Mono, Rajdhani, Share_Tech_Mono, Oswald, JetBrains_Mono, Spectral, Silkscreen, Pixelify_Sans, Almendra } from "next/font/google";
 import "../styles/globals.css";
 import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
@@ -47,6 +47,24 @@ const spectral = Spectral({
   variable: "--font-spectral",
 });
 
+const silkscreen = Silkscreen({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-silkscreen",
+});
+
+const pixelifySans = Pixelify_Sans({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-pixelify",
+});
+
+const almendra = Almendra({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-almendra",
+});
+
 export const metadata: Metadata = {
   title: "Bradley Charles",
   description: "Created by Bradley Charles",
@@ -59,7 +77,7 @@ export default function RootLayout({
 }>) {
   return (
       <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${rajdhani.variable} ${shareTechMono.variable} ${oswald.variable} ${jetbrainsMono.variable} ${spectral.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${rajdhani.variable} ${shareTechMono.variable} ${oswald.variable} ${jetbrainsMono.variable} ${spectral.variable} ${silkscreen.variable} ${pixelifySans.variable} ${almendra.variable}`}>
       <ClientLayout>
         <div className="root-layout">
           <Navbar />

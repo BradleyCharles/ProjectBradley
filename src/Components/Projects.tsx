@@ -14,6 +14,7 @@ type Project = {
   impact: string[];
   roles: string[];
   stack: string[];
+  award?: string;
   href?: string;
   repo?: string;
   image?: string;
@@ -22,6 +23,24 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    id: "bard",
+    name: "BARD: Pre-Rendered LLM Dialogue",
+    summary:
+      "My solo capstone: a 2D action RPG in Godot 4 whose NPCs remember what you did. Each night a local LLM reads the day's game state and writes new dialogue for every named character, so the game itself stays fast, offline and deterministic.",
+    impact: [
+      "Moved LLM generation out of the real-time loop. The game only ever reads validated JSON, never waits on a model.",
+      "Built a Python pipeline on Ollama and Gemma 4 with schema validation, repair calls and layered fallbacks.",
+      "Translates raw telemetry into tiered natural language and labels every fact by how far the NPC should trust it.",
+    ],
+    roles: ["Game Development", "AI Pipeline Design", "Systems Architecture"],
+    stack: ["Godot 4", "GDScript", "Python", "Ollama", "Gemma 4 E4B"],
+    award: "1st Place, Hands-on Demo (audience vote)",
+    href: "/projects/bard",
+    repo: "https://github.com/BradleyCharles/BARD",
+    image1: "/bard2.jpeg",
+    image2: "/bard4.jpeg",
+  },
   {
     id: "maki",
     name: "Project Maki",
@@ -34,7 +53,7 @@ const projects: Project[] = [
     ],
     roles: ["AI Development", "Backend Engineering", "Systems Design"],
     stack: ["Node.js", "discord.js", "Ollama", "Gemma 4 E4B"],
-    href: "/maki",
+    href: "/projects/maki",
     image1: "/maki1.png",
     image2: "/maki2.png",
   },
@@ -198,6 +217,9 @@ export default function Projects() {
               className={styles.projectPanel}
             >
               <div className={styles.projectContent}>
+                {project.award && (
+                  <p className={styles.awardBadge}>{project.award}</p>
+                )}
                 <h3 className={styles.projectName}>{project.name}</h3>
                 <p className={styles.projectSummary}>{project.summary}</p>
 
@@ -222,7 +244,11 @@ export default function Projects() {
                 </p>
 
                 <div className={styles.cardLinks}>
-                  {project.href && (
+                  {project.href?.startsWith("/") ? (
+                    <Link href={project.href} className={styles.cardLink}>
+                      Explore project →
+                    </Link>
+                  ) : project.href ? (
                     <Link
                       href={project.href}
                       target="_blank"
@@ -231,7 +257,7 @@ export default function Projects() {
                     >
                       Visit project
                     </Link>
-                  )}
+                  ) : null}
                   {project.repo && (
                     <Link
                       href={project.repo}

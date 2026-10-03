@@ -328,6 +328,20 @@
   color: #7dd3fc;
 }
 
+.awardBadge {
+  justify-self: start;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(242, 193, 78, 0.45);
+  background: rgba(242, 193, 78, 0.12);
+  color: #f2c14e;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .projectName {
   margin: 0;
   font-size: clamp(1.45rem, 2.6vw, 1.95rem);
