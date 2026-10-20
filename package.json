@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.2.8",
+    "next": "15.5.28",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -20,8 +20,8 @@
     "@types/react-dom": "^19",
     "critters": "^0.0.23",
     "eslint": "^9",
-    "eslint-config-next": "15.2.2",
-    "sharp": "^0.34.5",
+    "eslint-config-next": "15.5.28",
+    "sharp": "^0.35.5",
     "typescript": "^5"
   },
   "browserslist": [
