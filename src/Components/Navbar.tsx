@@ -63,25 +63,52 @@ const Navbar: React.FC = () => {
   const hasContactSection = isHome || pathname === "/resume";
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLLIElement>(null);
+  const dropdownTriggerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLUListElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Close dropdown on outside click
+  // Close dropdown and mobile menu on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
+      const target = e.target as Node;
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
         setDropdownOpen(false);
+      }
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(target) &&
+        !menuButtonRef.current?.contains(target)
+      ) {
+        setMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Close dropdown on route change
+  // Escape closes the innermost open panel and returns focus to its button
+  useEffect(() => {
+    if (!dropdownOpen && !menuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      if (dropdownOpen) {
+        setDropdownOpen(false);
+        dropdownTriggerRef.current?.focus();
+      } else {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [dropdownOpen, menuOpen]);
+
+  // Close dropdown and mobile menu on route change
   useEffect(() => {
     setDropdownOpen(false);
+    setMenuOpen(false);
   }, [pathname]);
 
   return (
@@ -109,9 +136,33 @@ const Navbar: React.FC = () => {
           <BrandLink />
         )}
 
-        <ul className="navbar-links">
+        <button
+          ref={menuButtonRef}
+          className="navbar-button"
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-expanded={menuOpen}
+          aria-controls="primary-nav-links"
+        >
+          <span className="navbar-button-icon" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+          <span className="sr-only">Menu</span>
+        </button>
+
+        <ul
+          id="primary-nav-links"
+          ref={menuRef}
+          className={`navbar-links${menuOpen ? " open" : ""}`}
+          onClick={(e) => {
+            // Same-page links like #contact don't change the route, so close here
+            if ((e.target as HTMLElement).closest("a")) setMenuOpen(false);
+          }}
+        >
           <li ref={dropdownRef} className="dropdown">
             <button
+              ref={dropdownTriggerRef}
               className="dropdown-trigger"
               onClick={() => setDropdownOpen((o) => !o)}
               aria-expanded={dropdownOpen}

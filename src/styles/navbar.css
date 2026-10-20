@@ -136,9 +136,57 @@
   box-shadow: 0 10px 28px rgba(124, 58, 237, 0.35);
 }
 
+/* ── Mobile menu toggle ────────────────────────────────── */
+
 .navbar-button {
-  color: white;
   display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #e7e7ff;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.navbar-button:hover,
+.navbar-button:focus-visible {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.navbar-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.navbar-button-icon {
+  display: grid;
+  gap: 5px;
+  width: 22px;
+}
+
+.navbar-button-icon span {
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+/* Bars morph into an X while open */
+.navbar-button[aria-expanded="true"] .navbar-button-icon span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar-button[aria-expanded="true"] .navbar-button-icon span:nth-child(2) {
+  opacity: 0;
+}
+.navbar-button[aria-expanded="true"] .navbar-button-icon span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (min-width: 768px) {
@@ -151,13 +199,94 @@
   }
 }
 
+/* Below 768px the links collapse into a panel that reuses the dropdown's look */
 @media (max-width: 767px) {
   .navbar-button {
-    display: block;
+    display: inline-flex;
+    /* Full 44px tap target without making the header taller */
+    margin-block: -9px;
   }
 
   .navbar-links {
     display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 240px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    margin: 0;
+    padding: 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    /* Near-opaque: backdrop blur has no effect inside the already-filtered navbar */
+    background: rgba(10, 10, 24, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 18px 38px rgba(10, 10, 30, 0.5);
+    z-index: 5;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-links a,
+  .dropdown-trigger {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.45rem 0.75rem;
+  }
+
+  .dropdown-trigger {
+    justify-content: space-between;
+  }
+
+  /* Projects sub-list sits inline in the panel instead of floating */
+  .dropdown-menu {
+    position: static;
+    display: none;
+    min-width: 0;
+    margin: 0;
+    padding: 0 0 0.25rem 0.75rem;
+    background: none;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .dropdown-menu.open {
+    display: grid;
+  }
+
+  .dropdown-menu a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Drop the hover lift and glow inside the panel */
+  .navbar-links a:hover,
+  .navbar-links a:focus-visible,
+  .dropdown-trigger:hover,
+  .dropdown-trigger:focus-visible {
+    transform: none;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .navbar-button-icon span {
+    transition: none;
   }
 }
 

@@ -255,6 +255,30 @@ body.bard-page .dropdown-menu a {
   border-radius: 0;
 }
 
+/* Mobile menu panel takes the same pixel-box look as the dropdown */
+@media (max-width: 767px) {
+  body.bard-page .navbar-links {
+    border-radius: 0;
+    background: #1b2a8a;
+    border: 3px solid #e8e8f0;
+    box-shadow: 0 0 0 3px #000;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  body.bard-page .navbar-links a,
+  body.bard-page .dropdown-trigger,
+  body.bard-page .navbar-button {
+    border-radius: 0;
+  }
+
+  body.bard-page .dropdown-menu {
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+}
+
 body.bard-page .navbar-links a:hover,
 body.bard-page .navbar-links a:focus-visible,
 body.bard-page .dropdown-trigger:hover,
