@@ -118,7 +118,8 @@ function Hills() {
   const front: number[] = [];
   for (let i = 0; i < cols; i++) {
     back.push(Math.round(18 + 9 * Math.sin(i / 11) + 4 * Math.sin(i / 3.7)));
-    front.push(Math.round(8 + 6 * Math.sin(i / 7 + 2) + 3 * Math.cos(i / 2.3)));
+    // The wave dips to -1 in a few columns; SVG rejects negative heights, so clamp to 0
+    front.push(Math.max(0, Math.round(8 + 6 * Math.sin(i / 7 + 2) + 3 * Math.cos(i / 2.3))));
   }
   return (
     <svg className={styles.hills} viewBox={`0 0 ${cols} 40`} preserveAspectRatio="none" shapeRendering="crispEdges" aria-hidden>

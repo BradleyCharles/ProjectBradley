@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import Lightbox from "@/Components/Lightbox";
 import styles from "../../../styles/maki.module.css";
 
 /* ── Body-class mount/unmount ───────────────────────────── */
@@ -106,6 +108,23 @@ function Reveal({ children, className }: { children: React.ReactNode; className?
 }
 
 /* ── Static data ────────────────────────────────────────── */
+
+const SCREENSHOTS = [
+  {
+    src: "/maki1.png",
+    width: 2065,
+    height: 1358,
+    alt: "Discord channel where Maki replies to Bradley about loop detection, then chats about her week and Super Mario World",
+    caption: "Maki in her own channel, April 2026",
+  },
+  {
+    src: "/maki2.png",
+    width: 1566,
+    height: 1331,
+    alt: "Discord channel where Maki-bot talks with a server member about Genshin Impact and Zenless Zone Zero",
+    caption: "An earlier build talking games with a server member, March 2026",
+  },
+];
 
 const STATS = [
   { value: "2", label: "Personas" },
@@ -280,6 +299,7 @@ async function correctLoop(history, persona) {
 /* ── Page ───────────────────────────────────────────────── */
 export default function MakiPage() {
   useMakiBodyClass();
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   return (
     <div className={styles.page}>
 
@@ -513,29 +533,28 @@ export default function MakiPage() {
         <Reveal className={styles.featuresHeader}>
           <p className={styles.kicker}>Conversation Samples</p>
           <h2 className={styles.sectionTitle}>Screenshots</h2>
-          <p className={styles.sectionLead}>Real conversation samples coming soon.</p>
+          <p className={styles.sectionLead}>Real conversations from the Discord server.</p>
         </Reveal>
-        {/* TODO: Replace placeholder cards with real screenshot images */}
         <Reveal>
           <div className={styles.screenshotGrid}>
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className={styles.screenshotCard}>
-                <div className={styles.discordBar}>
-                  <div className={styles.discordAvatar} />
-                  <div className={styles.discordMeta}>
-                    <span className={styles.discordUser}>
-                      {i % 2 === 0 ? "Maki" : "Yuki"}
-                    </span>
-                    <span className={styles.discordTime}>Today at 11:42 PM</span>
-                  </div>
-                </div>
-                <div className={styles.discordMsg}>
-                  <div className={styles.discordLine} style={{ width: "82%" }} />
-                  <div className={styles.discordLine} style={{ width: "64%" }} />
-                  <div className={styles.discordLine} style={{ width: "73%" }} />
-                </div>
-                <span className={styles.screenshotLabel}>Screenshot coming soon</span>
-              </div>
+            {SCREENSHOTS.map((shot, i) => (
+              <figure key={shot.src} className={styles.screenshotCard}>
+                <button
+                  className={styles.screenshotButton}
+                  onClick={() => setLightboxIndex(i)}
+                  aria-label={`Enlarge: ${shot.caption}`}
+                >
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    width={shot.width}
+                    height={shot.height}
+                    sizes="(max-width: 640px) 100vw, 560px"
+                    className={styles.screenshotImage}
+                  />
+                </button>
+                <figcaption className={styles.screenshotLabel}>{shot.caption}</figcaption>
+              </figure>
             ))}
           </div>
         </Reveal>
@@ -565,6 +584,15 @@ export default function MakiPage() {
         </Reveal>
       </section>
 
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={SCREENSHOTS.map((shot) => shot.src)}
+          index={lightboxIndex}
+          projectName="Project Maki"
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }

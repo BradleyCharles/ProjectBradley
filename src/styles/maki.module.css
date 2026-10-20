@@ -821,7 +821,8 @@
 
 .screenshotGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
   gap: 20px;
   margin-top: 32px;
 }
@@ -830,59 +831,38 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin: 0;
   padding: 16px;
   border-radius: 6px;
   background: var(--c-bg2);
   border: 1px solid var(--c-border);
   box-shadow: 0 4px 20px var(--c-shadow);
-  min-height: 160px;
 }
 
-.discordBar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.screenshotButton {
+  display: block;
+  padding: 0;
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: none;
+  cursor: zoom-in;
 }
 
-.discordAvatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--c-accent);
-  opacity: 0.6;
-  flex-shrink: 0;
+.screenshotButton:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
 }
 
-.discordMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.screenshotImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 180ms ease;
 }
 
-.discordUser {
-  font-size: 0.83rem;
-  font-weight: 700;
-  color: var(--c-accent);
-}
-
-.discordTime {
-  font-size: 0.7rem;
-  color: var(--c-text3);
-}
-
-.discordMsg {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-left: 42px;
-  flex: 1;
-}
-
-.discordLine {
-  height: 10px;
-  border-radius: 8px;
-  background: var(--c-bg3);
-  opacity: 0.7;
+.screenshotButton:hover .screenshotImage {
+  filter: brightness(1.08);
 }
 
 .screenshotLabel {
@@ -1082,10 +1062,6 @@
   }
 
   .statsRow {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .screenshotGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
