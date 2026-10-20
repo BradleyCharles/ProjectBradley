@@ -7,6 +7,14 @@ const RESUME_PDF_VIEW = `${RESUME_PDF}#navpanes=0`;
 export default function ResumePage() {
   return (
     <div className={styles.page}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Resume</h1>
+        {/* Always visible: phones often can't preview the embedded PDF */}
+        <a href={RESUME_PDF} download className={styles.downloadLink}>
+          Download PDF ↓
+        </a>
+      </header>
+
       <div className={styles.viewerFrame}>
         <object
           data={RESUME_PDF_VIEW}

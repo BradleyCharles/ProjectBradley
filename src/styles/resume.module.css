@@ -8,6 +8,23 @@
   min-height: 80vh;
 }
 
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: -32px;
+}
+
+/* Matches .sectionHeader h2 on the home page */
+.title {
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  margin: 0;
+  letter-spacing: 0.01em;
+  color: #f8f7ff;
+}
+
 .viewerFrame {
   position: relative;
   flex: 1;
@@ -58,6 +75,10 @@
 .fallbackLink:focus-visible {
   background: rgba(125, 211, 252, 0.22);
   transform: translateY(-1px);
+}
+
+.downloadLink {
+  composes: fallbackLink;
 }
 
 @media (max-width: 640px) {
