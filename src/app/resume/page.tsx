@@ -24,8 +24,14 @@ export default function ResumePage() {
         >
           <div className={styles.fallback}>
             <p>Your browser can&apos;t preview PDFs inline.</p>
-            <a href={RESUME_PDF} download className={styles.fallbackLink}>
-              Download PDF ↓
+            {/* Opening the file directly lets phones use their own PDF viewer */}
+            <a
+              href={RESUME_PDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.fallbackLink}
+            >
+              Open PDF in a new tab ↗
             </a>
           </div>
         </object>
