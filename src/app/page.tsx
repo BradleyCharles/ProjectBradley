@@ -18,7 +18,7 @@ export default function Home() {
       {mode === "artist" ? (
         <ArtistPage />
       ) : (
-        <main className={styles.page}>
+        <div className={styles.page}>
           <section className={`${styles.section} ${styles.hero}`} id="top" style={{ position: "relative" }}>
             <HeroCanvas />
             <p className={styles.heroKicker}>Full-Stack Portfolio</p>
@@ -37,7 +37,7 @@ export default function Home() {
           <Projects />
 
           <Contact />
-        </main>
+        </div>
       )}
     </div>
   );

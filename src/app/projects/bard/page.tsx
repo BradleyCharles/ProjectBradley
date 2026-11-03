@@ -457,7 +457,7 @@ export default function BardPage() {
         </div>
       </header>
 
-      <main className={styles.body} id="start">
+      <div className={styles.body} id="start">
         {/* ── Achievement ── */}
         <div className={styles.achievement}>
           <Sprite rows={TROPHY} palette={TROPHY_PAL} px={5} label="Trophy" />
@@ -508,7 +508,7 @@ export default function BardPage() {
             the game stays fast, offline and deterministic.
           </p>
           <p className={styles.p}>
-            Solo project for the BASc in Application Development at North Seattle College.
+            Solo project for the BAS in Application Development at North Seattle College.
             I did the design, game code, AI pipeline, tooling, docs and the poster.
           </p>
         </Window>
@@ -778,7 +778,7 @@ export default function BardPage() {
         <p className={styles.credits}>
           BARD · Academic Capstone 2026
         </p>
-      </main>
+      </div>
 
       {lightbox !== null && (
         <Lightbox
