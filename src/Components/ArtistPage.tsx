@@ -2,7 +2,7 @@
 
 import { Playfair_Display } from "next/font/google";
 import Image from "next/image";
-import ObfuscatedEmail from "./ObfuscatedEmail";
+import { CONTACT_EMAIL } from "@/data/contact";
 import ArtistCanvas from "./ArtistCanvas";
 import RoleTicker from "./RoleTicker";
 import DisciplineGallery, { GalleryImage } from "./DisciplineGallery";
@@ -259,7 +259,7 @@ export default function ArtistPage() {
             <div className={styles.contactLinks}>
               <p>
                 Email:{" "}
-                <ObfuscatedEmail />
+                <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
               </p>
               <p>
                 GitHub:{" "}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import ObfuscatedEmail from "./ObfuscatedEmail";
+import { CONTACT_EMAIL } from "@/data/contact";
 import styles from "../styles/page.module.css";
 
 export default function Contact() {
@@ -20,7 +20,7 @@ export default function Contact() {
           <div>
             <p className={styles.contactLine}>
               Email:{" "}
-              <ObfuscatedEmail />
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </p>
             <p className={styles.contactLine}>
               GitHub:{" "}
