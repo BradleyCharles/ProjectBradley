@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 audit
+
+# editor and local tool settings
+.idea/
+.claude/settings.local.json

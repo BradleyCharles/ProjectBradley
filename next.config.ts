@@ -22,10 +22,9 @@ const contentSecurityPolicy = `
   .trim();
 
 const securityHeaders = [
-  // Report-only for now: violations are logged to the browser console, nothing is blocked
-  { key: "Content-Security-Policy-Report-Only", value: contentSecurityPolicy },
+  { key: "Content-Security-Policy", value: contentSecurityPolicy },
   { key: "Strict-Transport-Security", value: "max-age=63072000" },
-  // Enforced clickjacking protection while frame-ancestors is report-only
+  // Legacy equivalent of frame-ancestors for browsers without CSP support
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
