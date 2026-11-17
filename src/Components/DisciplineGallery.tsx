@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Lightbox from "./Lightbox";
 import TiltImage from "./TiltImage";
@@ -19,6 +19,42 @@ type Props = {
 export default function DisciplineGallery({ images, name, accent, gradient, previewLayout = "2x2" }: Props) {
   const [gridOpen, setGridOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Escape closes the gallery (the lightbox handles its own Escape), Tab stays inside.
+  useEffect(() => {
+    if (!gridOpen || lightboxIndex !== null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setGridOpen(false);
+        return;
+      }
+      if (e.key !== "Tab" || !panelRef.current) return;
+      const focusable = panelRef.current.querySelectorAll<HTMLElement>("button");
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [gridOpen, lightboxIndex]);
+
+  // Move focus into the dialog on open and back to the trigger on close.
+  useEffect(() => {
+    if (!gridOpen) return;
+    const trigger = triggerRef.current;
+    closeRef.current?.focus();
+    return () => trigger?.focus();
+  }, [gridOpen]);
 
   if (images.length === 0) {
     return <div className={styles.collageEmpty} style={{ background: gradient }} />;
@@ -31,6 +67,7 @@ export default function DisciplineGallery({ images, name, accent, gradient, prev
     <>
       {/* Collage trigger */}
       <button
+        ref={triggerRef}
         className={styles.collageBtn}
         onClick={() => setGridOpen(true)}
         aria-label={`View ${name} gallery`}
@@ -62,12 +99,13 @@ export default function DisciplineGallery({ images, name, accent, gradient, prev
           aria-modal="true"
           aria-label={`${name} gallery`}
         >
-          <div className={styles.gridPanel} onClick={(e) => e.stopPropagation()}>
+          <div ref={panelRef} className={styles.gridPanel} onClick={(e) => e.stopPropagation()}>
             <div className={styles.gridHeader}>
               <h3 className={styles.gridTitle} style={{ color: accent }}>
                 {name}
               </h3>
               <button
+                ref={closeRef}
                 className={styles.gridClose}
                 onClick={() => setGridOpen(false)}
                 aria-label="Close gallery"

@@ -22,7 +22,7 @@ export default function HeroCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationId: number;
+    let animationId = 0;
     const particles: Particle[] = [];
 
     const resize = () => {
@@ -76,28 +76,59 @@ export default function HeroCanvas() {
         ctx.fill();
       }
 
-      animationId = requestAnimationFrame(draw);
+      if (running) animationId = requestAnimationFrame(draw);
+    };
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let running = false;
+    let onScreen = true;
+
+    const sync = () => {
+      const shouldRun = onScreen && !document.hidden && !reduceMotion.matches;
+      if (shouldRun && !running) {
+        running = true;
+        animationId = requestAnimationFrame(draw);
+      } else if (!shouldRun && running) {
+        running = false;
+        cancelAnimationFrame(animationId);
+      }
     };
 
     resize();
     init();
+    // Draw one static frame so reduced-motion users still see the network.
     draw();
+    sync();
+
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      sync();
+    });
+    io.observe(canvas);
+    document.addEventListener("visibilitychange", sync);
+    reduceMotion.addEventListener("change", sync);
 
     const ro = new ResizeObserver(() => {
       resize();
       init();
+      if (!running) draw();
     });
     ro.observe(canvas);
 
     return () => {
+      running = false;
       cancelAnimationFrame(animationId);
       ro.disconnect();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+      reduceMotion.removeEventListener("change", sync);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       style={{
         position: "absolute",
         inset: 0,

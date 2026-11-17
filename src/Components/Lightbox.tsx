@@ -43,6 +43,15 @@ export default function Lightbox({
     onNavigate((index + 1) % images.length);
   }, [resetZoom, onNavigate, index, images.length]);
 
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+
+  // Focus the close button on open; restore focus to the opener on close.
+  useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null;
+    closeBtnRef.current?.focus();
+    return () => opener?.focus?.();
+  }, []);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -123,6 +132,7 @@ export default function Lightbox({
       style={{ cursor: isZoomed ? (isDragging ? "grabbing" : "grab") : "zoom-out" }}
     >
       <button
+        ref={closeBtnRef}
         className={styles.close}
         onClick={onClose}
         aria-label="Close image viewer"

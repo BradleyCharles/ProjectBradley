@@ -1,73 +1,68 @@
 // app/layout.tsx or app/layout.js
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Rajdhani, Share_Tech_Mono, Oswald, JetBrains_Mono, Spectral, Silkscreen, Pixelify_Sans, Almendra } from "next/font/google";
+import { Geist, Rajdhani, Share_Tech_Mono, JetBrains_Mono, Silkscreen } from "next/font/google";
 import "../styles/globals.css";
 import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
 import ClientLayout from "@/Components/ClientLayout";
+import { SITE_NAME, SITE_URL } from "@/data/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 const rajdhani = Rajdhani({
+  preload: false,
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-rajdhani",
 });
 
 const shareTechMono = Share_Tech_Mono({
+  preload: false,
   weight: "400",
   subsets: ["latin"],
   variable: "--font-share-tech-mono",
 });
 
-const oswald = Oswald({
-  weight: ["300", "400", "500"],
-  subsets: ["latin"],
-  variable: "--font-oswald",
-});
-
 const jetbrainsMono = JetBrains_Mono({
+  preload: false,
   weight: ["400", "500", "700", "800"],
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
 });
 
-const spectral = Spectral({
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--font-spectral",
-});
-
 const silkscreen = Silkscreen({
+  preload: false,
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-silkscreen",
 });
 
-const pixelifySans = Pixelify_Sans({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-pixelify",
-});
-
-const almendra = Almendra({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-almendra",
-});
+const description =
+  "Bradley Charles: software engineer, cybersecurity analyst, project manager and artist building practical systems for real people.";
 
 export const metadata: Metadata = {
-  title: "Bradley Charles",
-  description: "Created by Bradley Charles",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
+  description,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description,
+  },
+  twitter: { card: "summary_large_image", title: SITE_NAME, description },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE_NAME,
+  url: SITE_URL,
+  jobTitle: "Software Engineer",
+  sameAs: ["https://github.com/BradleyCharles"],
 };
 
 export default function RootLayout({
@@ -77,7 +72,11 @@ export default function RootLayout({
 }>) {
   return (
       <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${rajdhani.variable} ${shareTechMono.variable} ${oswald.variable} ${jetbrainsMono.variable} ${spectral.variable} ${silkscreen.variable} ${pixelifySans.variable} ${almendra.variable}`}>
+      <body className={`${geistSans.variable} ${rajdhani.variable} ${shareTechMono.variable} ${jetbrainsMono.variable} ${silkscreen.variable}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
+      />
       <ClientLayout>
         <div className="root-layout">
           <Navbar />

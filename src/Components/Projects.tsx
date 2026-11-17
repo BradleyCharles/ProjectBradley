@@ -183,7 +183,7 @@ export default function Projects() {
           </p>
         </div>
 
-        <Link href="/projects/rds" className={styles.featuredProject} aria-label="Explore RO Dev Suite">
+        <Link href="/projects/rds" className={styles.featuredProject}>
           <div className={styles.featuredProjectInner}>
             <div className={styles.featuredProjectContent}>
               <span className={styles.featuredProjectBadge}>

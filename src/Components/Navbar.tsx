@@ -166,7 +166,6 @@ const Navbar: React.FC = () => {
               className="dropdown-trigger"
               onClick={() => setDropdownOpen((o) => !o)}
               aria-expanded={dropdownOpen}
-              aria-haspopup="true"
             >
               Projects
               <span className={`chevron${dropdownOpen ? " open" : ""}`}>▾</span>

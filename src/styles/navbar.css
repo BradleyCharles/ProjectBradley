@@ -86,11 +86,15 @@
   opacity: 0;
   transform: translateY(-6px) scaleY(0.96);
   pointer-events: none;
-  transition: opacity 160ms ease, transform 160ms ease;
+  /* visibility removes the hidden links from the tab order once the fade ends */
+  visibility: hidden;
+  transition: opacity 160ms ease, transform 160ms ease, visibility 0s linear 160ms;
   z-index: 5;
 }
 
 .dropdown-menu.open {
+  visibility: visible;
+  transition-delay: 0s;
   opacity: 1;
   transform: translateY(0) scaleY(1);
   pointer-events: auto;
@@ -101,7 +105,9 @@
 }
 
 .dropdown-menu a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   padding: 0.45rem 0.6rem;
   border-radius: 4px;
   color: #eef2ff;

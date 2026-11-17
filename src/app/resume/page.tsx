@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import Contact from "@/Components/Contact";
 import styles from "../../styles/resume.module.css";
 
 const RESUME_PDF = "/Bradley_Charles_General_Resume.pdf";
 const RESUME_PDF_VIEW = `${RESUME_PDF}#navpanes=0`;
+
+export const metadata: Metadata = {
+  title: "Resume",
+  description: "Resume of Bradley Charles: software engineering, cybersecurity and project management experience.",
+};
 
 export default function ResumePage() {
   return (
