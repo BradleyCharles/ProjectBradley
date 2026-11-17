@@ -43,8 +43,7 @@ export default function DisciplineGallery({ images, name, accent, gradient, prev
                 alt={img.alt}
                 fill
                 className={styles.collageImg}
-                sizes="300px"
-                unoptimized
+                sizes="(max-width: 900px) 50vw, 300px"
               />
             </div>
           ))}
@@ -90,7 +89,6 @@ export default function DisciplineGallery({ images, name, accent, gradient, prev
                       fill
                       className={styles.gridThumb}
                       sizes="(max-width: 600px) 45vw, 220px"
-                      unoptimized
                     />
                   </button>
                 </TiltImage>
